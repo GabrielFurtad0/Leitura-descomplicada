@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Leitura Descomplicada</title>
-  <link rel="stylesheet" href="Landing-page.css">
+  <link rel="stylesheet" href="Style.css">
 </head>
   <link rel="icon" href="Imagens/Navbar/Logo.svg">
 
@@ -18,7 +18,8 @@
      <a href=""><img src="Imagens/Navbar/Logo.svg" alt="Logo" class="Logo"></a> 
       <p class="Titulo"><i>Leitura Descomplicada</i></p>
     </div>
-    <a href=""><img src="Imagens/Navbar/icon-park-solid_more-app.svg" alt="Ícone de menu de funcionalidades" class="Mais icone"><img src="Imagens/Navbar/Perfil.svg" alt="Ícone de Perfil" class="Perfil icone"></a>
+    <a href="Menu.html"><img src="Imagens/Navbar/More-outline.svg" alt="Ícone de menu de funcionalidades" class="Mais icone"></a>
+    <a href="Login.html"><img src="Imagens/Navbar/profile-outline.svg" alt="Ícone de Perfil" class="Perfil icone"></a>
   </div>
   
 
@@ -113,7 +114,7 @@
 
     <div class="explorar">
       <p class="Titulo">Descubra tudo que o Leitura Descomplicada oferece!</p>
-      <button onclick="">Explore Nossas Ferramentas</button>
+      <button onclick="menu()">Explore Nossas Ferramentas</button>
     </div>
 
 
@@ -127,7 +128,7 @@
         <p class="textoPrincipal">
           <a href="">•Home</a> <br>
           <a href="">•Dicas de leitura</a> <br>
-          <a href="">•Ferramentas</a>
+          <a href="Menu.html">•Ferramentas</a>
         </p>
       </div>
     </div>
@@ -167,5 +168,11 @@
         Projeto acadêmico desenvolvido para o curso de Ciências da Computação</p>
     </div>
 </body>
+
+<script>
+  function menu(){
+    window.location.href = "Menu.html";
+  }
+</script>
 
 </html>

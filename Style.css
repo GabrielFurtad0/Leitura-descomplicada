@@ -1,0 +1,779 @@
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+body{
+  margin: 0px;
+  background: #B5C99A;
+  background: linear-gradient(0deg,rgba(181, 201, 154, 1) 35%, rgba(232, 241, 212, 1) 100%);
+  text-shadow: 0px 1px 2px rgba(0, 0, 0, 0.25);
+}
+
+button{
+  color: #E8F1D4;
+  background-color: #A67C52;
+  font-weight: bold;
+  text-align: center;
+  font-family: 'Merriweather';
+  transition: transform 0.5s, background-color 0.5s;
+  box-shadow: 0px 4px 9px 2px rgba(0, 0, 0, 0.3);
+  border: 0;
+  text-shadow: 0px 1px 2px rgba(0, 0, 0, 0.25);
+}
+
+button:hover{
+  border: solid 2px #A67C52;
+  background-color: #D4A373;
+  transform: scale(1.1);
+  cursor: pointer;
+}
+
+a{
+  transition: transform 0.5s;
+}
+
+a:hover{
+  transform: scale(1.075);
+  cursor: pointer;
+}
+
+.todo{
+  margin-top: 0px;
+  margin-left: 6vw;
+  margin-right: 6vw;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  gap: 24px;
+
+}
+
+/* NAVBAR */
+
+.navbar{
+  height: 10vh;
+  display: grid;
+  gap: 0px;
+  margin-top: 0px;
+  grid-column: 1/-1;
+  background: #B5C99A;
+background: linear-gradient(0deg,rgba(181, 201, 154, 1) 0%, rgba(31, 47, 13, 1) 5%);
+  place-content: center;
+  grid-template-columns: auto  1fr auto auto;
+  align-items: center;
+}
+.navbar-center{
+  font-family: 'Playfair Display';
+  color: #E8F1D4;
+  font-weight: bolder;
+  font-size: 4rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  column-gap: 30px;
+}
+
+.Logo{
+  margin-bottom: -1vh;
+}
+
+.Home{
+  margin-left: 6vw;
+}
+
+.Mais{
+  margin-right: 2vw;
+  margin-left: -2vw;
+}
+
+.icone{
+  height: 4rem;
+  width: auto;
+}
+
+.Perfil{
+  margin-right: 7vw;
+}
+
+/*SEÇÃO HERO*/
+
+.hero{
+  margin-top: 10vh;
+  height: 100vh;
+  border-radius: 50px;
+  background-image: url(Imagens/LandingPage/heroimgtruemelhor.png);
+  background-size: cover;
+  grid-column: 1/-1;
+  background-repeat: no-repeat;
+  display: grid;
+  grid-template-columns: 5vw 1fr 1fr 1fr 1fr;
+  box-shadow: 0px 4px 9px 2px rgba(0, 0, 0, 0.3);
+}
+
+
+.imgtitulo{
+  font-family: 'Merriweather';
+  color: #E8F1D4;
+  font-weight: bolder;
+  font-size: 4rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  grid-column: 1 / -1;
+  gap: 20px;
+}
+
+.hero .textoPrincipal{
+  margin-top: -3vh;
+  margin-bottom: -1vh;
+  grid-column: 2 / 4;
+  font-family: 'Nunito';
+  color: #E8F1D4;
+  font-size: 3rem;
+}
+
+.neilgaiman{
+  font-family: 'Nunito';
+  font-size: 1.55rem;
+  color: #B5C99A;
+  font-weight: 300;
+  grid-column: 2/4;
+}
+
+.hero button{
+  border-radius: 2.5rem;
+  grid-column: 2/4;
+  margin-bottom: 5vw;
+  border: solid 0px;
+  height: 7vh;
+  width: 30vw;
+  background-color: #A67C52;
+  font-size: 2.2rem;
+}
+
+/*Citações*/
+
+.citacao{
+  grid-column: 1/-1;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2vw;
+}
+
+.citacao .Titulo{
+  grid-column: 1/-1;
+  font-size: 5rem;
+  color: #1F2F0D;
+  font-weight: bolder;
+  text-align: center;
+}
+
+.citacao .esquerda{
+  grid-column: 1;
+
+}
+
+.citacao .direita{
+  grid-column: 2;
+}
+
+.citacao .card{
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  background-color: #E8F1D4;
+  border-radius: 1rem;
+  padding: 2rem;
+  padding-bottom: 0;
+  box-shadow: 0px 4px 9px 2px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease;
+}
+
+.citacao .card .nome{
+  margin: 0;
+  grid-column: 2/ -1;
+  font-family: 'Merriweather';
+  font-size: 3rem;
+  font-weight: 1000;
+  text-align: center;
+  justify-self: center;
+  color: #1F2F0D;
+}
+
+.citacao .card .descricao {
+  margin: 0;
+  grid-column: 2 /-1;
+  font-family: 'Merriweather';
+  text-align: center;
+  font-weight: 500;
+  font-size: 2rem;
+  color: #1F2F0D;
+}
+
+.citacao .card .textoPrincipal{
+  grid-column: 2/ -1;
+  font-family: 'Nunito';
+  text-align: center;
+  font-size: 2.3rem;
+  color: #1F2F0D;
+  padding: 2vh;
+  line-height: 3.5rem;
+  margin: 0;
+  height: 277px;
+}
+
+.citacao .card .retrato{
+  grid-row: 1 / span 4;
+  grid-column: 1;
+  border-radius: 1rem;
+  box-shadow: 0px 4px 9px 2px rgba(0, 0, 0, 0.3);
+  width: 100%;
+  height: 90%;
+}
+
+.retrato img{
+  border-radius: 1rem;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block; /* Remove possível espaço extra abaixo da imagem */
+}
+
+.citacao .card img.Aspas {
+  width: 4rem;
+  height: auto;
+
+  grid-column: 4; 
+  justify-self: end; 
+  padding-bottom: 5vh;
+}
+
+.citacao .card:hover{
+  transform: scale(1.05);
+}
+
+.MalalaN{
+  place-self: center;
+}
+.MalalaD{
+  height: 10vh;
+}
+.MalalaT{
+  margin: 0;
+}
+
+.Obama{
+  object-position: 75% center;
+}
+
+.Malala{
+  object-position: 79% center;
+}
+
+.Bill{
+  object-position: 56% center;
+}
+
+.Oprah{
+  object-position: 46% center;
+}
+
+
+/* Dicas */
+
+.card-dicas{
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  padding: 8vh;
+  background-color: #E8F1D4;
+  border-radius: 4rem;
+  box-shadow: 0px 4px 9px 2px rgba(0, 0, 0, 0.3);
+  margin: 0;
+  margin-top: 10rem;
+}
+
+.card-dicas .dica{
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  grid-template-rows: auto auto;
+  column-gap: 15px;
+  row-gap: 10px;
+  align-items: start;
+  transition: all 0.3s ease;
+}
+
+.card-dicas .dica:hover{
+  transform: scale(1.075);
+}
+
+.card-dicas .Titulo{
+  grid-column: 1/-1;
+  font-size: 5rem;
+  color: #1F2F0D;
+  font-weight: bolder;
+  text-align: center;
+  margin: 0;
+}
+
+.card-dicas .dica .numeracao{
+  font-family: 'Merriweather';
+  grid-column: 1;
+  grid-row: 1 / span 2; 
+  color: #1F2F0D;
+  font-weight: bolder;
+  text-align: start;
+  font-size: 3rem;
+  align-self: start;
+  padding-right: 10px;
+}
+
+.card-dicas .dica .subtitulo{
+  grid-column: 2;
+  grid-row: 1;
+  font-family: 'Merriweather';
+  text-align: start;
+  color: #1F2F0D;
+  font-size: 2rem;
+  font-weight: 700;
+  align-self: center;
+}
+
+.card-dicas .dica .textoPrincipal{
+  grid-column: 2;
+  grid-row: 2;
+  font-family: 'Nunito';
+  text-align: start;
+  width: 100%;
+  font-size: 1.5rem;
+  color: #1F2F0D;
+  margin: 0;
+}
+.card-dicas .dica img{
+  grid-column: 3;
+  grid-row: 1;
+  height: 3rem;
+  width: auto;
+  align-self: center;
+}
+
+/* EXPLORAR */
+.explorar{
+  grid-column: 1 / -1;
+  display: grid;
+  grid: 1fr;
+}
+
+.explorar .Titulo{
+  font-family: 'Merriweather';
+  font-size: 6.5rem;
+  text-align: center;
+  color: #1F2F0D;
+  font-weight: 1000;
+}
+
+.explorar button{
+  justify-self: center;
+  height: 30vh;
+  width: fit-content;
+  font-size: 5rem;
+  border-radius: 7rem;
+  padding: 3rem;
+}
+
+/* FOOTER */
+
+.footer{
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr auto 1fr;
+  background: #B5C99A;
+background: linear-gradient(180deg,rgba(181, 201, 154, 1) 0%, rgba(31, 47, 13, 1) 5%);
+  padding: 2vw 3vw 2vw 3vw;
+  align-items: center;
+  font-family: 'Merriweather';
+  color: #E8F1D4;
+  grid-template-rows: 1fr auto 1fr;
+  row-gap: 2vh;
+  margin-top: 10rem;
+}
+
+.footer a{
+  text-decoration: none;
+  color: #E8F1D4;
+}
+
+.footer .card{
+  align-self: center;
+  text-align: center;
+  transition: all 0.3s ease;
+  overflow: hidden;
+}
+
+.baixo{
+  grid-column: 1 / -1;
+  text-align: center;
+}
+
+.vertical{
+  grid-column: 2;
+}
+
+.footer .cima{
+  justify-items: center;
+  text-align: start;
+
+}
+
+.footer .horizontal{
+  grid-column: 1 / -1;
+  height: 1vh;
+  background-image: url(Imagens/footer/LinhaHorizontal-footer.svg);
+  background-repeat: repeat-x;
+  background-position: center;
+}
+
+/* MENU */
+
+.funcionalidades{
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  column-gap: 2rem;
+  margin-top: 10vh;
+  height: 60vh;
+}
+
+.funcionalidades .card{
+  background-color: #E8F1D4;
+  border-radius: 2rem;
+  padding: 1rem;
+  justify-items: center;
+  justify-self: center;
+  min-height: 50vh;
+  max-height: 50vh;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  box-shadow: 0px 4px 9px 2px rgba(0, 0, 0, 0.3);
+ 
+}
+
+.funcionalidades .card .Titulo{
+  margin-top: 0;
+  font-family: 'Merriweather';
+  font-weight: 1000;
+  color: #1F2F0D;
+  font-size: 3rem;
+}
+
+.funcionalidades a{
+  border-radius: 2rem;
+  transition: transform 0.5s, background-color 0.5s;
+  text-decoration: none;
+  color: #1F2F0D;
+  display: block;
+}
+
+.funcionalidades .card .descricao{
+  font-family: 'Nunito';
+  text-align: center;
+  justify-self: center;
+  align-self: center;
+  font-size: 1.5rem;
+}
+
+.texto-expandido {
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: max-height 0.3s ease, opacity 0.3s ease, margin-top 0.3s ease;
+  font-family: 'Nunito';
+  text-align: center;
+  font-size: 1.3rem;
+  margin-top: 0;
+  pointer-events: none;
+}
+
+.funcionalidades .card:hover .texto-expandido {
+  max-height: 200px;
+  opacity: 1;
+  margin-top: 1rem;
+ 
+}
+
+.funcionalidades .card:hover{
+  max-height: 80vh;
+  min-height: 50vh;
+  border: 2px solid #1F2F0D;
+}
+
+
+.funcionalidades img.contos{
+  margin-bottom: 0.5rem;
+}
+
+
+/* LOGIN e CADASTRO */
+.Login{
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: 1fr;
+  align-content: center;
+  justify-self: center;
+  background-color: #E8F1D4;
+  border-radius: 2rem;
+  margin-top: 10vh;
+  width: fit-content;
+  text-align: center;
+  padding: 2.5rem;
+  font-family: 'Merriweather';
+  font-size: 4rem;
+  width: 30vw;
+  box-shadow: 0px 4px 9px 2px rgba(0, 0, 0, 0.3);
+  color: #1F2F0D;
+  transition: all 0.3s ease;
+}
+
+.Login .input{
+  border-radius: 0.5rem;
+  border: solid #B5C99A 2px;
+  box-shadow: 0px 4px 9px 2px rgba(0, 0, 0, 0.3);
+  margin: 1rem;
+  font-family: 'Nunito';
+  font-size: 1rem;
+  text-align: center;
+  background-color: #D8E9D0;
+  padding: 0.5rem;
+  color: #1F2F0D;
+  transition: all 0.3s ease;
+}
+
+.Login .textoPrincipal{
+  font-family: 'Nunito';
+  font-size: 2rem;
+}
+
+.Login a{
+  text-decoration: none;
+  display: inline-block;
+}
+
+.Login a:hover{
+  transform: scale(1.1);
+}
+
+.Login button{
+  border-radius: 2rem;
+  font-family: 'Nunito';
+  font-size: 2rem;
+  padding: 0.5rem 5rem;
+  margin: 1rem;
+  font-weight: bolder;
+  width: fit-content;
+  justify-self: center;
+}
+
+.Login .Titulo{
+  margin: 2rem;
+  font-weight: bolder;
+}
+
+.Login .input:hover{
+  transform: scale(1.1);
+  border-color: #1F2F0D;
+}
+
+.Login select{
+  border-radius: 0.5rem;
+  border: solid #B5C99A 2px;
+  box-shadow: 0px 4px 9px 2px rgba(0, 0, 0, 0.3);
+  margin: 1rem;
+  font-family: 'Nunito';
+  font-size: 1rem;
+  text-align: center;
+  background-color: #D8E9D0;
+  padding: 0.5rem;
+  color: #1F2F0D;
+  transition: all 0.3s ease;
+  appearance: none;
+  background-image: url('data:image/svg+xml;utf8,<svg fill="%231F2F0D" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/><path d="M0 0h24v24H0z" fill="none"/></svg>');
+  background-repeat: no-repeat;
+  background-position-x: 95%;
+  background-position-y: center;
+}
+
+.Login select:hover{
+  transform: scale(1.1);
+  border-color: #1F2F0D;
+  box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.25);
+  outline: none;
+}
+
+.Login select:focus{
+  background-image: url('data:image/svg+xml;utf8,<svg fill="%231F2F0D" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/><path d="M0 0h24v24H0z" fill="none"/></svg>');
+  background-repeat: no-repeat;
+  background-position-x: 95%;
+  background-position-y: center;
+  transform: rotate(180deg)
+}
+
+
+/* QUIZ */
+
+.pontuacaoEJogo{
+  grid-column: 1 / -1;
+  display: grid;
+  align-items: center;
+  justify-self: center;
+  font-family: 'Nunito';
+  font-weight: bold;
+  margin-top: 10vh;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(5, 1fr);
+  gap: 1.5rem;
+}
+
+.botaoiniciar{
+  border-radius: 3rem;
+  font-size: 4rem;
+  padding: 3rem;
+  font-weight: bolder;
+  grid-column: 1 / -1;
+  grid-row: 1 / -1;
+  margin-bottom: 2.3vh;
+}
+
+.pontuacaoDuranteJogo{
+  font-family: 'Nunito';
+
+}
+
+/* CARROSSEL */
+
+.Carrossel{
+
+}
+
+/* contos rápidos */
+
+.contos-container{
+  grid-column: 1 / -1;
+  display: grid;
+  background-color: #E8F1D4;
+  border-radius: 2rem;
+  grid-template-columns: repeat(1, 1fr);
+  margin-top: 10rem;
+  padding: 2rem;
+  width: 50vw;
+  justify-self: center;
+  box-shadow:  0px 4px 18px 4px rgba(0, 0, 0, 0.25);
+  position: relative;
+  overflow: hidden;
+  height: 70vh;
+  text-shadow: 0px 4px 9px 2px rgba(0, 0, 0, 0.25);
+}
+
+.scrollavel{
+  height: 100%;
+  overflow-y: auto;
+  display: grid;
+  grid-template-columns: 1fr;
+  
+}
+
+
+.scrollavel::-webkit-scrollbar {
+  width: 10px; /* Largura da barra de rolagem */
+}
+
+.scrollavel::-webkit-scrollbar-track {
+  background: #f1f1f1; /* Cor do "trilho" da barra */
+  border-radius: 10px;
+}
+
+.scrollavel::-webkit-scrollbar-thumb {
+  background: #B5C99A; /* Cor do "polegar" da barra */
+  border-radius: 10px;
+}
+
+.scrollavel::-webkit-scrollbar-thumb:hover {
+  background: #B5C99A; /* Cor do "polegar" ao passar o mouse */
+  border-radius: 2rem;
+}
+
+.contos-container a{
+  text-decoration: none;
+  color: #1F2F0D;
+}
+
+.contos-container a:hover{
+  transform: scale(1);
+}
+
+.contos-container .Titulo{
+  font-family: 'Merriweather';
+  font-size: 4rem;
+  text-align: center;
+  font-weight: bolder;
+  margin-bottom: 1rem;
+  text-shadow: 0px 4px 9px 2px rgba(0, 0, 0, 0.25);
+}
+
+.contos-container .genero{
+  font-family: 'Merriweather';
+  font-size: 2.5rem;
+  text-align: start;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.contos-container .texto-expandido {
+  font-family: 'Nunito';
+  font-size: 1.3rem;
+  text-align: left;
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: max-height 0.3s ease, opacity 0.3s ease, margin-top 0.3s ease;
+  margin-top: 0;
+  pointer-events: none;
+}
+
+.contos-container .descricao{
+  text-align: center;
+  font-size: 2rem;
+  
+}
+
+.contos-container .card{
+  box-shadow: 0px 4px 9px 2px rgba(0, 0, 0, 0.3);
+  border-radius: 2rem;
+  display: grid;
+  grid-template-rows: auto auto 1fr;
+  padding: 2rem;
+  height: auto;
+  margin: 1rem;
+  text-shadow: 0px 4px 9px 2px rgba(0, 0, 0, 0.25);
+}
+
+.contos-container a{
+  border-radius: 2rem;
+  transition: all 0.5 ease;
+  text-decoration: none;
+  color: #1F2F0D;
+}
+
+.contos-container .card:hover .texto-expandido {
+  max-height: 20rem;
+  opacity: 1;
+  margin-top: 1rem;
+  pointer-events: auto; /* Permite interações com o texto */
+}
+
+.contos-container .card:hover{
+  border: 2px solid #1F2F0D;
+  transform: scale(1.02);
+}
+
