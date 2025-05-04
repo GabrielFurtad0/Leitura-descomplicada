@@ -536,7 +536,7 @@ background: linear-gradient(180deg,rgba(181, 201, 154, 1) 0%, rgba(31, 47, 13, 1
   transition: all 0.3s ease;
 }
 
-.Login .input{
+ .input{
   border-radius: 0.5rem;
   border: solid #B5C99A 2px;
   box-shadow: 0px 4px 9px 2px rgba(0, 0, 0, 0.3);
@@ -580,12 +580,12 @@ background: linear-gradient(180deg,rgba(181, 201, 154, 1) 0%, rgba(31, 47, 13, 1
   font-weight: bolder;
 }
 
-.Login .input:hover{
+.input:hover{
   transform: scale(1.1);
   border-color: #1F2F0D;
 }
 
-.Login select{
+ select{
   border-radius: 0.5rem;
   border: solid #B5C99A 2px;
   box-shadow: 0px 4px 9px 2px rgba(0, 0, 0, 0.3);
@@ -604,7 +604,7 @@ background: linear-gradient(180deg,rgba(181, 201, 154, 1) 0%, rgba(31, 47, 13, 1
   background-position-y: center;
 }
 
-.Login select:hover{
+ select:hover{
   transform: scale(1.1);
   border-color: #1F2F0D;
   box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.25);
@@ -619,6 +619,9 @@ background: linear-gradient(180deg,rgba(181, 201, 154, 1) 0%, rgba(31, 47, 13, 1
   transform: rotate(180deg)
 }
 
+.Login button:hover{
+  margin: 15.5px;
+}
 
 /* QUIZ */
 
@@ -671,8 +674,9 @@ background: linear-gradient(180deg,rgba(181, 201, 154, 1) 0%, rgba(31, 47, 13, 1
   box-shadow:  0px 4px 18px 4px rgba(0, 0, 0, 0.25);
   position: relative;
   overflow: hidden;
-  height: 70vh;
+  height: 80vh;
   text-shadow: 0px 4px 9px 2px rgba(0, 0, 0, 0.25);
+  
 }
 
 .scrollavel{
@@ -696,6 +700,7 @@ background: linear-gradient(180deg,rgba(181, 201, 154, 1) 0%, rgba(31, 47, 13, 1
 .scrollavel::-webkit-scrollbar-thumb {
   background: #B5C99A; /* Cor do "polegar" da barra */
   border-radius: 10px;
+  
 }
 
 .scrollavel::-webkit-scrollbar-thumb:hover {
@@ -709,7 +714,7 @@ background: linear-gradient(180deg,rgba(181, 201, 154, 1) 0%, rgba(31, 47, 13, 1
 }
 
 .contos-container a:hover{
-  transform: scale(1);
+  transform: scale(1.05);
 }
 
 .contos-container .Titulo{
@@ -744,7 +749,6 @@ background: linear-gradient(180deg,rgba(181, 201, 154, 1) 0%, rgba(31, 47, 13, 1
 .contos-container .descricao{
   text-align: center;
   font-size: 2rem;
-  
 }
 
 .contos-container .card{
@@ -774,6 +778,81 @@ background: linear-gradient(180deg,rgba(181, 201, 154, 1) 0%, rgba(31, 47, 13, 1
 
 .contos-container .card:hover{
   border: 2px solid #1F2F0D;
-  transform: scale(1.02);
+
 }
 
+/* FORMULÁRIO */
+
+.formulario{
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto 1fr 2fr;
+  background-color: #E8F1D4;
+  border-radius: 3rem;
+  box-shadow:  0px 4px 18px 4px rgba(0, 0, 0, 0.25);
+  margin-top: 10vh;
+  padding: 3rem;
+  width: 50vw;
+  justify-self: center;
+  font-family: 'Merriweather';
+  font-size: 3rem;
+  font-weight: bold;
+  color: #1F2F0D;
+  overflow: hidden;
+}
+
+.formulario .Titulo{
+  text-align: center;
+  font-size: 5rem;
+  margin-top: 0;
+}
+
+.formulario p{
+  margin-bottom: 2vh;
+}
+
+.formulario .input{
+  width: 100%;
+  margin: 0;
+  text-align: start;
+}
+
+.formulario .textoPrincipal {
+ height: 15vh;
+ resize: none;
+}
+
+.input::-webkit-scrollbar {
+  width: 10px; 
+}
+
+.input::-webkit-scrollbar-track {
+  background: #f1f1f1; 
+  border-radius: 10px;
+}
+
+.input::-webkit-scrollbar-thumb {
+  background: #B5C99A; 
+  border-radius: 10px;
+  
+}
+
+.input::-webkit-scrollbar-thumb:hover {
+  background: #5C6D49; 
+  border-radius: 2rem;
+  cursor: default;
+}
+
+.formulario .input:hover{
+  transform: scale(1.05);
+}
+
+.formulario select{
+  width: fit-content;
+  align-self: center;
+  justify-self: center;
+  padding: 1rem;
+  padding-right: 2rem;
+  font-weight: bold;
+}
