@@ -440,9 +440,12 @@ background: linear-gradient(180deg,rgba(181, 201, 154, 1) 0%, rgba(31, 47, 13, 1
   grid-column: 1 / -1;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: auto auto;
   column-gap: 2rem;
   margin-top: 10vh;
   height: 60vh;
+  grid-row-gap: 2rem;
+  margin-bottom: 45vh;
 }
 
 .funcionalidades .card{
@@ -654,6 +657,65 @@ background: linear-gradient(180deg,rgba(181, 201, 154, 1) 0%, rgba(31, 47, 13, 1
 }
 
 /* CARROSSEL */
+.carrossel{
+  margin-top: 20vh;
+  display: grid;
+  grid-column: 1 / -1;
+  align-items: center;
+  justify-self: center;
+  grid-template-rows: 1fr auto;
+  grid-row-gap: 2rem;
+  width: 50vw;
+  justify-items: center;
+  transition: opacity 0.5 ease;
+}
+
+.carrossel button{
+  border-radius: 5rem;
+  font-size: 4rem;
+  height: 20vh;
+  width: 20vw;
+  text-align: center;
+  opacity: 1;
+}
+
+.cardCarrossel{
+  background-color: #E8F1D4;
+  padding: 20rem;
+  border-radius: 3rem;
+  width: auto;
+  padding: 0;
+  text-align: center;
+  color: #1F2F0D;
+  height: auto;
+  opacity: 0;
+}
+
+.carrossel .cardCarrossel .Titulo{
+  font-family: 'Merriweather';
+  font-size: 4rem;
+  font-weight: bolder;
+  margin-top: 2rem;
+}
+
+.carrossel .cardCarrossel img{
+  border-radius: 1rem;
+}
+
+.carrossel .cardCarrossel .subtitulo{
+  font-family: 'Merriweather';
+  font-size: 3rem;
+  font-weight: bold;
+}
+
+.carrossel .cardCarrossel .descricao{
+  font-family: 'Nunito';
+  font-size: 2rem;
+  font-weight: 250;
+  margin-bottom: 4rem;
+  margin-left: 2rem;
+  margin-right: 2rem;
+}
 
 /* contos rápidos */
 
