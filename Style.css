@@ -468,7 +468,7 @@ background: linear-gradient(180deg,rgba(181, 201, 154, 1) 0%, rgba(31, 47, 13, 1
   font-family: 'Merriweather';
   font-weight: 1000;
   color: #1F2F0D;
-  font-size: 3rem;
+  font-size: 2.8rem;
 }
 
 .funcionalidades a{
@@ -516,7 +516,6 @@ background: linear-gradient(180deg,rgba(181, 201, 154, 1) 0%, rgba(31, 47, 13, 1
 .funcionalidades img.contos{
   margin-bottom: 0.5rem;
 }
-
 
 /* LOGIN e CADASTRO */
 .Login{
