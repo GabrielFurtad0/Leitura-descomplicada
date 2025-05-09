@@ -23,9 +23,10 @@
   <div class="todo">
     <div class="Login">
       <p class="Titulo">Faça seu login</p>
-      <input type="text" id="ipt_login" class="input" placeholder="Insira seu E-mail">
+      <input type="text" id="ipt_email" class="input" placeholder="Insira seu E-mail">
       <input type="text" id="ipt_senha" class="input" placeholder="Insira sua senha">
-      <button>login</button>
+      <button onclick="autenticarUsuario()">login</button>
+      <div id="div_resposta"></div>
       <p class="textoPrincipal">Ainda não tem uma conta? Faça seu <a href="Cadastro.html">Cadastro</a></p>
     </div>
   </div>
@@ -79,4 +80,83 @@
         Projeto acadêmico desenvolvido para o curso de Ciências da Computação</p>
     </div>
 </body>
+<script>
+  function autenticarUsuario(){
+    var emailVar = ipt_email.value;
+    var senhaVar = ipt_senha.value;
+    
+
+    if (emailVar == "" || senhaVar == "") {
+        div_resposta.innerHTML = "Ambos os campos devem estar preenchidos";
+        document.getElementById("ipt_email").style.borderColor = "#D32F2F"
+        document.getElementById("ipt_senha").style.borderColor = "#D32F2F"
+        return false;
+    }
+    else {
+        setInterval(sumirMensagem, 5000)
+    }
+
+    console.log("FORM LOGIN: ", emailVar);
+    console.log("FORM SENHA: ", senhaVar);
+
+    fetch("/usuarios/autenticar", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            emailServer: emailVar,
+            senhaServer: senhaVar,
+        })
+    }).then(function (resposta) {
+        console.log("ESTOU NO THEN DO entrar()!")
+
+        if (resposta.ok) {
+            console.log(resposta);
+
+            resposta.json().then(json => {
+                console.log(json);
+                console.log(JSON.stringify(json));
+                sessionStorage.EMAIL_USUARIO = json.email;
+                sessionStorage.NOME_USUARIO = json.nome;
+                sessionStorage.ID_USUARIO = json.id;
+                
+                
+                setTimeout(function () {
+                    window.location = "../Menu.html";
+                }, 1000); // apenas para exibir o loading
+
+            });
+            setTimeout(() => {
+            document.getElementById("ipt_email").value = ""
+            document.getElementById("ipt_senha").value = "";
+            }, 5000);
+            
+        } else {
+            document.getElementById("ipt_email").style.borderColor = "#D32F2F";
+            document.getElementById("ipt_senha").style.borderColor = "#D32F2F";
+            setTimeout(() => {
+            document.getElementById("ipt_email").style.borderColor = "#B5C99A";
+            document.getElementById("ipt_senha").style.borderColor = "#B5C99A";
+            }, 3000);
+            
+            console.log("Houve um erro ao tentar realizar o login!");
+
+            resposta.text().then(texto => {
+                console.error(texto);
+                
+            });
+        }
+
+    }).catch(function (erro) {
+        console.log(erro);
+    })
+
+    return false;
+}
+
+function sumirMensagem() {
+  div_resposta.style.display = "none"
+}
+</script>
 </html>

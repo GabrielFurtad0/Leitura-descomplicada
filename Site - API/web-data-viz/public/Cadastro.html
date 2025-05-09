@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="PT-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cadastro LD</title>
+  <link rel="stylesheet" href="Style.css">
+</head>
+<link rel="icon" href="Imagens/Navbar/Logo.svg">
+<body>
+  
+  <div class="navbar">
+    <a href="Landing-page.html"><img src="Imagens/Navbar/home-outline.svg" alt="Ícone de menu Principal" class="Home icone"></a>
+    <div class="navbar-center">
+     <a href="Landing-page.html"><img src="Imagens/Navbar/Logo.svg" alt="Logo" class="Logo"></a> 
+      <p class="Titulo"><i>Leitura Descomplicada</i></p>
+    </div>
+    <a href="Menu.html"><img src="Imagens/Navbar/More-outline.svg" alt="Ícone de menu de funcionalidades" class="Mais icone"></a>
+    <a href="Login.html"><img src="Imagens/Navbar/Perfil.svg" alt="Ícone de Perfil" class="Perfil icone"></a>
+  </div>
+
+
+  <div class="todo">
+    <div class="Login">
+      <p class="Titulo">Faça seu Cadastro</p>
+      <input type="text" id="ipt_nome" class="input" placeholder="Insira seu nome">
+      <input type="text" id="ipt_email" class="input" placeholder="Insira seu E-mail">
+      <input type="text" id="ipt_senha" class="input" placeholder="Insira sua senha">
+      <input type="text" id="ipt_senhaConfirmar" class="input" placeholder="Insira sua senha novamente">
+      <select name="" id="slct_generoFavorito">
+        <option value="#" selected disabled>Qual seu genêro literário favorito?</option>
+        <option value="Distopia">Distopia</option>
+        <option value="Drama">Drama</option>
+        <option value="Fantasia">Fantasia</option>
+        <option value="FicçãoCientíifica">Ficção cientíifica</option>
+        <option value="FicçãoHistórica">Ficção histórica</option>
+        <option value="NãoFicção">Não ficção</option>
+        <option value="Romance">Romance</option>
+        <option value="Terror/Horror">Terror/Horror</option>
+        <option value="Mistério/Suspense">Mistério/Suspense</option>
+        <option value="Outro">Outro</option>
+        <option value="AindaNãoSei">Ainda não sei</option>
+      </select>
+      <div id="div_resposta"></div>
+      <button onclick="cadastroUsuario()">Cadastrar</button>
+      <p class="textoPrincipal">Já tem uma conta? Faça seu <a href="Login.html">Login</a></p>
+    </div>
+  </div>
+
+
+  <div class="footer">
+
+    <div class="card">
+      <div class="cima">
+        <p class="Titulo">Links rápidos</p>
+        <p class="textoPrincipal">
+          <a href="">•Home</a> <br>
+          <a href="">•Dicas de leitura</a> <br>
+          <a href="">•Ferramentas</a>
+        </p>
+      </div>
+    </div>
+
+    <div class="vertical">
+      <img src="Imagens/footer/LinhaVertical-footer.svg" alt="">
+    </div>
+      
+    <div class="card">
+      <div class="cima">
+        <p class="Titulo">Contato</p>
+        <p class="textoPrincipal">
+          •Email <br>
+          <a href="">•Formulário</a>
+        </p>
+      </div>
+    </div>
+    <div class="vertical2">
+      <img src="Imagens/footer/LinhaVertical-footer.svg" alt="">
+    </div>
+
+    <div class="card">
+      <div class="cima">
+        <p class="Titulo">Sobre o projeto</p>
+        <p class="textoPrincipal">
+          •Desenvolvido por: <a href="https://www.linkedin.com/in/gabriel-furtado-165aa72bb/">Gabriel Furtado</a><br>
+          •Instituição: <a href="https://sptech.school/">São Paulo tech school</a><br>
+          <a href="https://bandteccom-my.sharepoint.com/:w:/g/personal/gabriel_dsousa_sptech_school/ETqZHxX_WZRAosnKsa7ZKWoBycfvJnAFzxgmrulGgwWgwA?e=OjjrFT">•Documentação do projeto</a>
+        </p>
+      </div>
+    </div>
+
+    <div class="horizontal"></div>
+
+    <div class="baixo">
+      <p class="disclaimer"> © 2025 Leitura Descomplicada - Todos os direitos reservados
+        Projeto acadêmico desenvolvido para o curso de Ciências da Computação</p>
+    </div>
+</body>
+<script>
+  function cadastroUsuario(){
+    const nome = document.getElementById("ipt_nome").value;
+    const email = document.getElementById("ipt_email").value;
+    const senha = document.getElementById("ipt_senha").value;
+    const confirmarSenha = document.getElementById("ipt_senhaConfirmar").value;
+    const generoFavorito = document.getElementById("slct_generoFavorito").value
+
+    const divResposta = document.getElementById("div_resposta")
+
+    if (nome == "" || email == "" || senha == "" || confirmarSenha == "" || generoFavorito == "#"){
+      divResposta.innerHTML = `<p style="color: red;"  class="erro">Por favor, preencha todos os campos!</p>`;
+      document.getElementById("ipt_nome").style.borderColor = "#D32F2F"
+      document.getElementById("ipt_email").style.borderColor = "#D32F2F"
+      document.getElementById("ipt_senha").style.borderColor = "#D32F2F"
+      document.getElementById("ipt_senha").style.borderColor = "#D32F2F"
+      document.getElementById("ipt_senhaConfirmar").style.borderColor = "#D32F2F"
+      document.getElementById("slct_generoFavorito").style.borderColor = "#D32F2F"
+            setTimeout(() => {
+            document.getElementById("ipt_nome").style.borderColor = "#B5C99A"
+            document.getElementById("ipt_email").style.borderColor = "#B5C99A";
+            document.getElementById("ipt_senha").style.borderColor = "#B5C99A";
+            document.getElementById("ipt_senha").style.borderColor = "#B5C99A"
+            document.getElementById("ipt_senhaConfirmar").style.borderColor = "#B5C99A"
+            document.getElementById("slct_generoFavorito").style.borderColor = "#B5C99A"
+            }, 3000);
+    return;
+    }
+
+    if (!email.includes('@') || !email.includes('.')) {
+    divResposta.innerHTML = `<p style="color: red;"  class="erro">Por favor, insira um e-mail válido!</p>`;
+    document.getElementById("ipt_email").style.borderColor = "#D32F2F"
+      setTimeout(() => {
+      document.getElementById("ipt_email").style.borderColor = "#B5C99A"
+      }, 3000);
+    return;
+  }
+  
+  // Validação de senha
+  if (senha.length < 6) {
+    divResposta.innerHTML = `<p style="color: red;"  class="erro">A senha deve ter pelo menos 6 caracteres!</p>`;
+    document.getElementById("ipt_senha").style.borderColor = "#D32F2F"
+      setTimeout(() => {
+      document.getElementById("ipt_senha").style.borderColor = "#B5C99A"
+      
+      }, 3000);
+    return;
+  }
+  
+  // Verificação se as senhas são iguais
+  if (senha !== confirmarSenha) {
+    divResposta.innerHTML = `<p style="color: red;" class="erro">As senhas não coincidem!</p>`;
+    document.getElementById("ipt_senha").style.borderColor = "#D32F2F"
+    document.getElementById("ipt_senhaConfirmar").style.borderColor = "#D32F2F"
+      setTimeout(() => {
+      document.getElementById("ipt_senha").style.borderColor = "#B5C99A"
+      document.getElementById("ipt_senhaConfirmar").style.borderColor = "#B5C99A"
+      }, 3000);
+    return;
+  }
+
+    const dadosParaApi = {
+        "nomeServer": nome,                          // No controller: nome
+        "emailServer": email,                        // No controller: email
+        "senhaServer": senha,                        // No controller: senha
+        "generoFavoritoServer": generoFavorito,      // No controller: generoFavorito
+    };
+
+    console.log('Dados que serão enviados para a API:', dadosParaApi);
+  
+  // Modifique a URL se necessário para corresponder ao endpoint correto
+  const urlApi = `http://localhost:3333/usuarios/cadastrar`;
+  
+  // Exibir algum indicador de carregamento
+  divResposta.innerHTML = `<p style="color: blue;" class="erro">Processando cadastro...</p>`;
+  
+  fetch(urlApi, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(dadosParaApi) // Converte o objeto para uma string JSON
+  })
+  .then(response => {
+    // Primeiro verifica se a resposta é ok
+    if (!response.ok) {
+      return response.json().then(erroApi => {
+        const mensagemErro = erroApi.mensagem || `Erro ao cadastrar: ${response.status}`;
+        throw new Error(mensagemErro);
+      }).catch(error => {
+        // Se não conseguir obter JSON, ainda mostra um erro genérico
+        throw new Error(`Erro ao cadastrar: ${response.status}`);
+      });
+    }
+    return response.json();
+  })
+  .then(data => {
+    console.log("Sucesso do cadastro:", data);
+    divResposta.innerHTML = `<p style="color: green;"  class="erro">${data.mensagem || "Usuário cadastrado com sucesso!"}</p>`;
+    
+    // Limpar o formulário após o sucesso
+    document.getElementById("ipt_nome").value = "";
+    document.getElementById("ipt_email").value = "";
+    document.getElementById("ipt_senha").value = "";
+    document.getElementById("ipt_senhaConfirmar").value = "";
+    document.getElementById("slct_generoFavorito").value = "#";
+    
+    // Redirecionar para a página de login após 2 segundos
+    setTimeout(() => {
+      window.location.href = "Login.html";
+    }, 2000);
+  })
+  .catch(error => {
+    console.error("Erro geral no fetch:", error);
+    divResposta.innerHTML = `<p style="color: red;"  class="erro">${error.message || "Ocorreu um erro ao tentar cadastrar. Tente novamente."}</p>`;
+    
+  });
+}
+</script>
+</html>
