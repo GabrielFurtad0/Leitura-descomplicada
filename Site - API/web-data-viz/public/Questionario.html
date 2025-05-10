@@ -22,47 +22,52 @@
 
 
 <div class="todo">
-  <button>Iniciar Questionario</button>
-    <div class="Questionario">
+  <div class="questionnaire">
+
+    
+    <button onclick="iniciar()" id="button_iniciar" class="button iniciar">Iniciar Questionario</button>
+    
+    <div class="Questionario" id="div_questionario" style="display: none; opacity: 0;">
+      
       <p class="numero">1/15</p>
       <p class="Titulo">qual seu genero favorito?</p>
       <div class="opcoes">
-
+        
         <label class="opcao">
-          <input type="checkbox" id="opcaoA">
+          <input type="checkbox" name="opcao" id="opcaoA" onchange="limparBCD()">
           <span class="custom-checkbox">✔</span>
-          <span class="label-text">Opção A</span>
+          <span class="label-text" id="label-text" >Opção A</span>
         </label>
-
+        
         <label class="opcao">
-          <input type="checkbox" id="opcaoB">
+          <input type="checkbox" name="opcao" id="opcaoB" onchange="limparACD()">
           <span class="custom-checkbox">✔</span>
-          <span class="label-text">Opção B</span>
+          <span class="label-text" id="label-text" >Opção B</span>
         </label>
-
+        
         <label class="opcao">
-          <input type="checkbox" id="opcaoC" on>
+          <input type="checkbox" name="opcao" id="opcaoC" onchange="limparABD()">
           <span class="custom-checkbox">✔</span>
-          <span class="label-text">Opção C</span>
+          <span class="label-text" id="label-text" >Opção C</span>
         </label>
-
+        
         <label class="opcao">
-          <input type="checkbox" id="opcaoD">
+          <input type="checkbox" id="opcaoD" onchange="limparABC()">
           <span class="custom-checkbox">✔</span>
-          <span class="label-text">Opção D</span>
+          <span class="label-text" id="label-text" >Opção D</span>
         </label>
-          
+        
       </div>
       <div class="botoes">
         <button onclick="anterior()" class="perguntaAnterior">&#8592; Pergunta anterior</button>
         <button onclick="finalizar()" style="display: none;">Finalizar Questionario</button>
-        <button onclick="proxima()" style="grid-column: 3;">Próxima pergunta &#8594;
-</button>
+        <button onclick="proxima()" style="grid-column: 3;">Próxima pergunta &#8594;</button>
       </div>
     </div>
   </div>
-
-
+</div>
+  
+  
 <div class="footer">
     <div class="card">
       <div class="cima">
@@ -106,16 +111,44 @@
     </div>
 </body>
 <script>
-  
+  let perguntas = ['Que tipo de cenário te atrai mais em uma história?', 'Qual dessas experiências você mais valoriza ao ler?']
+  let opcoesA = []
+  let opcoesB = []
+  let opcoesC = []
+  let opcoesD = []
+  let respostas = []
+
+  let A = document.getElementById("opcaoA")
+  let B = document.getElementById("opcaoB")
+  let C = document.getElementById("opcaoC")
+  let D = document.getElementById("opcaoD")
+
+  function iniciar(){
+    let divQuestionario = document.getElementById("div_questionario")
+    let button_iniciar = document.getElementById("button_iniciar")
+
+    button_iniciar.style.display = 'none'
+
+
+    divQuestionario.style.opacity = '1'
+    divQuestionario.style.display = 'grid'
+    
+  }
+
+
 function inner(){
-  console.log('foi ativado');
+  
   
  let A = document.getElementById("opcaoA")
  let B = document.getElementById("opcaoB")
  let C = document.getElementById("opcaoC")
  let D = document.getElementById("opcaoD")
 
-  A.style.boxShadow = 'inset 0px 4px 9px 2px rgba(0, 0, 0, 0.3);'
+ 
+}
+
+function limparABC(){
+
 }
 </script>
 </html>

@@ -196,6 +196,23 @@
     console.log("Sucesso do cadastro:", data);
     divResposta.innerHTML = `<p style="color: green;"  class="erro">${data.mensagem || "Usuário cadastrado com sucesso!"}</p>`;
     
+
+      document.getElementById("ipt_nome").style.borderColor = "#00f514"
+      document.getElementById("ipt_email").style.borderColor = "#00f514"
+      document.getElementById("ipt_senha").style.borderColor = "#00f514"
+      document.getElementById("ipt_senha").style.borderColor = "#00f514"
+      document.getElementById("ipt_senhaConfirmar").style.borderColor = "#00f514"
+      document.getElementById("slct_generoFavorito").style.borderColor = "#00f514"
+            setTimeout(() => {
+            document.getElementById("ipt_nome").style.borderColor = "#B5C99A"
+            document.getElementById("ipt_email").style.borderColor = "#B5C99A";
+            document.getElementById("ipt_senha").style.borderColor = "#B5C99A";
+            document.getElementById("ipt_senha").style.borderColor = "#B5C99A"
+            document.getElementById("ipt_senhaConfirmar").style.borderColor = "#B5C99A"
+            document.getElementById("slct_generoFavorito").style.borderColor = "#B5C99A"
+            }, 1900);
+
+
     // Limpar o formulário após o sucesso
     document.getElementById("ipt_nome").value = "";
     document.getElementById("ipt_email").value = "";
