@@ -33,6 +33,7 @@ button:hover{
   background-color: #D4A373;
   transform: scale(1.1);
   cursor: pointer;
+  box-shadow: 0px 2px 5px 1px rgba(166, 124, 82, 0.75);
 }
 
 a{
@@ -511,13 +512,13 @@ background: linear-gradient(180deg,rgba(181, 201, 154, 1) 0%, rgba(31, 47, 13, 1
   max-height: 200px;
   opacity: 1;
   margin-top: 1rem;
- 
 }
 
 .funcionalidades .card:hover{
   max-height: 80vh;
   min-height: 50vh;
   border: solid 2px #1F2F0D;
+  box-shadow: 0px 2px 18px 4px rgba(92,109,73, 0.75);
 }
 
 
@@ -593,6 +594,7 @@ background: linear-gradient(180deg,rgba(181, 201, 154, 1) 0%, rgba(31, 47, 13, 1
 .input:hover{
   transform: scale(1.05);
   border-color: #1F2F0D;
+  box-shadow: 0px 2px 9px 2px rgba(92,109,73, 0.75);
 }
 
  select{
@@ -779,6 +781,7 @@ background: linear-gradient(180deg,rgba(181, 201, 154, 1) 0%, rgba(31, 47, 13, 1
 
 .contos-container a:hover{
   transform: scale(1.05);
+  box-shadow: 0px 2px 9px 2px rgba(92,109,73, 0.75);
 }
 
 .contos-container .Titulo{
@@ -930,4 +933,126 @@ background: linear-gradient(180deg,rgba(181, 201, 154, 1) 0%, rgba(31, 47, 13, 1
   font-family: 'Nunito';
   font-size: 2rem;
   margin-top: 1rem;
+}
+
+/* QUESTIONARIO */
+.Questionario{
+  grid-column: 1 / -1;
+  display: grid;
+  justify-self: center;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(4, auto);
+  background-color: #E8F1D4;
+  box-shadow: 0px 4px 18px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 3rem;
+  padding: 2rem;
+  font-size: 2rem;
+  text-align: center;
+  width: 40vw;
+  height: 55vh;
+  color: #1F2F0D;
+}
+
+.Questionario .numero{
+  grid-row: 1;
+  grid-column: 1;
+  text-align: start;
+  padding-left: 2vw;
+  font-weight: bolder;
+  color: #5C6D49;
+}
+
+.Questionario .Titulo{
+  grid-row: 1;
+  grid-column: 1 / -1;
+  text-align: center;
+  justify-self: center;
+  font-family: 'Nunito';
+  font-weight: bolder;
+  color: #5C6D49;
+}
+
+.Questionario .opcoes{
+  grid-row: 2 / 3;
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  margin: 1rem;
+  font-family: 'Nunito';
+  gap: 1rem;
+}
+
+.Questionario .opcoes .opcao{
+  border-radius: 0.75rem;
+  margin: 0.2rem;
+
+}
+
+.Questionario .botoes{
+  margin: 1rem;
+  grid-row: -1;
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 1rem;
+}
+
+.Questionario button{
+  padding: 1rem;
+  border-radius: 2rem;
+}
+
+.opcao {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      cursor: pointer;
+      background-color: #B5C99A;
+      border-radius: 16px;
+      padding: 12px 20px;
+      width: fit-content;
+      transition: 0.3s ease;
+      justify-self: center;
+      box-shadow: 0px 4px 9px 2px rgba(0, 0, 0, 0.25);
+      
+    }
+
+    /* Checkbox escondido, mas acessível */
+    .opcao input[type="checkbox"] {
+      display: none;
+    }
+
+    .custom-checkbox {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background-color: #5C6D49;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: transparent;
+      font-size: 14px;
+      transition: all 0.3s ease;
+    }
+
+    /* Quando o checkbox está marcado */
+    .opcao input[type="checkbox"]:checked + .custom-checkbox {
+      background-color: #1F2F0D;
+      color: #fff;
+    }
+
+    .label-text {
+      font-weight: 600;
+      color: #1F2F0D;
+    }
+
+.opcao:hover{
+  transform: scale(1.025);
+  box-shadow: 0px 2px 9px 4px rgba(1, 116, 35, 0.5);
+}
+
+.perguntaAnterior{
+  rotate: 180(deg);
+  content: ➔;
 }
