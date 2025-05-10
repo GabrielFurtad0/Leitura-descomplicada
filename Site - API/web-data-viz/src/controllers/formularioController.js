@@ -5,8 +5,9 @@ function enviar(req, res) {
     let classeFormulario = req.body.classeFormularioServer;
     let titutlo = req.body.titutloServer;
     let mensagem = req.body.mensagemServer;
+    let id = req.body.idServer;
 
-    console.log("Dados recebidos:", {classeFormulario, titutlo, mensagem});
+    console.log("Dados recebidos:", {classeFormulario, titutlo, mensagem, id});
 
     // Validações dos valores
     if (classeFormulario == undefined) {
@@ -15,9 +16,12 @@ function enviar(req, res) {
         res.status(400).send("Seu titulo está undefined!");
     } else if (mensagem == undefined) {
         res.status(400).send("Sua mensagem está undefined!");
-    } else {
+    } else if (id == undefined) {
+        res.status(400).send("Sua id está undefined!");
+    }
+    else {
         // Passando os valores para o model
-        formularioModel.enviar(classeFormulario, titutlo, mensagem)
+        formularioModel.enviar(classeFormulario, titutlo, mensagem, id)
             .then(
                 function (resultado) {
                     res.json(resultado);

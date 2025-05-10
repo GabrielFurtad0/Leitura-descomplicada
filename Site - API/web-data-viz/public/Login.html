@@ -121,16 +121,23 @@
                 sessionStorage.NOME_USUARIO = json.nome;
                 sessionStorage.ID_USUARIO = json.id;
                 
-                
+                document.getElementById("ipt_email").value = ""
+                document.getElementById("ipt_senha").value = "";
+
+                document.getElementById("ipt_email").style.borderColor = "#00f514";
+                document.getElementById("ipt_senha").style.borderColor = "#00f514";
+                setTimeout(() => {
+                document.getElementById("ipt_email").style.borderColor = "#B5C99A";
+                document.getElementById("ipt_senha").style.borderColor = "#B5C99A";
+                }, 900);
+
+
                 setTimeout(function () {
                     window.location = "../Menu.html";
                 }, 1000); // apenas para exibir o loading
 
             });
-            setTimeout(() => {
-            document.getElementById("ipt_email").value = ""
-            document.getElementById("ipt_senha").value = "";
-            }, 5000);
+          
             
         } else {
             document.getElementById("ipt_email").style.borderColor = "#D32F2F";

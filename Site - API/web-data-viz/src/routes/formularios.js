@@ -7,3 +7,5 @@ var formularioController = require("../controllers/formularioController");
 router.post("/enviar", function (req, res) {
     formularioController.enviar(req, res);
 })
+
+module.exports = router;

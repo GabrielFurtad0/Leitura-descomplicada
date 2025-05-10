@@ -97,13 +97,14 @@
 <script>
 function enviarMensagem(){
     const classeFormulario = document.getElementById("slct_classeFormulario").value;
-    const titutlo = document.getElementById("ipt_titulo").value;
+    const titulo = document.getElementById("ipt_titulo").value;
     const mensagem = document.getElementById("txta_mensagem").value;
   
+    const id = sessionStorage.getItem("ID_USUARIO") || null;
 
     const divResposta = document.getElementById("div_resposta")
 
-    if (classeFormulario == "#" || titutlo == "" || mensagem == ""){
+    if (classeFormulario == "#" || titulo == "" || mensagem == ""){
       divResposta.innerHTML = `<p style="color: red;"  class="erro">Por favor, preencha todos os campos!</p>`;
       document.getElementById("slct_classeFormulario").style.borderColor = "#D32F2F"
       document.getElementById("ipt_titulo").style.borderColor = "#D32F2F"
@@ -119,15 +120,23 @@ function enviarMensagem(){
     } 
 
     const dadosParaApi = {
-        "classeFormularioServer": classeFormulario,         // No controller: classeFormulario
-        "titutloServer": titutlo,                           // No controller: titutlo
-        "mensagemServer": mensagem,                         // No controller: mensagem
+        "classeFormulario": classeFormulario,         // No controller: classeFormulario
+        "titulo": titulo,                             // No controller: titulo
+        "mensagem": mensagem,                         // No controller: mensagem
+        "id": id,
     };
+
+    // Tentar a conversão para JSON e ver se há erros
+    const jsonString = JSON.stringify(dadosParaApi);
+    
+    // Exibir os resultados
+    console.log("Objeto original:", dadosParaApi);
+    console.log("JSON convertido:", jsonString);
 
     console.log('Dados que serão enviados para a API:', dadosParaApi);
   
   // Modifique a URL se necessário para corresponder ao endpoint correto
-  const urlApi = `http://localhost:3333/usuarios/cadastrar`;
+  const urlApi = `http://localhost:3333/formularios/enviar`;
   
   // Exibir algum indicador de carregamento
   divResposta.innerHTML = `<p style="color: blue;" class="erro">Processando cadastro...</p>`;
@@ -143,11 +152,11 @@ function enviarMensagem(){
     // Primeiro verifica se a resposta é ok
     if (!response.ok) {
       return response.json().then(erroApi => {
-        const mensagemErro = erroApi.mensagem || `Erro ao cadastrar: ${response.status}`;
+        const mensagemErro = erroApi.mensagem || `Erro ao enviar: ${response.status}`;
         throw new Error(mensagemErro);
       }).catch(error => {
         // Se não conseguir obter JSON, ainda mostra um erro genérico
-        throw new Error(`Erro ao cadastrar: ${response.status}`);
+        throw new Error(`Erro ao enviar: ${response.status}`);
       });
     }
     return response.json();
