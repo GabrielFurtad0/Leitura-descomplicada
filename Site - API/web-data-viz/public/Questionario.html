@@ -29,46 +29,46 @@
     
     <div class="Questionario" id="div_questionario" style="display: none; opacity: 0;">
       
-      <p class="numero">1/15</p>
-      <p class="Titulo">qual seu genero favorito?</p>
+      <p class="numero" id="p_numero"></p>
+      <p class="Titulo" id="p_titulo"></p>
       <div class="opcoes">
         
         <label class="opcao">
           <input type="checkbox" name="opcao" id="opcaoA" onchange="limparBCD()">
           <span class="custom-checkbox">✔</span>
-          <span class="label-text" id="label-text" >Opção A</span>
+          <span class="label-text" id="label-textA"></span>
         </label>
         
         <label class="opcao">
           <input type="checkbox" name="opcao" id="opcaoB" onchange="limparACD()">
           <span class="custom-checkbox">✔</span>
-          <span class="label-text" id="label-text" >Opção B</span>
+          <span class="label-text" id="label-textB" ></span>
         </label>
         
         <label class="opcao">
           <input type="checkbox" name="opcao" id="opcaoC" onchange="limparABD()">
           <span class="custom-checkbox">✔</span>
-          <span class="label-text" id="label-text" >Opção C</span>
+          <span class="label-text" id="label-textC" ></span>
         </label>
         
         <label class="opcao">
           <input type="checkbox" id="opcaoD" onchange="limparABC()">
           <span class="custom-checkbox">✔</span>
-          <span class="label-text" id="label-text" >Opção D</span>
+          <span class="label-text" id="label-textD"></span>
         </label>
         
       </div>
       <div class="botoes">
-        <button onclick="anterior()" class="perguntaAnterior">&#8592; Pergunta anterior</button>
-        <button onclick="finalizar()" style="display: none;">Finalizar Questionario</button>
-        <button onclick="proxima()" style="grid-column: 3;">Próxima pergunta &#8594;</button>
+        <button onclick="anterior()" class="perguntaAnterior" id="perguntaAnterior">&#8592; Pergunta anterior</button>
+        <button onclick="finalizar()" style="display: none; grid-column: 2;" id="finalizarQuestionario">Finalizar Questionario</button>
+        <button onclick="proxima()" style="grid-column: 3;" id="perguntaProxima">Próxima pergunta &#8594;</button>
       </div>
     </div>
   </div>
 </div>
   
   
-<div class="footer">
+  <div class="footer">
     <div class="card">
       <div class="cima">
         <p class="Titulo">Links rápidos</p>
@@ -108,47 +108,174 @@
     <div class="baixo">
       <p class="disclaimer"> © 2025 Leitura Descomplicada - Todos os direitos reservados
         Projeto acadêmico desenvolvido para o curso de Ciências da Computação</p>
-    </div>
+  </div>
 </body>
 <script>
-  let perguntas = ['Que tipo de cenário te atrai mais em uma história?', 'Qual dessas experiências você mais valoriza ao ler?']
-  let opcoesA = []
-  let opcoesB = []
-  let opcoesC = []
-  let opcoesD = []
+  let perguntas = [
+  'Que tipo de cenário te atrai mais em uma história?',
+  'Qual dessas experiências você mais valoriza ao ler?',
+  'Que tipo de personagem chama mais sua atenção?',
+  'Quando você termina um livro, o que costuma ficar com você?',
+  'Como você prefere que a história se desenrole?',
+  'Que tipo de tema você considera mais envolvente?',
+  'O que te motiva a escolher um livro?',
+  'Que tipo de final mais te agrada?',
+  'Qual é seu ritmo ideal de leitura?',
+  'O que você espera sentir ao terminar um livro?'
+];
+  let opcoesA = [
+  'Mundos futuristas e avanços tecnológicos',
+  'Aprender algo novo sobre o mundo ou a sociedade',
+  'Heróis com poderes ou jornadas épicas',
+  'As ideias provocativas e os questionamentos',
+  'Com ação constante e muitos eventos',
+  'Tecnologia, ciência e ética',
+  'A capa e o título chamativos',
+  'Um desfecho inesperado e provocador',
+  'Histórias rápidas e diretas',
+  'Que aprendi algo relevante ou atual'
+];
+
+let opcoesB = [
+  'Reinos mágicos ou mitológicos',
+  'Viver emoções intensas e relacionamentos marcantes',
+  'Pessoas comuns enfrentando dilemas reais',
+  'As emoções despertadas pela história',
+  'Com foco no crescimento emocional dos personagens',
+  'Amor, perda e superação',
+  'A sinopse que me faz imaginar cenários e personagens',
+  'Uma conclusão emocional e significativa',
+  'Narrativas com tempo para refletir',
+  'Que me conectei com os personagens'
+];
+
+let opcoesC = [
+  'Ambientes baseados em fatos reais ou históricos',
+  'Refletir sobre questões existenciais e psicológicas',
+  'Cientistas, exploradores ou visionários',
+  'As lições de vida ou inspiração pessoal',
+  'De forma investigativa, revelando aos poucos',
+  'Cultura, tradições e eventos históricos',
+  'O quanto o tema tem a ver com minha vida ou curiosidade',
+  'Um final que fecha tudo com lógica',
+  'Textos descritivos e ricos em contexto',
+  'Que fui levado para outro mundo'
+];
+
+let opcoesD = [
+  'Espaços que despertam mistério ou tensão',
+  'Ser surpreendido por reviravoltas ou revelações',
+  'Figuras com segredos ou passado misterioso',
+  'A vontade de reler por causa dos detalhes ocultos',
+  'De forma informativa, baseada em fatos reais',
+  'Medo, tensão e o lado sombrio do ser humano',
+  'Indicações de pessoas ou plataformas que confio',
+  'Um final em aberto que deixa espaço para pensar',
+  'Depende do meu humor no momento',
+  'Que fui desafiado a pensar de outro jeito'
+];
+
   let respostas = []
 
-  let A = document.getElementById("opcaoA")
-  let B = document.getElementById("opcaoB")
-  let C = document.getElementById("opcaoC")
-  let D = document.getElementById("opcaoD")
+  let indexDaVez = 0
+
+  let A = document.getElementById("label-textA")
+  let B = document.getElementById("label-textB")
+  let C = document.getElementById("label-textC")
+  let D = document.getElementById("label-textD")
+
+  let checkA = document.getElementById("opcaoA")
+  let checkB = document.getElementById("opcaoB")
+  let checkC = document.getElementById("opcaoC")
+  let checkD = document.getElementById("opcaoD")
+
+  let numeroExibido = document.getElementById("p_numero")
+  let perguntaExibida = document.getElementById("p_titulo")
+
+  let buttonPerguntaAnterior = document.getElementById("perguntaAnterior")
+  let buttonPerguntaProxima = document.getElementById("perguntaProxima")
+  let button_iniciar = document.getElementById("button_iniciar")
+  let buttonFinalizarQuestionario = document.getElementById("finalizarQuestionario")
+
+  
+  
 
   function iniciar(){
     let divQuestionario = document.getElementById("div_questionario")
-    let button_iniciar = document.getElementById("button_iniciar")
+    
 
     button_iniciar.style.display = 'none'
 
-
     divQuestionario.style.opacity = '1'
     divQuestionario.style.display = 'grid'
+
+    numeroExibido.innerHTML = '1/10'
+    perguntaExibida.innerHTML = perguntas[0] 
+
+    A.innerHTML = opcoesA[0]
+    B.innerHTML = opcoesB[0]
+    C.innerHTML = opcoesC[0]
+    D.innerHTML = opcoesD[0]
+  }
+
     
+
+  function proxima(){
+    if (indexDaVez < 9){
+      indexDaVez ++
+    }
+    if (indexDaVez == 0){
+      buttonPerguntaAnterior.style.display = 'none'
+    }else if(indexDaVez != 0) buttonPerguntaAnterior.style.display = 'grid'
+    if (indexDaVez == 9){
+      buttonPerguntaProxima.style.display = 'none'
+      buttonFinalizarQuestionario.style.display = 'grid'
+    }else if(indexDaVez != 9) {
+      buttonPerguntaProxima.style.display = 'grid'
+      buttonFinalizarQuestionario.style.display = 'none'
+    }
+    console.log(indexDaVez);
+    
+    
+    
+    numeroExibido.innerHTML = `${indexDaVez+1}/10`
+    perguntaExibida.innerHTML = perguntas[indexDaVez] 
+
+    A.innerHTML = opcoesA[indexDaVez]
+    B.innerHTML = opcoesB[indexDaVez]
+    C.innerHTML = opcoesC[indexDaVez]
+    D.innerHTML = opcoesD[indexDaVez] 
+
+  }
+
+  function anterior(){
+
+    if (indexDaVez == 0){
+      buttonPerguntaAnterior.style.display = 'none'
+    }else if(indexDaVez != 0) buttonPerguntaAnterior.style.display = 'grid'
+    if (indexDaVez == 9){
+      buttonPerguntaProxima.style.display = 'none'
+      buttonFinalizarQuestionario.style.display = 'grid'
+    }else if (indexDaVez != 9){
+      buttonPerguntaProxima.style.display = 'grid'
+      buttonFinalizarQuestionario.style.display = 'none'
+    }
+
+    if (indexDaVez > 0){ 
+      indexDaVez --
+    }
+    console.log(indexDaVez);
+    
+    numeroExibido.innerHTML = `${indexDaVez+1}/10`
+    perguntaExibida.innerHTML = perguntas[indexDaVez] 
+
+    A.innerHTML = opcoesA[indexDaVez]
+    B.innerHTML = opcoesB[indexDaVez]
+    C.innerHTML = opcoesC[indexDaVez]
+    D.innerHTML = opcoesD[indexDaVez] 
+
   }
 
 
-function inner(){
-  
-  
- let A = document.getElementById("opcaoA")
- let B = document.getElementById("opcaoB")
- let C = document.getElementById("opcaoC")
- let D = document.getElementById("opcaoD")
-
- 
-}
-
-function limparABC(){
-
-}
 </script>
 </html>
