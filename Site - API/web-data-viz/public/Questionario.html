@@ -177,7 +177,7 @@ let opcoesD = [
 
   let respostas = []
 
-  let indexDaVez = 0
+  let indexDaVez = 0;
 
   let A = document.getElementById("label-textA")
   let B = document.getElementById("label-textB")
@@ -221,6 +221,20 @@ let opcoesD = [
     
 
   function proxima(){
+    if (indexDaVez === 9) {
+      buttonPerguntaProxima.style.display = 'none';
+      buttonFinalizarQuestionario.style.display = 'grid';
+  } else {
+      buttonPerguntaProxima.style.display = 'grid';
+      buttonFinalizarQuestionario.style.display = 'none';
+  }
+
+    if (indexDaVez === 0) {
+  buttonPerguntaAnterior.style.display = 'none';
+  } else {
+  buttonPerguntaAnterior.style.display = 'grid';
+  }
+    
     if (indexDaVez < 9){
       indexDaVez ++
     }
@@ -246,13 +260,29 @@ let opcoesD = [
     C.innerHTML = opcoesC[indexDaVez]
     D.innerHTML = opcoesD[indexDaVez] 
 
+    respostas.push(opcoesA[indexDaVez])
+
   }
 
   function anterior(){
+    if (indexDaVez === 0) {
+  buttonPerguntaAnterior.style.display = 'none';
+  } else {
+  buttonPerguntaAnterior.style.display = 'grid';
+  }
+
+  if (indexDaVez === 9) {
+  buttonPerguntaProxima.style.display = 'none';
+  buttonFinalizarQuestionario.style.display = 'grid';
+  } else {
+  buttonPerguntaProxima.style.display = 'grid';
+  buttonFinalizarQuestionario.style.display = 'none';
+  }
 
     if (indexDaVez == 0){
       buttonPerguntaAnterior.style.display = 'none'
     }else if(indexDaVez != 0) buttonPerguntaAnterior.style.display = 'grid'
+
     if (indexDaVez == 9){
       buttonPerguntaProxima.style.display = 'none'
       buttonFinalizarQuestionario.style.display = 'grid'
@@ -274,6 +304,7 @@ let opcoesD = [
     C.innerHTML = opcoesC[indexDaVez]
     D.innerHTML = opcoesD[indexDaVez] 
 
+    respostas.splice()
   }
 
 
