@@ -8,3 +8,12 @@ nome varchar(50),
 email varchar(100),
 senha varchar(40)
 );
+
+Create table formulario(
+id int primary key auto_increment,
+classeFormulario varchar(20),
+titulo varchar(100),
+mensagem varchar(100),
+fkUsuario int,
+constraint fk_formulario_usuario foreign key (fkUsuario) references usuario(id)
+)
