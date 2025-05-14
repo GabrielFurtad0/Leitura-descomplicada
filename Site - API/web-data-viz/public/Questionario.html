@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,13 +8,14 @@
   <link rel="stylesheet" href="Style.css">
 </head>
 <link rel="icon" href="Imagens/Navbar/Logo.svg">
+
 <body>
-  
+
 
   <div class="navbar">
     <a href="./Index.html"><img src="Imagens/Navbar/Home.svg" alt="Ícone de menu Principal" class="Home icone"></a>
     <div class="navbar-center">
-     <a href="./Index.html"><img src="Imagens/Navbar/Logo.svg" alt="Logo" class="Logo"></a> 
+      <a href="./Index.html"><img src="Imagens/Navbar/Logo.svg" alt="Logo" class="Logo"></a>
       <p class="Titulo"><i>Leitura Descomplicada</i></p>
     </div>
     <a href="./Menu.html"><img src="Imagens/Navbar/More-outline.svg" alt="Ícone de menu de funcionalidades" class="Mais icone"></a>
@@ -21,53 +23,53 @@
   </div>
 
 
-<div class="todo">
-  <div class="questionnaire">
+  <div class="todo">
+    <div class="questionnaire">
 
-    
-    <button onclick="iniciar()" id="button_iniciar" class="button iniciar">Iniciar Questionario</button>
-    
-    <div class="Questionario" id="div_questionario" style="display: none; opacity: 0;">
-      
-      <p class="numero" id="p_numero"></p>
-      <p class="Titulo" id="p_titulo"></p>
-      <div class="opcoes">
-        
-        <label class="opcao">
-          <input type="checkbox" name="opcao" id="opcaoA" onchange="limparBCD()">
-          <span class="custom-checkbox">✔</span>
-          <span class="label-text" id="label-textA"></span>
-        </label>
-        
-        <label class="opcao">
-          <input type="checkbox" name="opcao" id="opcaoB" onchange="limparACD()">
-          <span class="custom-checkbox">✔</span>
-          <span class="label-text" id="label-textB" ></span>
-        </label>
-        
-        <label class="opcao">
-          <input type="checkbox" name="opcao" id="opcaoC" onchange="limparABD()">
-          <span class="custom-checkbox">✔</span>
-          <span class="label-text" id="label-textC" ></span>
-        </label>
-        
-        <label class="opcao">
-          <input type="checkbox" id="opcaoD" onchange="limparABC()">
-          <span class="custom-checkbox">✔</span>
-          <span class="label-text" id="label-textD"></span>
-        </label>
-        
-      </div>
-      <div class="botoes">
-        <button onclick="anterior()" class="perguntaAnterior" id="perguntaAnterior">&#8592; Pergunta anterior</button>
-        <button onclick="finalizar()" style="display: none; grid-column: 2;" id="finalizarQuestionario">Finalizar Questionario</button>
-        <button onclick="proxima()" style="grid-column: 3;" id="perguntaProxima">Próxima pergunta &#8594;</button>
+
+      <button onclick="iniciar()" id="button_iniciar" class="button iniciar">Iniciar Questionario</button>
+
+      <div class="Questionario" id="div_questionario" style="display: none; opacity: 0;">
+
+        <p class="numero" id="p_numero"></p>
+        <p class="Titulo" id="p_titulo"></p>
+        <div class="opcoes">
+
+          <label class="opcao">
+            <input type="checkbox" name="opcao" id="opcaoA" onclick="desmarcarOutros(this)">
+            <span class="custom-checkbox">✔</span>
+            <span class="label-text" id="label-textA"></span>
+          </label>
+
+          <label class="opcao">
+            <input type="checkbox" name="opcao" id="opcaoB" onclick="desmarcarOutros(this)">
+            <span class="custom-checkbox">✔</span>
+            <span class="label-text" id="label-textB"></span>
+          </label>
+
+          <label class="opcao">
+            <input type="checkbox" name="opcao" id="opcaoC" onclick="desmarcarOutros(this)">
+            <span class="custom-checkbox">✔</span>
+            <span class="label-text" id="label-textC"></span>
+          </label>
+
+          <label class="opcao">
+            <input type="checkbox" name="opcao" id="opcaoD" onclick="desmarcarOutros(this)">
+            <span class="custom-checkbox">✔</span>
+            <span class="label-text" id="label-textD"></span>
+          </label>
+
+        </div>
+        <div class="botoes">
+          <button onclick="anterior()" class="perguntaAnterior" id="perguntaAnterior">&#8592; Pergunta anterior</button>
+          <button onclick="finalizar()" style="display: none; grid-column: 2;" id="finalizarQuestionario"> Finalizar Questionario</button>
+          <button onclick="proxima()" style="grid-column: 3;" id="perguntaProxima">Próxima pergunta &#8594;</button>
+        </div>
       </div>
     </div>
   </div>
-</div>
-  
-  
+
+
   <div class="footer">
     <div class="card">
       <div class="cima">
@@ -81,7 +83,7 @@
     </div>
     <div class="vertical">
       <img src="Imagens/footer/LinhaVertical-footer.svg" alt="">
-    </div>     
+    </div>
     <div class="card">
       <div class="cima">
         <p class="Titulo">Contato</p>
@@ -108,72 +110,72 @@
     <div class="baixo">
       <p class="disclaimer"> © 2025 Leitura Descomplicada - Todos os direitos reservados
         Projeto acadêmico desenvolvido para o curso de Ciências da Computação</p>
-  </div>
+    </div>
 </body>
 <script>
   let perguntas = [
-  'Que tipo de cenário te atrai mais em uma história?',
-  'Qual dessas experiências você mais valoriza ao ler?',
-  'Que tipo de personagem chama mais sua atenção?',
-  'Quando você termina um livro, o que costuma ficar com você?',
-  'Como você prefere que a história se desenrole?',
-  'Que tipo de tema você considera mais envolvente?',
-  'O que te motiva a escolher um livro?',
-  'Que tipo de final mais te agrada?',
-  'Qual é seu ritmo ideal de leitura?',
-  'O que você espera sentir ao terminar um livro?'
-];
+    'Que tipo de cenário te atrai mais em uma história?',
+    'Qual dessas experiências você mais valoriza ao ler?',
+    'Que tipo de personagem chama mais sua atenção?',
+    'Quando você termina um livro, o que costuma ficar com você?',
+    'Como você prefere que a história se desenrole?',
+    'Que tipo de tema você considera mais envolvente?',
+    'O que te motiva a escolher um livro?',
+    'Que tipo de final mais te agrada?',
+    'Qual é seu ritmo ideal de leitura?',
+    'O que você espera sentir ao terminar um livro?'
+  ];
   let opcoesA = [
-  'Mundos futuristas e avanços tecnológicos',
-  'Aprender algo novo sobre o mundo ou a sociedade',
-  'Heróis com poderes ou jornadas épicas',
-  'As ideias provocativas e os questionamentos',
-  'Com ação constante e muitos eventos',
-  'Tecnologia, ciência e ética',
-  'A capa e o título chamativos',
-  'Um desfecho inesperado e provocador',
-  'Histórias rápidas e diretas',
-  'Que aprendi algo relevante ou atual'
-];
+    'Mundos futuristas e avanços tecnológicos',
+    'Aprender algo novo sobre o mundo ou a sociedade',
+    'Heróis com poderes ou jornadas épicas',
+    'As ideias provocativas e os questionamentos',
+    'Com ação constante e muitos eventos',
+    'Tecnologia, ciência e ética',
+    'A capa e o título chamativos',
+    'Um desfecho inesperado e provocador',
+    'Histórias rápidas e diretas',
+    'Que aprendi algo relevante ou atual'
+  ];
 
-let opcoesB = [
-  'Reinos mágicos ou mitológicos',
-  'Viver emoções intensas e relacionamentos marcantes',
-  'Pessoas comuns enfrentando dilemas reais',
-  'As emoções despertadas pela história',
-  'Com foco no crescimento emocional dos personagens',
-  'Amor, perda e superação',
-  'A sinopse que me faz imaginar cenários e personagens',
-  'Uma conclusão emocional e significativa',
-  'Narrativas com tempo para refletir',
-  'Que me conectei com os personagens'
-];
+  let opcoesB = [
+    'Reinos mágicos ou mitológicos',
+    'Viver emoções intensas e relacionamentos marcantes',
+    'Pessoas comuns enfrentando dilemas reais',
+    'As emoções despertadas pela história',
+    'Com foco no crescimento emocional dos personagens',
+    'Amor, perda e superação',
+    'A sinopse que me faz imaginar cenários e personagens',
+    'Uma conclusão emocional e significativa',
+    'Narrativas com tempo para refletir',
+    'Que me conectei com os personagens'
+  ];
 
-let opcoesC = [
-  'Ambientes baseados em fatos reais ou históricos',
-  'Refletir sobre questões existenciais e psicológicas',
-  'Cientistas, exploradores ou visionários',
-  'As lições de vida ou inspiração pessoal',
-  'De forma investigativa, revelando aos poucos',
-  'Cultura, tradições e eventos históricos',
-  'O quanto o tema tem a ver com minha vida ou curiosidade',
-  'Um final que fecha tudo com lógica',
-  'Textos descritivos e ricos em contexto',
-  'Que fui levado para outro mundo'
-];
+  let opcoesC = [
+    'Ambientes baseados em fatos reais ou históricos',
+    'Refletir sobre questões existenciais e psicológicas',
+    'Cientistas, exploradores ou visionários',
+    'As lições de vida ou inspiração pessoal',
+    'De forma investigativa, revelando aos poucos',
+    'Cultura, tradições e eventos históricos',
+    'O quanto o tema tem a ver com minha vida ou curiosidade',
+    'Um final que fecha tudo com lógica',
+    'Textos descritivos e ricos em contexto',
+    'Que fui levado para outro mundo'
+  ];
 
-let opcoesD = [
-  'Espaços que despertam mistério ou tensão',
-  'Ser surpreendido por reviravoltas ou revelações',
-  'Figuras com segredos ou passado misterioso',
-  'A vontade de reler por causa dos detalhes ocultos',
-  'De forma informativa, baseada em fatos reais',
-  'Medo, tensão e o lado sombrio do ser humano',
-  'Indicações de pessoas ou plataformas que confio',
-  'Um final em aberto que deixa espaço para pensar',
-  'Depende do meu humor no momento',
-  'Que fui desafiado a pensar de outro jeito'
-];
+  let opcoesD = [
+    'Espaços que despertam mistério ou tensão',
+    'Ser surpreendido por reviravoltas ou revelações',
+    'Figuras com segredos ou passado misterioso',
+    'A vontade de reler por causa dos detalhes ocultos',
+    'De forma informativa, baseada em fatos reais',
+    'Medo, tensão e o lado sombrio do ser humano',
+    'Indicações de pessoas ou plataformas que confio',
+    'Um final em aberto que deixa espaço para pensar',
+    'Depende do meu humor no momento',
+    'Que fui desafiado a pensar de outro jeito'
+  ];
 
   let respostas = []
 
@@ -197,12 +199,12 @@ let opcoesD = [
   let button_iniciar = document.getElementById("button_iniciar")
   let buttonFinalizarQuestionario = document.getElementById("finalizarQuestionario")
 
-  
-  
 
-  function iniciar(){
+
+
+  function iniciar() {
     let divQuestionario = document.getElementById("div_questionario")
-    
+
 
     button_iniciar.style.display = 'none'
 
@@ -210,7 +212,7 @@ let opcoesD = [
     divQuestionario.style.display = 'grid'
 
     numeroExibido.innerHTML = '1/10'
-    perguntaExibida.innerHTML = perguntas[0] 
+    perguntaExibida.innerHTML = perguntas[0]
 
     A.innerHTML = opcoesA[0]
     B.innerHTML = opcoesB[0]
@@ -218,95 +220,135 @@ let opcoesD = [
     D.innerHTML = opcoesD[0]
   }
 
-    
 
-  function proxima(){
+
+  function proxima() {
     if (indexDaVez === 9) {
       buttonPerguntaProxima.style.display = 'none';
       buttonFinalizarQuestionario.style.display = 'grid';
-  } else {
+    } else {
       buttonPerguntaProxima.style.display = 'grid';
       buttonFinalizarQuestionario.style.display = 'none';
-  }
+    }
 
     if (indexDaVez === 0) {
-  buttonPerguntaAnterior.style.display = 'none';
-  } else {
-  buttonPerguntaAnterior.style.display = 'grid';
-  }
-    
-    if (indexDaVez < 9){
-      indexDaVez ++
+      buttonPerguntaAnterior.style.display = 'none';
+    } else {
+      buttonPerguntaAnterior.style.display = 'grid';
     }
-    if (indexDaVez == 0){
+
+    if (indexDaVez < 9) {
+      indexDaVez++
+    }
+    if (indexDaVez == 0) {
       buttonPerguntaAnterior.style.display = 'none'
-    }else if(indexDaVez != 0) buttonPerguntaAnterior.style.display = 'grid'
-    if (indexDaVez == 9){
+    } else if (indexDaVez != 0) buttonPerguntaAnterior.style.display = 'grid'
+    if (indexDaVez == 9) {
       buttonPerguntaProxima.style.display = 'none'
       buttonFinalizarQuestionario.style.display = 'grid'
-    }else if(indexDaVez != 9) {
+    } else if (indexDaVez != 9) {
       buttonPerguntaProxima.style.display = 'grid'
       buttonFinalizarQuestionario.style.display = 'none'
     }
     console.log(indexDaVez);
-    
-    
-    
-    numeroExibido.innerHTML = `${indexDaVez+1}/10`
-    perguntaExibida.innerHTML = perguntas[indexDaVez] 
+
+
+
+    numeroExibido.innerHTML = `${indexDaVez + 1}/10`
+    perguntaExibida.innerHTML = perguntas[indexDaVez]
 
     A.innerHTML = opcoesA[indexDaVez]
     B.innerHTML = opcoesB[indexDaVez]
     C.innerHTML = opcoesC[indexDaVez]
-    D.innerHTML = opcoesD[indexDaVez] 
+    D.innerHTML = opcoesD[indexDaVez]
 
-    respostas.push(opcoesA[indexDaVez])
+
+
+    pegarResposta()
+    limparChecks()
+
+
+    console.log(respostas);
 
   }
 
-  function anterior(){
+  function limparChecks() {
+    checkA.checked = false
+    checkB.checked = false
+    checkC.checked = false
+    checkD.checked = false
+  }
+
+  function pegarResposta() {
+
+    if (checkA.checked) {
+      respostas.push(opcoesA[indexDaVez - 1])
+    } else if (checkB.checked) {
+      respostas.push(opcoesB[indexDaVez - 1])
+    } else if (checkC.checked) {
+      respostas.push(opcoesC[indexDaVez - 1])
+    } else if (checkD.checked) {
+      respostas.push(opcoesD[indexDaVez - 1])
+    }
+
+
+  }
+
+  function anterior() {
     if (indexDaVez === 0) {
-  buttonPerguntaAnterior.style.display = 'none';
-  } else {
-  buttonPerguntaAnterior.style.display = 'grid';
-  }
+      buttonPerguntaAnterior.style.display = 'none';
+    } else {
+      buttonPerguntaAnterior.style.display = 'grid';
+    }
 
-  if (indexDaVez === 9) {
-  buttonPerguntaProxima.style.display = 'none';
-  buttonFinalizarQuestionario.style.display = 'grid';
-  } else {
-  buttonPerguntaProxima.style.display = 'grid';
-  buttonFinalizarQuestionario.style.display = 'none';
-  }
+    if (indexDaVez === 9) {
+      buttonPerguntaProxima.style.display = 'none';
+      buttonFinalizarQuestionario.style.display = 'grid';
+    } else {
+      buttonPerguntaProxima.style.display = 'grid';
+      buttonFinalizarQuestionario.style.display = 'none';
+    }
 
-    if (indexDaVez == 0){
+    if (indexDaVez == 0) {
       buttonPerguntaAnterior.style.display = 'none'
-    }else if(indexDaVez != 0) buttonPerguntaAnterior.style.display = 'grid'
+    } else if (indexDaVez != 0) buttonPerguntaAnterior.style.display = 'grid'
 
-    if (indexDaVez == 9){
+    if (indexDaVez == 9) {
       buttonPerguntaProxima.style.display = 'none'
       buttonFinalizarQuestionario.style.display = 'grid'
-    }else if (indexDaVez != 9){
+    } else if (indexDaVez != 9) {
       buttonPerguntaProxima.style.display = 'grid'
       buttonFinalizarQuestionario.style.display = 'none'
     }
 
-    if (indexDaVez > 0){ 
-      indexDaVez --
+    if (indexDaVez > 0) {
+      indexDaVez--
     }
     console.log(indexDaVez);
-    
-    numeroExibido.innerHTML = `${indexDaVez+1}/10`
-    perguntaExibida.innerHTML = perguntas[indexDaVez] 
+
+    numeroExibido.innerHTML = `${indexDaVez + 1}/10`
+    perguntaExibida.innerHTML = perguntas[indexDaVez]
 
     A.innerHTML = opcoesA[indexDaVez]
     B.innerHTML = opcoesB[indexDaVez]
     C.innerHTML = opcoesC[indexDaVez]
-    D.innerHTML = opcoesD[indexDaVez] 
+    D.innerHTML = opcoesD[indexDaVez]
 
     respostas.splice()
   }
 
+  function desmarcarOutros(checkboxSelecionado) {
+    const checkboxes = document.querySelectorAll('input[name="opcao"]');
+    checkboxes.forEach(cb => {
+      if (cb !== checkboxSelecionado) cb.checked = false;
+    });
+  }
+
+  function finalizar(){
+    
+  }
+
 
 </script>
+
 </html>
