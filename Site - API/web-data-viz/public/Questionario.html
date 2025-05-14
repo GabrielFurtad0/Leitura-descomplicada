@@ -18,7 +18,8 @@
       <a href="./Index.html"><img src="Imagens/Navbar/Logo.svg" alt="Logo" class="Logo"></a>
       <p class="Titulo"><i>Leitura Descomplicada</i></p>
     </div>
-    <a href="./Menu.html"><img src="Imagens/Navbar/More-outline.svg" alt="Ícone de menu de funcionalidades" class="Mais icone"></a>
+    <a href="./Menu.html"><img src="Imagens/Navbar/More-outline.svg" alt="Ícone de menu de funcionalidades"
+        class="Mais icone"></a>
     <a href="./Login.html"><img src="Imagens/Navbar/profile-outline.svg" alt="Ícone de Perfil" class="Perfil icone"></a>
   </div>
 
@@ -31,40 +32,49 @@
 
       <div class="Questionario" id="div_questionario" style="display: none; opacity: 0;">
 
-        <p class="numero" id="p_numero"></p>
-        <p class="Titulo" id="p_titulo"></p>
-        <div class="opcoes">
+        <div class="div_perguntas" id="div_perguntas">
 
-          <label class="opcao">
-            <input type="checkbox" name="opcao" id="opcaoA" onclick="desmarcarOutros(this)">
-            <span class="custom-checkbox">✔</span>
-            <span class="label-text" id="label-textA"></span>
-          </label>
+          <p class="numero" id="p_numero"></p>
+          <p class="Titulo" id="p_titulo"></p>
+          <div class="opcoes">
 
-          <label class="opcao">
-            <input type="checkbox" name="opcao" id="opcaoB" onclick="desmarcarOutros(this)">
-            <span class="custom-checkbox">✔</span>
-            <span class="label-text" id="label-textB"></span>
-          </label>
+            <label class="opcao">
+              <input type="checkbox" name="opcao" id="opcaoA" onclick="desmarcarOutros(this)">
+              <span class="custom-checkbox">✔</span>
+              <span class="label-text" id="label-textA"></span>
+            </label>
 
-          <label class="opcao">
-            <input type="checkbox" name="opcao" id="opcaoC" onclick="desmarcarOutros(this)">
-            <span class="custom-checkbox">✔</span>
-            <span class="label-text" id="label-textC"></span>
-          </label>
+            <label class="opcao">
+              <input type="checkbox" name="opcao" id="opcaoB" onclick="desmarcarOutros(this)">
+              <span class="custom-checkbox">✔</span>
+              <span class="label-text" id="label-textB"></span>
+            </label>
 
-          <label class="opcao">
-            <input type="checkbox" name="opcao" id="opcaoD" onclick="desmarcarOutros(this)">
-            <span class="custom-checkbox">✔</span>
-            <span class="label-text" id="label-textD"></span>
-          </label>
+            <label class="opcao">
+              <input type="checkbox" name="opcao" id="opcaoC" onclick="desmarcarOutros(this)">
+              <span class="custom-checkbox">✔</span>
+              <span class="label-text" id="label-textC"></span>
+            </label>
 
+            <label class="opcao">
+              <input type="checkbox" name="opcao" id="opcaoD" onclick="desmarcarOutros(this)">
+              <span class="custom-checkbox">✔</span>
+              <span class="label-text" id="label-textD"></span>
+            </label>
+
+          </div>
+          <div class="botoes">
+            <button onclick="anterior()" class="perguntaAnterior" id="perguntaAnterior">&#8592; Pergunta
+              anterior</button>
+            <button onclick="finalizar()" style="display: none; grid-column: 2;" id="finalizarQuestionario"> Finalizar
+              Questionario</button>
+            <button onclick="proxima()" style="grid-column: 3;" id="perguntaProxima">Próxima pergunta &#8594;</button>
+          </div>
         </div>
-        <div class="botoes">
-          <button onclick="anterior()" class="perguntaAnterior" id="perguntaAnterior">&#8592; Pergunta anterior</button>
-          <button onclick="finalizar()" style="display: none; grid-column: 2;" id="finalizarQuestionario"> Finalizar Questionario</button>
-          <button onclick="proxima()" style="grid-column: 3;" id="perguntaProxima">Próxima pergunta &#8594;</button>
-        </div>
+
+          <div class="questionarioFinalizado" id="div_questionarioFinalizado">
+            <p class="respostaQuestionario" id="p_respostaQuestionario"></p>
+          </div>
       </div>
     </div>
   </div>
@@ -102,7 +112,9 @@
         <p class="textoPrincipal">
           •Desenvolvido por: <a href="https://www.linkedin.com/in/gabriel-furtado-165aa72bb/">Gabriel Furtado</a><br>
           •Instituição: <a href="https://sptech.school/">São Paulo tech school</a><br>
-          <a href="https://bandteccom-my.sharepoint.com/:w:/g/personal/gabriel_dsousa_sptech_school/ETqZHxX_WZRAosnKsa7ZKWoBycfvJnAFzxgmrulGgwWgwA?e=OjjrFT">•Documentação do projeto</a>
+          <a
+            href="https://bandteccom-my.sharepoint.com/:w:/g/personal/gabriel_dsousa_sptech_school/ETqZHxX_WZRAosnKsa7ZKWoBycfvJnAFzxgmrulGgwWgwA?e=OjjrFT">•Documentação
+            do projeto</a>
         </p>
       </div>
     </div>
@@ -199,7 +211,9 @@
   let button_iniciar = document.getElementById("button_iniciar")
   let buttonFinalizarQuestionario = document.getElementById("finalizarQuestionario")
 
-
+  let div_perguntas = document.getElementById("div_perguntas")
+  let div_finalizar = document.getElementById("div_questionarioFinalizado")
+  let respostaQuestionario = document.getElementById("p_respostaQuestionario")
 
 
   function iniciar() {
@@ -223,33 +237,18 @@
 
 
   function proxima() {
-    if (indexDaVez === 9) {
-      buttonPerguntaProxima.style.display = 'none';
+    if (indexDaVez == 9) {
       buttonFinalizarQuestionario.style.display = 'grid';
     } else {
-      buttonPerguntaProxima.style.display = 'grid';
       buttonFinalizarQuestionario.style.display = 'none';
     }
 
-    if (indexDaVez === 0) {
-      buttonPerguntaAnterior.style.display = 'none';
-    } else {
-      buttonPerguntaAnterior.style.display = 'grid';
-    }
+
 
     if (indexDaVez < 9) {
       indexDaVez++
     }
-    if (indexDaVez == 0) {
-      buttonPerguntaAnterior.style.display = 'none'
-    } else if (indexDaVez != 0) buttonPerguntaAnterior.style.display = 'grid'
-    if (indexDaVez == 9) {
-      buttonPerguntaProxima.style.display = 'none'
-      buttonFinalizarQuestionario.style.display = 'grid'
-    } else if (indexDaVez != 9) {
-      buttonPerguntaProxima.style.display = 'grid'
-      buttonFinalizarQuestionario.style.display = 'none'
-    }
+
     console.log(indexDaVez);
 
 
@@ -295,31 +294,14 @@
   }
 
   function anterior() {
-    if (indexDaVez === 0) {
-      buttonPerguntaAnterior.style.display = 'none';
-    } else {
-      buttonPerguntaAnterior.style.display = 'grid';
-    }
 
     if (indexDaVez === 9) {
-      buttonPerguntaProxima.style.display = 'none';
+
       buttonFinalizarQuestionario.style.display = 'grid';
-    } else {
-      buttonPerguntaProxima.style.display = 'grid';
-      buttonFinalizarQuestionario.style.display = 'none';
     }
 
-    if (indexDaVez == 0) {
-      buttonPerguntaAnterior.style.display = 'none'
-    } else if (indexDaVez != 0) buttonPerguntaAnterior.style.display = 'grid'
 
-    if (indexDaVez == 9) {
-      buttonPerguntaProxima.style.display = 'none'
-      buttonFinalizarQuestionario.style.display = 'grid'
-    } else if (indexDaVez != 9) {
-      buttonPerguntaProxima.style.display = 'grid'
-      buttonFinalizarQuestionario.style.display = 'none'
-    }
+
 
     if (indexDaVez > 0) {
       indexDaVez--
@@ -334,7 +316,13 @@
     C.innerHTML = opcoesC[indexDaVez]
     D.innerHTML = opcoesD[indexDaVez]
 
-    respostas.splice()
+    respostas.splice(indexDaVez + 1, 1)
+
+
+    if (indexDaVez == 0) {
+      respostas.splice(indexDaVez, 1)
+    }
+    console.log(respostas);
   }
 
   function desmarcarOutros(checkboxSelecionado) {
@@ -344,7 +332,14 @@
     });
   }
 
-  function finalizar(){
+  function finalizar() {
+    div_perguntas.style.display = 'none'
+    respostaQuestionario.innerHTML = `Questionario finalizado<br> 
+                                      enviando resposta ao sistema...`
+    enviarQuestionarioAPI()
+  }
+
+  function enviarQuestionarioAPI(){
     
   }
 

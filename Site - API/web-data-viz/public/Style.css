@@ -958,7 +958,6 @@ background: linear-gradient(180deg,rgba(181, 201, 154, 1) 0%, rgba(31, 47, 13, 1
   grid-column: 1 / -1;
   display: grid;
   justify-self: center;
-  grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(4, auto);
   background-color: #E8F1D4;
   box-shadow: 0px 4px 18px 4px rgba(0, 0, 0, 0.25);
@@ -967,7 +966,7 @@ background: linear-gradient(180deg,rgba(181, 201, 154, 1) 0%, rgba(31, 47, 13, 1
   font-size: 2rem;
   text-align: center;
   width: 70vw;
-  height: 80vh;
+  height: 85vh;
   color: #1F2F0D;
 }
 
@@ -1017,12 +1016,16 @@ background: linear-gradient(180deg,rgba(181, 201, 154, 1) 0%, rgba(31, 47, 13, 1
   grid-template-columns: 1fr 1fr 1fr;
   gap: 1rem;
   height: 7vh;
+  
 }
 
 .Questionario button{
   padding: 1rem;
   border-radius: 2rem;
   font-size: 2rem;
+  height: 8vh;
+  text-align: center; 
+  margin-top: 2rem;
 }
 
 .opcao {
