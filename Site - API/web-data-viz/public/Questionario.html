@@ -64,7 +64,7 @@
 
           </div>
           <div class="botoes">
-            <button onclick="anterior()" class="perguntaAnterior" id="perguntaAnterior">&#8592; Pergunta
+            <button onclick="anterior()" class="perguntaAnterior" id="perguntaAnterior" style="display: none;">&#8592; Pergunta
               anterior</button>
             <button onclick="finalizar()" style="display: none; grid-column: 2;" id="finalizarQuestionario"> Finalizar
               Questionario</button>
@@ -215,6 +215,7 @@
   let div_finalizar = document.getElementById("div_questionarioFinalizado")
   let respostaQuestionario = document.getElementById("p_respostaQuestionario")
 
+  let generoUsuario = []
 
   function iniciar() {
     let divQuestionario = document.getElementById("div_questionario")
@@ -237,37 +238,49 @@
 
 
   function proxima() {
-    if (indexDaVez == 9) {
-      buttonFinalizarQuestionario.style.display = 'grid';
-    } else {
-      buttonFinalizarQuestionario.style.display = 'none';
-    }
+    
+    if (checkA.checked || checkB.checked || checkC.checked || checkD.checked){
 
+      if (checkA.checked) {
+        respostas.push(opcoesA[indexDaVez])
+      } else if (checkB.checked) {
+        respostas.push(opcoesB[indexDaVez])
+      } else if (checkC.checked) {
+        respostas.push(opcoesC[indexDaVez])
+      } else if (checkD.checked) {
+        respostas.push(opcoesD[indexDaVez])
+      }
+      
+      if (indexDaVez < 9) {
+        indexDaVez++
+      }
+      
+      if (indexDaVez == 9) {
+        buttonPerguntaProxima.style.display = 'none'
+        buttonFinalizarQuestionario.style.display = 'grid';
+      } else {
+        buttonFinalizarQuestionario.style.display = 'none';
+      }
+      
+      console.log(indexDaVez);
+            
+      numeroExibido.innerHTML = `${indexDaVez + 1}/10`
+      perguntaExibida.innerHTML = perguntas[indexDaVez]
+      
+      A.innerHTML = opcoesA[indexDaVez]
+      B.innerHTML = opcoesB[indexDaVez]
+      C.innerHTML = opcoesC[indexDaVez]
+      D.innerHTML = opcoesD[indexDaVez]
+    
+      limparChecks()
+       
+      console.log(respostas);
 
+      if (indexDaVez != 0){
+        buttonPerguntaAnterior.style.display = 'grid'
+      }
 
-    if (indexDaVez < 9) {
-      indexDaVez++
-    }
-
-    console.log(indexDaVez);
-
-
-
-    numeroExibido.innerHTML = `${indexDaVez + 1}/10`
-    perguntaExibida.innerHTML = perguntas[indexDaVez]
-
-    A.innerHTML = opcoesA[indexDaVez]
-    B.innerHTML = opcoesB[indexDaVez]
-    C.innerHTML = opcoesC[indexDaVez]
-    D.innerHTML = opcoesD[indexDaVez]
-
-
-
-    pegarResposta()
-    limparChecks()
-
-
-    console.log(respostas);
+    }else alert('Você precisa selecionar uma opção para avançar para próxima pergunta')
 
   }
 
@@ -278,30 +291,13 @@
     checkD.checked = false
   }
 
-  function pegarResposta() {
-
-    if (checkA.checked) {
-      respostas.push(opcoesA[indexDaVez - 1])
-    } else if (checkB.checked) {
-      respostas.push(opcoesB[indexDaVez - 1])
-    } else if (checkC.checked) {
-      respostas.push(opcoesC[indexDaVez - 1])
-    } else if (checkD.checked) {
-      respostas.push(opcoesD[indexDaVez - 1])
-    }
-
-
-  }
-
   function anterior() {
 
-    if (indexDaVez === 9) {
 
-      buttonFinalizarQuestionario.style.display = 'grid';
-    }
-
-
-
+    //removendo a resposta
+  
+    respostas.splice(indexDaVez -1, 1)
+    console.log(respostas);
 
     if (indexDaVez > 0) {
       indexDaVez--
@@ -315,14 +311,20 @@
     B.innerHTML = opcoesB[indexDaVez]
     C.innerHTML = opcoesC[indexDaVez]
     D.innerHTML = opcoesD[indexDaVez]
-
-    respostas.splice(indexDaVez + 1, 1)
-
-
-    if (indexDaVez == 0) {
-      respostas.splice(indexDaVez, 1)
-    }
-    console.log(respostas);
+    
+    if(indexDaVez == 0){
+      buttonPerguntaAnterior.style.display = 'none'
+    } else buttonPerguntaAnterior.style.display = 'grid'
+   
+    if (indexDaVez == 9) {
+        buttonPerguntaProxima.style.display = 'none'
+        buttonFinalizarQuestionario.style.display = 'grid';
+      } else {
+        buttonFinalizarQuestionario.style.display = 'none';
+        buttonPerguntaProxima.style.display = 'grid'
+      }
+      
+    
   }
 
   function desmarcarOutros(checkboxSelecionado) {
@@ -333,11 +335,173 @@
   }
 
   function finalizar() {
+
+    if (checkA.checked) {
+      respostas.push(opcoesA[indexDaVez])
+    } else if (checkB.checked) {
+      respostas.push(opcoesB[indexDaVez])
+    } else if (checkC.checked) {
+      respostas.push(opcoesC[indexDaVez])
+    } else if (checkD.checked) {
+      respostas.push(opcoesD[indexDaVez])
+    }
+
+    console.log(respostas);
+    
+
     div_perguntas.style.display = 'none'
-    respostaQuestionario.innerHTML = `Questionario finalizado<br> 
-                                      enviando resposta ao sistema...`
+    respostaQuestionario.innerHTML = `Questionario finalizado enviando resposta ao sistema...`
+
+    //algoritmo pra identificar os generos favoritos do usuario
+    algoritmoCalculoGeneroFavorito()
+    console.log(algoritmoCalculoGeneroFavorito());
+
+    let topGeneros = encontrarTopGeneros(pontuacao);
+      console.log("Gênero 1:", topGeneros.genero1);
+      console.log("Gênero 2:", topGeneros.genero2);
+
+    respostaQuestionario.innerHTML = `De acordo com o algoritmo Leitura Descomplicada os generos que mais combinam com voce são:
+    ${topGeneros.genero1} e ${topGeneros.genero2}`
+
+    // enviando os dados dos generos favoritos para a API
     enviarQuestionarioAPI()
   }
+
+ let pontuacao = {
+    'Fantasia': 0,
+    'Ficção Científica': 0,
+    'Romance': 0,
+    'Drama': 0,
+    'Mistério': 0,
+    'Terror': 0,
+    'Distopia': 0,
+    'Biografia': 0,
+    'Não Ficção': 0,
+    'Poesia': 0
+  };
+
+  function algoritmoCalculoGeneroFavorito() {
+ 
+
+  const genero1 = ''
+  const genero2 = ''
+
+  for (let index = 0; index < respostas.length; index++) {
+    if (respostas[index] == opcoesA[0]) {
+      pontuacao['Ficção Científica']++;
+    } else if (respostas[index] == opcoesA[1]) {
+      pontuacao['Não Ficção']++;
+      pontuacao['Distopia']++;
+    } else if (respostas[index] == opcoesA[2]) {
+      pontuacao['Fantasia']++;
+    } else if (respostas[index] == opcoesA[3]) {
+      pontuacao['Distopia']++;
+      pontuacao['Não Ficção']++; 
+    } else if (respostas[index] == opcoesA[4]) {
+      pontuacao['Fantasia']++;
+    } else if (respostas[index] == opcoesA[5]) {
+      pontuacao['Ficção Científica']++;
+    } else if (respostas[index] == opcoesA[7]) {
+      pontuacao['Mistério']++;
+      pontuacao['Distopia']++;
+    } else if (respostas[index] == opcoesA[8]) {
+      pontuacao['Não Ficção']++;
+      pontuacao['Mistério']++; 
+    } else if (respostas[index] == opcoesA[9]) {
+      pontuacao['Não Ficção']++;
+      pontuacao['Distopia']++;
+    } else if (respostas[index] == opcoesB[0]) {
+      pontuacao['Fantasia']++;
+    } else if (respostas[index] == opcoesB[1]) {
+      pontuacao['Romance']++;
+      pontuacao['Drama']++;
+    } else if (respostas[index] == opcoesB[2]) {
+      pontuacao['Drama']++;
+      pontuacao['Biografia']++;
+    } else if (respostas[index] == opcoesB[3]) {
+      pontuacao['Romance']++;
+      pontuacao['Drama']++;
+    } else if (respostas[index] == opcoesB[4]) {
+      pontuacao['Drama']++; 
+    } else if (respostas[index] == opcoesB[5]) {
+      pontuacao['Romance']++;
+      pontuacao['Drama']++;
+    } else if (respostas[index] == opcoesB[7]) {
+      pontuacao['Romance']++;
+      pontuacao['Drama']++;
+    } else if (respostas[index] == opcoesB[8]) {
+      pontuacao['Drama']++;
+      pontuacao['Não Ficção']++; 
+    } else if (respostas[index] == opcoesB[9]) {
+      pontuacao['Romance']++;
+      pontuacao['Drama']++;
+    } else if (respostas[index] == opcoesC[0]) {
+      pontuacao['Biografia']++;
+    } else if (respostas[index] == opcoesC[1]) {
+      pontuacao['Drama']++; 
+      pontuacao['Poesia']++;
+    } else if (respostas[index] == opcoesC[2]) {
+      pontuacao['Ficção Científica']++;
+    } else if (respostas[index] == opcoesC[3]) {
+      pontuacao['Biografia']++;
+      pontuacao['Não Ficção']++;
+    } else if (respostas[index] == opcoesC[4]) {
+      pontuacao['Mistério']++;
+    } else if (respostas[index] == opcoesC[5]) {
+      pontuacao['Não Ficção']++;
+    } else if (respostas[index] == opcoesC[7]) {
+      pontuacao['Ficção Científica']++;
+    } else if (respostas[index] == opcoesC[8]) {
+      pontuacao['Não Ficção']++;
+      pontuacao['Fantasia']++;
+    } else if (respostas[index] == opcoesC[9]) {
+      pontuacao['Fantasia']++;
+      pontuacao['Ficção Científica']++;
+    } else if (respostas[index] == opcoesD[0]) {
+      pontuacao['Mistério']++;
+      pontuacao['Terror']++;
+    } else if (respostas[index] == opcoesD[1]) {
+      pontuacao['Mistério']++;
+    } else if (respostas[index] == opcoesD[2]) {
+      pontuacao['Mistério']++;
+    } else if (respostas[index] == opcoesD[3]) {
+      pontuacao['Mistério']++;
+    } else if (respostas[index] == opcoesD[4]) {
+      pontuacao['Biografia']++;
+      pontuacao['Não Ficção']++;
+    } else if (respostas[index] == opcoesD[5]) {
+      pontuacao['Terror']++;
+      pontuacao['Mistério']++; 
+    } else if (respostas[index] == opcoesD[7]) {
+      pontuacao['Não Ficção']++;
+    } else if (respostas[index] == opcoesD[9]) {
+      pontuacao['Não Ficção']++; 
+      pontuacao['Poesia']++;
+    }
+  }
+  console.log(pontuacao);
+  
+
+  encontrarTopGeneros(pontuacao)
+}
+
+function encontrarTopGeneros(pontuacao) {
+  // convert o JSON pontuação em 2 vetores [genero] e [pontuação], formando um "par"
+  const genreScores = Object.entries(pontuacao);
+
+  // ordena os pares dos vetores criados baseados na quantidade de pontos(score)
+  genreScores.sort(([, scoreA], [, scoreB]) => scoreB - scoreA);
+
+  // pega os dois primeiros da lista (os dois maiores) e "corta" o resto fora
+  const topTwoGenres = genreScores.slice(0, 2);
+
+  let genero1 = topTwoGenres[0] ? topTwoGenres[0][0] : null;
+  let genero2 = topTwoGenres[1] ? topTwoGenres[1][0] : null;
+
+  return {genero1, genero2};
+
+
+}
 
   function enviarQuestionarioAPI(){
     
