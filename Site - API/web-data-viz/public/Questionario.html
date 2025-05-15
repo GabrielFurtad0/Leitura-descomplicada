@@ -122,7 +122,7 @@
     <div class="baixo">
       <p class="disclaimer"> © 2025 Leitura Descomplicada - Todos os direitos reservados
         Projeto acadêmico desenvolvido para o curso de Ciências da Computação</p>
-    </div>
+  </div>
 </body>
 <script>
   let perguntas = [
@@ -503,8 +503,80 @@ function encontrarTopGeneros(pontuacao) {
 
 }
 
+let topGeneros = encontrarTopGeneros(pontuacao);
+
   function enviarQuestionarioAPI(){
+      
+
+
+    const genero1 = topGeneros.genero1
+    const genero2 = topGeneros.genero2
+
+    if (genero1 == null || genero2 == null){
+      respostaQuestionario.innerHTML = `<p style="color: red;"  class="erro">Por favor, preencha todos os campos!</p>`;
+      
+      
+            setTimeout(() => {
+            respostaQuestionario.innerHTML = ``
+            }, 3000);
+    return;
+    } 
+
+    const dadosParaApi = {
+        "genero1Server": genero1,         // No controller: genero1
+        "genero2Server": genero2,         // No controller: genero2
+    };
+
+    // Tentar a conversão para JSON e ver se há erros
+    const jsonString = JSON.stringify(dadosParaApi);
     
+    // Exibir os resultados
+    console.log("Objeto original:", dadosParaApi);
+    console.log("JSON convertido:", jsonString);
+
+    console.log('Dados que serão enviados para a API:', dadosParaApi);
+  
+  // Modifique a URL se necessário para corresponder ao endpoint correto
+  const urlApi = `http://localhost:3333/formularios/enviar`;
+  
+  // Exibir algum indicador de carregamento
+  respostaQuestionario.innerHTML = `<p style="color: blue;" class="erro">Processando Mensagem...</p>`;
+  
+  fetch(urlApi, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(dadosParaApi) // Converte o objeto para uma string JSON
+  })
+  .then(response => {
+    // Primeiro verifica se a resposta é ok
+    if (!response.ok) {
+      return response.json().then(erroApi => {
+        const mensagemErro = erroApi.mensagem || `Erro ao enviar: ${response.status}`;
+        throw new Error(mensagemErro);
+      }).catch(error => {
+        // Se não conseguir obter JSON, ainda mostra um erro genérico
+        throw new Error(`Erro ao enviar: ${response.status}`);
+      });
+    }
+    return response.json();
+  })
+  .then(data => {
+    console.log("Sucesso do envio:", data);
+    respostaQuestionario.innerHTML = `<p style="color: green;"  class="erro">${data.mensagem || "Questionario enviada com sucesso!"}</p>`;
+    
+    
+    
+
+  })
+  .catch(error => {
+    console.error("Erro geral no fetch:", error);
+    respostaQuestionario.innerHTML = `<p style="color: red;"  class="erro">${error.message || "Ocorreu um erro ao mandar a mensagem. Tente novamente."}</p>`;
+    
+  });
+
+
   }
 
 
