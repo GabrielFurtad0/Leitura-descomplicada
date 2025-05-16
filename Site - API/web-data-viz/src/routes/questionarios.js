@@ -1,11 +1,11 @@
 var express = require("express");
 var router = express.Router();
 
-var formularioController = require("../controllers/formularioController");
+var questionarioController = require("../controllers/questionarioController");
 
-//Recebendo os dados do html e direcionando para a função enviar de formularioController.js
+//Recebendo os dados do html e direcionando para a função enviar de questionarioController.js
 router.post("/enviar", function (req, res) {
-    formularioController.enviar(req, res);
+    questionarioController.enviar(req, res);
 })
 
 module.exports = router;

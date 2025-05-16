@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="Style.css" />
+  </head>
+
+  <body>
+    <div class="navbar">
+      <a href="./Index.html"
+        ><img
+          src="Imagens/Navbar/Home.svg"
+          alt="Ícone de menu Principal"
+          class="Home icone"
+      /></a>
+      <div class="navbar-center">
+        <a href="./Index.html"
+          ><img src="Imagens/Navbar/Logo.svg" alt="Logo" class="Logo"
+        /></a>
+        <p class="Titulo"><i>Leitura Descomplicada</i></p>
+      </div>
+      <a href="./Menu.html"
+        ><img
+          src="Imagens/Navbar/More-outline.svg"
+          alt="Ícone de menu de funcionalidades"
+          class="Mais icone"
+      /></a>
+      <a href="./Login.html"
+        ><img
+          src="Imagens/Navbar/profile-outline.svg"
+          alt="Ícone de Perfil"
+          class="Perfil icone"
+      /></a>
+    </div>
+
+    <div class="todo">
+      <div class="questionnaire">
+        <button
+          onclick="iniciar()"
+          id="button_iniciar"
+          class="button iniciar"
+          style="display: none; opacity: 0"
+        >
+          Iniciar Questionario
+        </button>
+
+        <div class="Questionario" id="div_questionario">
+          <div
+            class="div_perguntas"
+            id="div_perguntas"
+            style="display: none; opacity: 0"
+          >
+            <p class="numero" id="p_numero"></p>
+            <p class="Titulo" id="p_titulo"></p>
+            <div class="opcoes">
+              <label class="opcao">
+                <input
+                  type="checkbox"
+                  name="opcao"
+                  id="opcaoA"
+                  onclick="desmarcarOutros(this)"
+                />
+                <span class="custom-checkbox">✔</span>
+                <span class="label-text" id="label-textA"></span>
+              </label>
+
+              <label class="opcao">
+                <input
+                  type="checkbox"
+                  name="opcao"
+                  id="opcaoB"
+                  onclick="desmarcarOutros(this)"
+                />
+                <span class="custom-checkbox">✔</span>
+                <span class="label-text" id="label-textB"></span>
+              </label>
+
+              <label class="opcao">
+                <input
+                  type="checkbox"
+                  name="opcao"
+                  id="opcaoC"
+                  onclick="desmarcarOutros(this)"
+                />
+                <span class="custom-checkbox">✔</span>
+                <span class="label-text" id="label-textC"></span>
+              </label>
+
+              <label class="opcao">
+                <input
+                  type="checkbox"
+                  name="opcao"
+                  id="opcaoD"
+                  onclick="desmarcarOutros(this)"
+                />
+                <span class="custom-checkbox">✔</span>
+                <span class="label-text" id="label-textD"></span>
+              </label>
+            </div>
+            <div class="botoes" style="display: none; opacity: 0">
+              <button
+                onclick="anterior()"
+                class="perguntaAnterior"
+                id="perguntaAnterior"
+                style="display: none"
+              >
+                &#8592; Pergunta anterior
+              </button>
+              <button
+                onclick="finalizar()"
+                style="display: none; grid-column: 2"
+                id="finalizarQuestionario"
+              >
+                Finalizar Questionario
+              </button>
+              <button
+                onclick="proxima()"
+                style="grid-column: 3"
+                id="perguntaProxima"
+              >
+                Próxima pergunta &#8594;
+              </button>
+            </div>
+          </div>
+
+          <div class="questionarioFinalizado" id="div_questionarioFinalizado">
+            <p class="respostaQuestionario" id="p_respostaQuestionario">
+              Os gêneros que mais combinam com você são:
+            </p>
+          </div>
+
+          <div id="div_fotos" class="livroImagens">
+            <div class="genero">
+              <p id="p_titulo1" class="titulo">Genero 2</p>
+              <div class="card">
+                <img src="./Imagens/Carrossel/1984-Capa.jpg" alt="1984" id="img1.1" />
+                <p class="subtitulo" id="p_subtitulo1.1">1984 de George Orwell</p>
+                <p class="descricao" id="p_descricao1.1">
+                  Imagine viver em um lugar onde até seus pensamentos podem ser
+                  vigiados.
+                </p>
+              </div>
+              <div class="card margin-right">
+                <img src="./Imagens/Carrossel/1984-Capa.jpg" alt="1984" id="img1.2"/>
+                <p class="subtitulo" id="p_subtitulo1.2">1984 de George Orwell</p>
+                <p class="descricao" id="p_descricao1.2">
+                  Imagine viver em um lugar onde até seus pensamentos podem ser
+                  vigiados.
+                </p>
+              </div>
+            </div>
+
+            <div class="genero">
+              <p id="p_titulo2" class="titulo">Genero 2</p>
+              <div class="card margin-left">
+                <img src="./Imagens/Carrossel/1984-Capa.jpg" alt="1984" id="img2.1">
+                <p class="subtitulo" id="p_subtitulo2.1">1984 de George Orwell</p>
+                <p class="descricao" id="p_descricao2.1">
+                  Imagine viver em um lugar onde até seus pensamentos podem ser
+                  vigiados.
+                </p>
+              </div>
+              <div class="card">
+                <img src="./Imagens/Carrossel/1984-Capa.jpg" alt="1984" id="img2.2"/>
+                <p class="subtitulo" id="p_subtitulo2.2">1984 de George Orwell</p>
+                <p class="descricao" id="p_descricao2.2">
+                  Imagine viver em um lugar onde até seus pensamentos podem ser
+                  vigiados.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer">
+      <div class="card">
+        <div class="cima">
+          <p class="Titulo">Links rápidos</p>
+          <p class="textoPrincipal">
+            <a href="">•Home</a> <br />
+            <a href="">•Dicas de leitura</a> <br />
+            <a href="Menu.html">•Ferramentas</a>
+          </p>
+        </div>
+      </div>
+      <div class="vertical">
+        <img src="Imagens/footer/LinhaVertical-footer.svg" alt="" />
+      </div>
+      <div class="card">
+        <div class="cima">
+          <p class="Titulo">Contato</p>
+          <p class="textoPrincipal">
+            •Email <br />
+            <a href="">•Formulário</a>
+          </p>
+        </div>
+      </div>
+      <div class="vertical2">
+        <img src="Imagens/footer/LinhaVertical-footer.svg" alt="" />
+      </div>
+      <div class="card">
+        <div class="cima">
+          <p class="Titulo">Sobre o projeto</p>
+          <p class="textoPrincipal">
+            •Desenvolvido por:
+            <a href="https://www.linkedin.com/in/gabriel-furtado-165aa72bb/"
+              >Gabriel Furtado</a
+            ><br />
+            •Instituição:
+            <a href="https://sptech.school/">São Paulo tech school</a><br />
+            <a
+              href="https://bandteccom-my.sharepoint.com/:w:/g/personal/gabriel_dsousa_sptech_school/ETqZHxX_WZRAosnKsa7ZKWoBycfvJnAFzxgmrulGgwWgwA?e=OjjrFT"
+              >•Documentação do projeto</a
+            >
+          </p>
+        </div>
+      </div>
+      <div class="horizontal"></div>
+      <div class="baixo">
+        <p class="disclaimer">
+          © 2025 Leitura Descomplicada - Todos os direitos reservados Projeto
+          acadêmico desenvolvido para o curso de Ciências da Computação
+        </p>
+      </div>
+    </div>
+  </body>
+</html>

@@ -75,6 +75,9 @@
           <div class="questionarioFinalizado" id="div_questionarioFinalizado">
             <p class="respostaQuestionario" id="p_respostaQuestionario"></p>
           </div>
+          <div id="div_fotos" class="livroImagens">
+
+          </div>
       </div>
     </div>
   </div>
@@ -127,6 +130,8 @@
   </div>
 </body>
 <script>
+
+
   let perguntas = [
     'Que tipo de cenário te atrai mais em uma história?',
     'Qual dessas experiências você mais valoriza ao ler?',
@@ -219,32 +224,134 @@
 
   let generoUsuario = []
 
-  function iniciar() {
-    let divQuestionario = document.getElementById("div_questionario")
+  let pontuacao = {
+    'Fantasia': 0,
+    'Ficção Científica': 0,
+    'Romance': 0,
+    'Drama': 0,
+    'Mistério': 0,
+    'Terror': 0,
+    'Distopia': 0,
+    'Biografia': 0,
+    'Não Ficção': 0,
+    'Poesia': 0
+  };
 
-
-    button_iniciar.style.display = 'none'
-
-    divQuestionario.style.opacity = '1'
-    divQuestionario.style.display = 'grid'
-
-    numeroExibido.innerHTML = '1/10'
-    perguntaExibida.innerHTML = perguntas[0]
-
-    A.innerHTML = opcoesA[0]
-    B.innerHTML = opcoesB[0]
-    C.innerHTML = opcoesC[0]
-    D.innerHTML = opcoesD[0]
+  let imagensLivros = {
+  "Fantasia": {
+    "titulo1": "O Senhor dos Anéis",
+    "titulo2": "Harry Potter e a Pedra Filosofal",
+    "img_url1": "URL_DA_IMAGEM_AQUI",
+    "img_url2": "URL_DA_IMAGEM_AQUI",
+    "resumo1": "Em uma terra mágica, hobbits, elfos e anões se unem para destruir um anel do poder e derrotar o Senhor do Escuro Sauron.",
+    "resumo2": "Um jovem órfão descobre que é um bruxo e é convidado a estudar na Escola de Magia e Bruxaria de Hogwarts, onde enfrenta desafios e mistérios.",
+  },
+  "Ficção Científica": {
+    "titulo1": "Duna",
+    "titulo2": "1984",
+    "img_url1": "URL_DA_IMAGEM_AQUI",
+    "img_url2": "URL_DA_IMAGEM_AQUI",
+    "resumo1": "Em um futuro distante, a luta pelo controle do planeta deserto Arrakis, a única fonte da valiosa especiaria melange, desencadeia uma teia de intrigas políticas e profecias messiânicas.",
+    "resumo2": "Em um estado totalitário, Winston Smith se rebela contra o Partido e seu líder Big Brother, buscando a liberdade de pensamento e expressão.",
+  },
+  "Romance": {
+    "titulo1": "Orgulho e Preconceito",
+    "titulo2": "O Diário de Uma Paixão",
+    "img_url1": "URL_DA_IMAGEM_AQUI",
+    "img_url2": "URL_DA_IMAGEM_AQUI",
+    "resumo1": "A história acompanha Elizabeth Bennet enquanto lida com questões de moral, educação, ética e casamento na sociedade inglesa do século XIX.",
+    "resumo2": "A história de amor entre Noah e Allie, separados por circunstâncias sociais, que se reencontram anos depois, mostrando a força e a durabilidade do verdadeiro amor.",
+  },
+  "Drama": {
+    "titulo1": "O Grande Gatsby",
+    "titulo2": "O Sol É Para Todos",
+    "img_url1": "URL_DA_IMAGEM_AQUI",
+    "img_url2": "URL_DA_IMAGEM_AQUI",
+    "resumo1": "Ambientado na Era do Jazz, o livro explora temas como riqueza, decadência, amor e ilusão através da vida misteriosa do milionário Jay Gatsby.",
+    "resumo2": "Narrado pela perspectiva de uma criança, o romance aborda questões de racismo, injustiça e perda da inocência em uma pequena cidade do sul dos Estados Unidos.",
+  },
+  "Mistério": {
+    "titulo1": "E Não Sobrou Nenhum",
+    "titulo2": "Os Homens que Não Amavam as Mulheres",
+    "img_url1": "URL_DA_IMAGEM_AQUI",
+    "img_url2": "URL_DA_IMAGEM_AQUI",
+    "resumo1": "Dez estranhos são convidados para uma ilha e são assassinados um a um, seguindo os versos de uma sinistra canção de ninar.",
+    "resumo2": "Um jornalista e uma investigadora se unem para desvendar o desaparecimento de uma jovem de uma rica família, expondo segredos sombrios e corrupção.",
+  },
+  "Terror": {
+    "titulo1": "It: A Coisa",
+    "titulo2": "Drácula",
+    "img_url1": "URL_DA_IMAGEM_AQUI",
+    "img_url2": "URL_DA_IMAGEM_AQUI",
+    "resumo1": "Um grupo de crianças se une para enfrentar Pennywise, um palhaço maligno que aterroriza sua cidade a cada 27 anos, explorando seus medos mais profundos.",
+    "resumo2": "A história clássica do vampiro Conde Drácula e sua busca por sangue e imortalidade, combatido por um grupo determinado a destruí-lo.",
+  },
+  "Distopia": {
+    "titulo1": "Jogos Vorazes",
+    "titulo2": "Fahrenheit 451",
+    "img_url1": "URL_DA_IMAGEM_AQUI",
+    "img_url2": "URL_DA_IMAGEM_AQUI",
+    "resumo1": "Em um futuro onde os distritos são forçados a enviar tributos para lutar em jogos mortais televisionados, Katniss Everdeen se torna um símbolo de rebelião.",
+    "resumo2": "Em uma sociedade onde os livros são proibidos e queimados, um bombeiro começa a questionar seu papel e busca conhecimento em obras literárias.",
+  },
+  "Biografia": {
+    "titulo1": "O Diário de Anne Frank",
+    "titulo2": "Steve Jobs",
+    "img_url1": "URL_DA_IMAGEM_AQUI",
+    "img_url2": "URL_DA_IMAGEM_AQUI",
+    "resumo1": "O relato pessoal de uma jovem judia escondida dos nazistas durante a Segunda Guerra Mundial, oferecendo uma visão íntima de seus medos, esperanças e amadurecimento.",
+    "resumo2": "A biografia autorizada do cofundador da Apple, explorando sua vida pessoal e profissional, sua genialidade e sua personalidade complexa.",
+  },
+  "Não Ficção": {
+    "titulo1": "Sapiens: Uma Breve História da Humanidade",
+    "titulo2": "Os 7 Hábitos das Pessoas Altamente Eficazes",
+    "img_url1": "URL_DA_IMAGEM_AQUI",
+    "img_url2": "URL_DA_IMAGEM_AQUI",
+    "resumo1": "Uma análise abrangente da história da humanidade, desde os primeiros humanos até o presente, explorando o impacto da nossa espécie no planeta.",
+    "resumo2": "Um guia de desenvolvimento pessoal que apresenta sete princípios para alcançar a eficácia em diversas áreas da vida, tanto pessoal quanto profissional.",
+  },
+  "Poesia": {
+    "titulo1": "As Obras Completas de William Shakespeare",
+    "titulo2": "Folhas de Relva",
+    "img_url1": "URL_DA_IMAGEM_AQUI",
+    "img_url2": "URL_DA_IMAGEM_AQUI",
+    "resumo1": "Uma coleção de todas as peças, sonetos e poemas do renomado dramaturgo e poeta inglês, explorando uma vasta gama de temas e emoções humanas.",
+    "resumo2": "Uma obra revolucionária da poesia americana, celebrando a natureza, o corpo humano, a democracia e a individualidade com uma linguagem inovadora e ousada.",
   }
+}
 
+  function iniciar() {
+   // const id = sessionStorage.getItem("ID_USUARIO") || null;
+   // if (id == null){
+      alert('Você precisa estar logado para fazer o quiz!')
 
+    //}else{
 
-  function proxima() {
-    
-    if (checkA.checked || checkB.checked || checkC.checked || checkD.checked){
-
-      if (checkA.checked) {
-        respostas.push(opcoesA[indexDaVez])
+      
+      let divQuestionario = document.getElementById("div_questionario")
+      
+      
+      button_iniciar.style.display = 'none'
+      
+      divQuestionario.style.opacity = '1'
+      divQuestionario.style.display = 'grid'
+      
+      numeroExibido.innerHTML = '1/10'
+      perguntaExibida.innerHTML = perguntas[0]
+      
+      A.innerHTML = opcoesA[0]
+      B.innerHTML = opcoesB[0]
+      C.innerHTML = opcoesC[0]
+      D.innerHTML = opcoesD[0]
+    //}
+    }
+ 
+    function proxima() {
+      
+      if (checkA.checked || checkB.checked || checkC.checked || checkD.checked){
+        
+        if (checkA.checked) {
+          respostas.push(opcoesA[indexDaVez])
       } else if (checkB.checked) {
         respostas.push(opcoesB[indexDaVez])
       } else if (checkC.checked) {
@@ -257,12 +364,15 @@
         indexDaVez++
       }
       
-      if (indexDaVez == 9) {
-        buttonPerguntaProxima.style.display = 'none'
-        buttonFinalizarQuestionario.style.display = 'grid';
-      } else {
-        buttonFinalizarQuestionario.style.display = 'none';
-      }
+     
+
+        if (indexDaVez == 9) {
+          buttonPerguntaProxima.style.display = 'none'
+          buttonFinalizarQuestionario.style.display = 'grid';
+        } else {
+          buttonFinalizarQuestionario.style.display = 'none';
+        }
+      
       
       console.log(indexDaVez);
             
@@ -338,49 +448,39 @@
 
   function finalizar() {
 
-    if (checkA.checked) {
-      respostas.push(opcoesA[indexDaVez])
-    } else if (checkB.checked) {
-      respostas.push(opcoesB[indexDaVez])
-    } else if (checkC.checked) {
-      respostas.push(opcoesC[indexDaVez])
-    } else if (checkD.checked) {
-      respostas.push(opcoesD[indexDaVez])
-    }
+     if (checkA.checked || checkB.checked || checkC.checked || checkD.checked){
 
-    console.log(respostas);
-    
-
-    div_perguntas.style.display = 'none'
-    respostaQuestionario.innerHTML = `Questionario finalizado enviando resposta ao sistema...`
-
-    //algoritmo pra identificar os generos favoritos do usuario
-    algoritmoCalculoGeneroFavorito()
-    console.log(algoritmoCalculoGeneroFavorito());
-
-    let topGeneros = encontrarTopGeneros(pontuacao);
-      console.log("Gênero 1:", topGeneros.genero1);
-      console.log("Gênero 2:", topGeneros.genero2);
-
-    respostaQuestionario.innerHTML = `De acordo com o algoritmo Leitura Descomplicada os generos que mais combinam com voce são:
-    ${topGeneros.genero1} e ${topGeneros.genero2}`
-
-    // enviando os dados dos generos favoritos para a API
-    enviarQuestionarioAPI()
+       if (checkA.checked) {
+         respostas.push(opcoesA[indexDaVez])
+        } else if (checkB.checked) {
+          respostas.push(opcoesB[indexDaVez])
+        } else if (checkC.checked) {
+          respostas.push(opcoesC[indexDaVez])
+        } else if (checkD.checked) {
+          respostas.push(opcoesD[indexDaVez])
+        }
+        
+        console.log(respostas);
+        
+        
+        div_perguntas.style.display = 'none'
+        respostaQuestionario.innerHTML = `Questionario finalizado enviando resposta ao sistema...`
+        
+        //algoritmo pra identificar os generos favoritos do usuario
+        algoritmoCalculoGeneroFavorito()
+        console.log(algoritmoCalculoGeneroFavorito());
+        
+        let topGeneros = encontrarTopGeneros(pontuacao);
+        console.log("Gênero 1:", topGeneros.genero1);
+        console.log("Gênero 2:", topGeneros.genero2);
+        
+        respostaQuestionario.innerHTML = `De acordo com o algoritmo Leitura Descomplicada os gêneros que mais combinam com voce são:
+        ${topGeneros.genero1} e ${topGeneros.genero2}`
+        
+        // enviando os dados dos generos favoritos para a API
+        enviarQuestionarioAPI()
+      }else alert('Você precisa selecionar uma opção para avançar para finalizar o questionario!')
   }
-
- let pontuacao = {
-    'Fantasia': 0,
-    'Ficção Científica': 0,
-    'Romance': 0,
-    'Drama': 0,
-    'Mistério': 0,
-    'Terror': 0,
-    'Distopia': 0,
-    'Biografia': 0,
-    'Não Ficção': 0,
-    'Poesia': 0
-  };
 
   function algoritmoCalculoGeneroFavorito() {
  
@@ -505,28 +605,35 @@ function encontrarTopGeneros(pontuacao) {
 
 }
 
-let topGeneros = encontrarTopGeneros(pontuacao);
-
   function enviarQuestionarioAPI(){
-      
+    let topGeneros = encontrarTopGeneros(pontuacao);
+     const genero1 = topGeneros.genero1
+     const genero2 = topGeneros.genero2
+  
+    const id = sessionStorage.getItem("ID_USUARIO") || null;
 
+    const divResposta = document.getElementById("p_respostaQuestionario")
 
-    const genero1 = topGeneros.genero1
-    const genero2 = topGeneros.genero2
-
-    if (genero1 == null || genero2 == null){
-      respostaQuestionario.innerHTML = `<p style="color: red;"  class="erro">Por favor, preencha todos os campos!</p>`;
-      
-      
-            setTimeout(() => {
-            respostaQuestionario.innerHTML = ``
-            }, 3000);
-    return;
-    } 
+    // declaração para a exibição no final questionario
+    const p_titulo1 = document.getElementById("p_titulo1");
+    const p_titulo2 = document.getElementById("p_titulo2");
+    const p_subtitulo1_1 = document.getElementById("p_subtitulo1.1");
+    const p_subtitulo1_2 = document.getElementById("p_subtitulo1.2");
+    const p_subtitulo2_1 = document.getElementById("p_subtitulo2.1");
+    const p_subtitulo2_2 = document.getElementById("p_subtitulo2.2");
+    const p_descricao1_1 = document.getElementById("p_descricao1.1");
+    const p_descricao1_2 = document.getElementById("p_descricao1.2");
+    const p_descricao2_1 = document.getElementById("p_descricao2.1");
+    const p_descricao2_2 = document.getElementById("p_descricao2.2");
+    const img1_1 = document.getElementById("img1.1");
+    const img1_2 = document.getElementById("img1.2");
+    const img2_1 = document.getElementById("img2.1");
+    const img2_2 = document.getElementById("img2.2");
 
     const dadosParaApi = {
         "genero1Server": genero1,         // No controller: genero1
         "genero2Server": genero2,         // No controller: genero2
+        "idServer": id,
     };
 
     // Tentar a conversão para JSON e ver se há erros
@@ -539,10 +646,10 @@ let topGeneros = encontrarTopGeneros(pontuacao);
     console.log('Dados que serão enviados para a API:', dadosParaApi);
   
   // Modifique a URL se necessário para corresponder ao endpoint correto
-  const urlApi = `http://localhost:3333/formularios/enviar`;
+  const urlApi = `http://localhost:3333/questionarios/enviar`;
   
   // Exibir algum indicador de carregamento
-  respostaQuestionario.innerHTML = `<p style="color: blue;" class="erro">Processando Mensagem...</p>`;
+  divResposta.innerHTML = `<p style="color: blue;" class="erro">Processando Mensagem...</p>`;
   
   fetch(urlApi, {
     method: "POST",
@@ -565,21 +672,37 @@ let topGeneros = encontrarTopGeneros(pontuacao);
     return response.json();
   })
   .then(data => {
-    console.log("Sucesso do envio:", data);
-    respostaQuestionario.innerHTML = `<p style="color: green;"  class="erro">${data.mensagem || "Questionario enviada com sucesso!"}</p>`;
-    
-    
-    
+    console.log("Sucesso do cadastro:", data);
+    divResposta.innerHTML = `${data.mensagem || `Os gêneros que mais combinam com você são:`}`;    
 
   })
   .catch(error => {
     console.error("Erro geral no fetch:", error);
-    respostaQuestionario.innerHTML = `<p style="color: red;"  class="erro">${error.message || "Ocorreu um erro ao mandar a mensagem. Tente novamente."}</p>`;
+    divResposta.innerHTML = `<p style="color: red;"  class="erro">${error.message || "Ocorreu um erro ao mandar a mensagem. Tente novamente."}</p>`;
     
+    p_titulo1.innerHTML = `${genero1}`
+    p_titulo2.innerHTML = `${genero2}`
+    p_subtitulo1_1.innerHTML = imagensLivros[genero1].titulo1
+    p_subtitulo1_2.innerHTML = imagensLivros[genero1].titulo2
+    p_descricao1_1.innerHTML = imagensLivros[genero1].resumo1
+    p_descricao1_2.innerHTML = imagensLivros[genero1].resumo2
+    img1_1.src = imagensLivros[genero1].img_url1
+    img1_2.src = imagensLivros[genero1].img_url2
+
+
+    p_subtitulo2_1.innerHTML = imagensLivros[genero2].titulo1
+    p_subtitulo2_2.innerHTML = imagensLivros[genero2].titulo2
+    p_descricao2_1.innerHTML = imagensLivros[genero2].resumo1
+    p_descricao2_2.innerHTML = imagensLivros[genero2].resumo2
+    img2_1.src = imagensLivros[genero1].img_url1
+    img2_2.src = imagensLivros[genero1].img_url2
+    
+
+    // ${imagensLivros[categoria]["titulo2"]}
+
   });
-
-
-  }
+}
+  
 
 
 </script>

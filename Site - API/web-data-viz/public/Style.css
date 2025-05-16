@@ -1,77 +1,86 @@
-@import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap");
 
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
 }
 
-.erro{
-  font-family: 'Nunito';
+.erro {
+  font-family: "Nunito";
   font-size: 1rem;
 }
 
-body{
+body {
   margin: 0px;
-  background: #B5C99A;
-  background: linear-gradient(0deg,rgba(181, 201, 154, 1) 35%, rgba(232, 241, 212, 1) 100%);
+  background: #b5c99a;
+  background: linear-gradient(
+    0deg,
+    rgba(181, 201, 154, 1) 35%,
+    rgba(232, 241, 212, 1) 100%
+  );
   text-shadow: 0px 1px 2px rgba(0, 0, 0, 0.25);
 }
 
-button{
-  color: #E8F1D4;
-  background-color: #A67C52;
+button {
+  color: #e8f1d4;
+  background-color: #a67c52;
   font-weight: bold;
   text-align: center;
-  font-family: 'Merriweather';
+  font-family: "Merriweather";
   transition: transform 0.3s, background-color, 0.5s border-color 0.5s;
   box-shadow: 0px 4px 9px 2px rgba(0, 0, 0, 0.3);
   border: 0;
   text-shadow: 0px 1px 2px rgba(0, 0, 0, 0.25);
 }
 
-button:hover{
-  border: solid 2px #A67C52 !important;
-  background-color: #D4A373;
+button:hover {
+  border: solid 2px #a67c52 !important;
+  background-color: #d4a373;
   transform: scale(1.1);
   cursor: pointer;
   box-shadow: 0px 2px 5px 1px rgba(166, 124, 82, 0.75);
 }
 
-a{
+a {
   transition: transform 0.5s;
 }
 
-a:hover{
+a:hover {
   transform: scale(1.075);
   cursor: pointer;
 }
 
-.todo{
+.todo {
   margin-top: 0px;
   margin-left: 6vw;
   margin-right: 6vw;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
   gap: 24px;
-
 }
 
 /* NAVBAR */
 
-.navbar{
+.navbar {
   height: 10vh;
   display: grid;
   gap: 0px;
   margin-top: 0px;
   grid-column: 1/-1;
-  background: #B5C99A;
-background: linear-gradient(0deg,rgba(181, 201, 154, 1) 0%, rgba(31, 47, 13, 1) 5%);
+  background: #b5c99a;
+  background: linear-gradient(
+    0deg,
+    rgba(181, 201, 154, 1) 0%,
+    rgba(31, 47, 13, 1) 5%
+  );
   place-content: center;
-  grid-template-columns: auto  1fr auto auto;
+  grid-template-columns: auto 1fr auto auto;
   align-items: center;
 }
-.navbar-center{
-  font-family: 'Playfair Display';
-  color: #E8F1D4;
+.navbar-center {
+  font-family: "Playfair Display";
+  color: #e8f1d4;
   font-weight: bolder;
   font-size: 4rem;
   display: flex;
@@ -80,32 +89,31 @@ background: linear-gradient(0deg,rgba(181, 201, 154, 1) 0%, rgba(31, 47, 13, 1) 
   column-gap: 30px;
 }
 
-.Logo{
+.Logo {
   margin-bottom: -1vh;
 }
 
-.Home{
+.Home {
   margin-left: 6vw;
 }
 
-.Mais{
+.Mais {
   margin-right: 2vw;
   margin-left: -2vw;
 }
 
-.icone{
+.icone {
   height: 4rem;
   width: auto;
 }
 
-.Perfil{
+.Perfil {
   margin-right: 7vw;
 }
 
-
 /*SEÇÃO HERO*/
 
-.hero{
+.hero {
   margin-top: 10vh;
   height: 100vh;
   border-radius: 50px;
@@ -118,10 +126,9 @@ background: linear-gradient(0deg,rgba(181, 201, 154, 1) 0%, rgba(31, 47, 13, 1) 
   box-shadow: 0px 4px 9px 2px rgba(0, 0, 0, 0.3);
 }
 
-
-.imgtitulo{
-  font-family: 'Merriweather';
-  color: #E8F1D4;
+.imgtitulo {
+  font-family: "Merriweather";
+  color: #e8f1d4;
   font-weight: bolder;
   font-size: 4rem;
   display: flex;
@@ -131,64 +138,63 @@ background: linear-gradient(0deg,rgba(181, 201, 154, 1) 0%, rgba(31, 47, 13, 1) 
   gap: 20px;
 }
 
-.hero .textoPrincipal{
+.hero .textoPrincipal {
   margin-top: -3vh;
   margin-bottom: -1vh;
   grid-column: 2 / 4;
-  font-family: 'Nunito';
-  color: #E8F1D4;
+  font-family: "Nunito";
+  color: #e8f1d4;
   font-size: 3rem;
 }
 
-.neilgaiman{
-  font-family: 'Nunito';
+.neilgaiman {
+  font-family: "Nunito";
   font-size: 1.55rem;
-  color: #B5C99A;
+  color: #b5c99a;
   font-weight: 300;
   grid-column: 2/4;
 }
 
-.hero button{
+.hero button {
   border-radius: 2.5rem;
   grid-column: 2/4;
   margin-bottom: 5vw;
   border: solid 0px;
   height: 7vh;
   width: 30vw;
-  background-color: #A67C52;
+  background-color: #a67c52;
   font-size: 2.2rem;
 }
 
 /*Citações*/
 
-.citacao{
+.citacao {
   grid-column: 1/-1;
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 2vw;
 }
 
-.citacao .Titulo{
+.citacao .Titulo {
   grid-column: 1/-1;
   font-size: 5rem;
-  color: #1F2F0D;
+  color: #1f2f0d;
   font-weight: bolder;
   text-align: center;
 }
 
-.citacao .esquerda{
+.citacao .esquerda {
   grid-column: 1;
-
 }
 
-.citacao .direita{
+.citacao .direita {
   grid-column: 2;
 }
 
-.citacao .card{
+.citacao .card {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  background-color: #E8F1D4;
+  background-color: #e8f1d4;
   border-radius: 1rem;
   padding: 2rem;
   padding-bottom: 0;
@@ -196,40 +202,40 @@ background: linear-gradient(0deg,rgba(181, 201, 154, 1) 0%, rgba(31, 47, 13, 1) 
   transition: all 0.3s ease;
 }
 
-.citacao .card .nome{
+.citacao .card .nome {
   margin: 0;
   grid-column: 2/ -1;
-  font-family: 'Merriweather';
+  font-family: "Merriweather";
   font-size: 3rem;
   font-weight: 1000;
   text-align: center;
   justify-self: center;
-  color: #1F2F0D;
+  color: #1f2f0d;
 }
 
 .citacao .card .descricao {
   margin: 0;
   grid-column: 2 /-1;
-  font-family: 'Merriweather';
+  font-family: "Merriweather";
   text-align: center;
   font-weight: 500;
   font-size: 2rem;
-  color: #1F2F0D;
+  color: #1f2f0d;
 }
 
-.citacao .card .textoPrincipal{
+.citacao .card .textoPrincipal {
   grid-column: 2/ -1;
-  font-family: 'Nunito';
+  font-family: "Nunito";
   text-align: center;
   font-size: 2.3rem;
-  color: #1F2F0D;
+  color: #1f2f0d;
   padding: 2vh;
   line-height: 3.5rem;
   margin: 0;
   height: 277px;
 }
 
-.citacao .card .retrato{
+.citacao .card .retrato {
   grid-row: 1 / span 4;
   grid-column: 1;
   border-radius: 1rem;
@@ -238,7 +244,7 @@ background: linear-gradient(0deg,rgba(181, 201, 154, 1) 0%, rgba(31, 47, 13, 1) 
   height: 90%;
 }
 
-.retrato img{
+.retrato img {
   border-radius: 1rem;
   width: 100%;
   height: 100%;
@@ -250,59 +256,58 @@ background: linear-gradient(0deg,rgba(181, 201, 154, 1) 0%, rgba(31, 47, 13, 1) 
   width: 4rem;
   height: auto;
 
-  grid-column: 4; 
-  justify-self: end; 
+  grid-column: 4;
+  justify-self: end;
   padding-bottom: 5vh;
 }
 
-.citacao .card:hover{
+.citacao .card:hover {
   transform: scale(1.05);
   box-shadow: 0px 4px 9px 2px rgba(23, 80, 0, 0.5);
 }
 
-.MalalaN{
+.MalalaN {
   place-self: center;
 }
-.MalalaD{
+.MalalaD {
   height: 10vh;
 }
-.MalalaT{
+.MalalaT {
   margin: 0;
 }
 
-.Obama{
+.Obama {
   object-position: 75% center;
 }
 
-.Malala{
+.Malala {
   object-position: 79% center;
 }
 
-.Bill{
+.Bill {
   object-position: 56% center;
 }
 
-.Oprah{
+.Oprah {
   object-position: 46% center;
 }
 
-
 /* Dicas */
 
-.card-dicas{
+.card-dicas {
   grid-column: 1 / -1;
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 3rem;
   padding: 8vh;
-  background-color: #E8F1D4;
+  background-color: #e8f1d4;
   border-radius: 4rem;
   box-shadow: 0px 4px 9px 2px rgba(0, 0, 0, 0.3);
   margin: 0;
   margin-top: 10rem;
 }
 
-.card-dicas .dica{
+.card-dicas .dica {
   display: grid;
   grid-template-columns: auto 1fr auto;
   grid-template-rows: auto auto;
@@ -312,24 +317,24 @@ background: linear-gradient(0deg,rgba(181, 201, 154, 1) 0%, rgba(31, 47, 13, 1) 
   transition: all 0.3s ease;
 }
 
-.card-dicas .dica:hover{
+.card-dicas .dica:hover {
   transform: scale(1.075);
 }
 
-.card-dicas .Titulo{
+.card-dicas .Titulo {
   grid-column: 1/-1;
   font-size: 5rem;
-  color: #1F2F0D;
+  color: #1f2f0d;
   font-weight: bolder;
   text-align: center;
   margin: 0;
 }
 
-.card-dicas .dica .numeracao{
-  font-family: 'Merriweather';
+.card-dicas .dica .numeracao {
+  font-family: "Merriweather";
   grid-column: 1;
-  grid-row: 1 / span 2; 
-  color: #1F2F0D;
+  grid-row: 1 / span 2;
+  color: #1f2f0d;
   font-weight: bolder;
   text-align: start;
   font-size: 3rem;
@@ -337,28 +342,28 @@ background: linear-gradient(0deg,rgba(181, 201, 154, 1) 0%, rgba(31, 47, 13, 1) 
   padding-right: 10px;
 }
 
-.card-dicas .dica .subtitulo{
+.card-dicas .dica .subtitulo {
   grid-column: 2;
   grid-row: 1;
-  font-family: 'Merriweather';
+  font-family: "Merriweather";
   text-align: start;
-  color: #1F2F0D;
+  color: #1f2f0d;
   font-size: 2rem;
   font-weight: 700;
   align-self: center;
 }
 
-.card-dicas .dica .textoPrincipal{
+.card-dicas .dica .textoPrincipal {
   grid-column: 2;
   grid-row: 2;
-  font-family: 'Nunito';
+  font-family: "Nunito";
   text-align: start;
   width: 100%;
   font-size: 1.5rem;
-  color: #1F2F0D;
+  color: #1f2f0d;
   margin: 0;
 }
-.card-dicas .dica img{
+.card-dicas .dica img {
   grid-column: 3;
   grid-row: 1;
   height: 3rem;
@@ -367,21 +372,21 @@ background: linear-gradient(0deg,rgba(181, 201, 154, 1) 0%, rgba(31, 47, 13, 1) 
 }
 
 /* EXPLORAR */
-.explorar{
+.explorar {
   grid-column: 1 / -1;
   display: grid;
   grid: 1fr;
 }
 
-.explorar .Titulo{
-  font-family: 'Merriweather';
+.explorar .Titulo {
+  font-family: "Merriweather";
   font-size: 6.5rem;
   text-align: center;
-  color: #1F2F0D;
+  color: #1f2f0d;
   font-weight: 1000;
 }
 
-.explorar button{
+.explorar button {
   justify-self: center;
   height: 30vh;
   width: fit-content;
@@ -391,53 +396,54 @@ background: linear-gradient(0deg,rgba(181, 201, 154, 1) 0%, rgba(31, 47, 13, 1) 
   transition: transform 0.5s;
 }
 
-
-
 /* FOOTER */
 
-.footer{
+.footer {
   grid-column: 1 / -1;
   display: grid;
   grid-template-columns: 1fr auto 1fr auto 1fr;
-  background: #B5C99A;
-background: linear-gradient(180deg,rgba(181, 201, 154, 1) 0%, rgba(31, 47, 13, 1) 5%);
+  background: #b5c99a;
+  background: linear-gradient(
+    180deg,
+    rgba(181, 201, 154, 1) 0%,
+    rgba(31, 47, 13, 1) 5%
+  );
   padding: 2vw 3vw 2vw 3vw;
   align-items: center;
-  font-family: 'Merriweather';
-  color: #E8F1D4;
+  font-family: "Merriweather";
+  color: #e8f1d4;
   grid-template-rows: 1fr auto 1fr;
   row-gap: 2vh;
   margin-top: 10rem;
 }
 
-.footer a{
+.footer a {
   text-decoration: none;
-  color: #E8F1D4;
+  color: #e8f1d4;
 }
 
-.footer .card{
+.footer .card {
   align-self: center;
   text-align: center;
   transition: all 0.3s ease;
   overflow: hidden;
 }
 
-.baixo{
+.baixo {
   grid-column: 1 / -1;
   text-align: center;
 }
 
-.vertical{
+.vertical {
   grid-column: 2;
 }
 
-.footer .cima{
+.footer .cima {
   justify-items: center;
   text-align: start;
-
 }
 
-.footer .horizontal{
+.footer .horizontal {
   grid-column: 1 / -1;
   height: 1vh;
   background-image: url(Imagens/footer/LinhaHorizontal-footer.svg);
@@ -447,7 +453,7 @@ background: linear-gradient(180deg,rgba(181, 201, 154, 1) 0%, rgba(31, 47, 13, 1
 
 /* MENU */
 
-.funcionalidades{
+.funcionalidades {
   grid-column: 1 / -1;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -459,8 +465,8 @@ background: linear-gradient(180deg,rgba(181, 201, 154, 1) 0%, rgba(31, 47, 13, 1
   margin-bottom: 45vh;
 }
 
-.funcionalidades .card{
-  background-color: #E8F1D4;
+.funcionalidades .card {
+  background-color: #e8f1d4;
   border-radius: 2rem;
   padding: 1rem;
   justify-items: center;
@@ -471,27 +477,27 @@ background: linear-gradient(180deg,rgba(181, 201, 154, 1) 0%, rgba(31, 47, 13, 1
   overflow: hidden;
   transition: all 0.3s ease;
   box-shadow: 0px 4px 9px 2px rgba(0, 0, 0, 0.3);
-  border: solid 2px #B5C99A;
+  border: solid 2px #b5c99a;
 }
 
-.funcionalidades .card .Titulo{
+.funcionalidades .card .Titulo {
   margin-top: 0;
-  font-family: 'Merriweather';
+  font-family: "Merriweather";
   font-weight: 1000;
-  color: #1F2F0D;
+  color: #1f2f0d;
   font-size: 2.8rem;
 }
 
-.funcionalidades a{
+.funcionalidades a {
   border-radius: 2rem;
   transition: transform 0.5s, background-color 0.5s;
   text-decoration: none;
-  color: #1F2F0D;
+  color: #1f2f0d;
   display: block;
 }
 
-.funcionalidades .card .descricao{
-  font-family: 'Nunito';
+.funcionalidades .card .descricao {
+  font-family: "Nunito";
   text-align: center;
   justify-self: center;
   align-self: center;
@@ -503,7 +509,7 @@ background: linear-gradient(180deg,rgba(181, 201, 154, 1) 0%, rgba(31, 47, 13, 1
   overflow: hidden;
   opacity: 0;
   transition: max-height 0.3s ease, opacity 0.3s ease, margin-top 0.3s ease;
-  font-family: 'Nunito';
+  font-family: "Nunito";
   text-align: center;
   font-size: 1.3rem;
   margin-top: 0;
@@ -516,70 +522,69 @@ background: linear-gradient(180deg,rgba(181, 201, 154, 1) 0%, rgba(31, 47, 13, 1
   margin-top: 1rem;
 }
 
-.funcionalidades .card:hover{
+.funcionalidades .card:hover {
   max-height: 80vh;
   min-height: 50vh;
-  border: solid 2px #1F2F0D;
-  box-shadow: 0px 2px 18px 4px rgba(92,109,73, 0.75);
+  border: solid 2px #1f2f0d;
+  box-shadow: 0px 2px 18px 4px rgba(92, 109, 73, 0.75);
 }
 
-
-.funcionalidades img.contos{
+.funcionalidades img.contos {
   margin-bottom: 0.5rem;
 }
 
 /* LOGIN e CADASTRO */
-.Login{
+.Login {
   grid-column: 1 / -1;
   display: grid;
   grid-template-columns: 1fr;
   align-content: center;
   justify-self: center;
-  background-color: #E8F1D4;
+  background-color: #e8f1d4;
   border-radius: 2rem;
   margin-top: 10vh;
   width: fit-content;
   text-align: center;
   padding: 2.5rem;
-  font-family: 'Merriweather';
+  font-family: "Merriweather";
   font-size: 4rem;
   width: 30vw;
   box-shadow: 0px 4px 9px 2px rgba(0, 0, 0, 0.3);
-  color: #1F2F0D;
+  color: #1f2f0d;
   transition: all 0.3s ease;
 }
 
- .input{
+.input {
   border-radius: 0.5rem;
-  border: solid #B5C99A 2px;
+  border: solid #b5c99a 2px;
   box-shadow: 0px 4px 9px 2px rgba(0, 0, 0, 0.3);
   margin: 1rem;
-  font-family: 'Nunito';
+  font-family: "Nunito";
   font-size: 1rem;
   text-align: center;
-  background-color: #D8E9D0;
+  background-color: #d8e9d0;
   padding: 0.5rem;
-  color: #1F2F0D;
+  color: #1f2f0d;
   transition: all 0.3s ease;
 }
 
-.Login .textoPrincipal{
-  font-family: 'Nunito';
+.Login .textoPrincipal {
+  font-family: "Nunito";
   font-size: 2rem;
 }
 
-.Login a{
+.Login a {
   text-decoration: none;
   display: inline-block;
 }
 
-.Login a:hover{
+.Login a:hover {
   transform: scale(1.1);
 }
 
-.Login button{
+.Login button {
   border-radius: 2rem;
-  font-family: 'Nunito';
+  font-family: "Nunito";
   font-size: 2rem;
   padding: 0.5rem 5rem;
   margin: 1rem;
@@ -588,28 +593,28 @@ background: linear-gradient(180deg,rgba(181, 201, 154, 1) 0%, rgba(31, 47, 13, 1
   justify-self: center;
 }
 
-.Login .Titulo{
+.Login .Titulo {
   margin: 2rem;
   font-weight: bolder;
 }
 
-.input:hover{
+.input:hover {
   transform: scale(1.05);
-  border-color: #1F2F0D;
-  box-shadow: 0px 2px 9px 2px rgba(92,109,73, 0.75);
+  border-color: #1f2f0d;
+  box-shadow: 0px 2px 9px 2px rgba(92, 109, 73, 0.75);
 }
 
- select{
+select {
   border-radius: 0.5rem;
-  border: solid #B5C99A 2px;
+  border: solid #b5c99a 2px;
   box-shadow: 0px 4px 9px 2px rgba(0, 0, 0, 0.3);
   margin: 1rem;
-  font-family: 'Nunito';
+  font-family: "Nunito";
   font-size: 1rem;
   text-align: center;
-  background-color: #D8E9D0;
+  background-color: #d8e9d0;
   padding: 0.5rem;
-  color: #1F2F0D;
+  color: #1f2f0d;
   transition: all 0.3s ease;
   appearance: none;
   background-image: url('data:image/svg+xml;utf8,<svg fill="%231F2F0D" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/><path d="M0 0h24v24H0z" fill="none"/></svg>');
@@ -618,32 +623,32 @@ background: linear-gradient(180deg,rgba(181, 201, 154, 1) 0%, rgba(31, 47, 13, 1
   background-position-y: center;
 }
 
- select:hover{
+select:hover {
   transform: scale(1.05);
-  border-color: #1F2F0D;
+  border-color: #1f2f0d;
   box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.25);
   outline: none;
 }
 
-.Login select:focus{
+.Login select:focus {
   background-image: url('data:image/svg+xml;utf8,<svg fill="%231F2F0D" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/><path d="M0 0h24v24H0z" fill="none"/></svg>');
   background-repeat: no-repeat;
   background-position-x: 95%;
   background-position-y: center;
 }
 
-.Login button:hover{
+.Login button:hover {
   margin: 15.5px;
 }
 
 /* QUIZ */
 
-.pontuacaoEJogo{
+.pontuacaoEJogo {
   grid-column: 1 / -1;
   display: grid;
   align-items: center;
   justify-self: center;
-  font-family: 'Nunito';
+  font-family: "Nunito";
   font-weight: bold;
   margin-top: 10vh;
   grid-template-columns: repeat(4, 1fr);
@@ -651,7 +656,7 @@ background: linear-gradient(180deg,rgba(181, 201, 154, 1) 0%, rgba(31, 47, 13, 1
   gap: 1.5rem;
 }
 
-.botaoiniciar{
+.botaoiniciar {
   border-radius: 3rem;
   font-size: 4rem;
   padding: 3rem;
@@ -661,13 +666,12 @@ background: linear-gradient(180deg,rgba(181, 201, 154, 1) 0%, rgba(31, 47, 13, 1
   margin-bottom: 2.3vh;
 }
 
-.pontuacaoDuranteJogo{
-  font-family: 'Nunito';
-
+.pontuacaoDuranteJogo {
+  font-family: "Nunito";
 }
 
 /* CARROSSEL */
-.carrossel{
+.carrossel {
   margin-top: 20vh;
   display: grid;
   grid-column: 1 / -1;
@@ -680,7 +684,7 @@ background: linear-gradient(180deg,rgba(181, 201, 154, 1) 0%, rgba(31, 47, 13, 1
   transition: opacity 0.5 ease;
 }
 
-.carrossel button{
+.carrossel button {
   border-radius: 5rem;
   font-size: 4rem;
   height: 20vh;
@@ -689,37 +693,37 @@ background: linear-gradient(180deg,rgba(181, 201, 154, 1) 0%, rgba(31, 47, 13, 1
   opacity: 1;
 }
 
-.cardCarrossel{
-  background-color: #E8F1D4;
+.cardCarrossel {
+  background-color: #e8f1d4;
   padding: 20rem;
   border-radius: 3rem;
   width: auto;
   padding: 0;
   text-align: center;
-  color: #1F2F0D;
+  color: #1f2f0d;
   height: auto;
   opacity: 0;
 }
 
-.carrossel .cardCarrossel .Titulo{
-  font-family: 'Merriweather';
+.carrossel .cardCarrossel .Titulo {
+  font-family: "Merriweather";
   font-size: 4rem;
   font-weight: bolder;
   margin-top: 2rem;
 }
 
-.carrossel .cardCarrossel img{
+.carrossel .cardCarrossel img {
   border-radius: 1rem;
 }
 
-.carrossel .cardCarrossel .subtitulo{
-  font-family: 'Merriweather';
+.carrossel .cardCarrossel .subtitulo {
+  font-family: "Merriweather";
   font-size: 3rem;
   font-weight: bold;
 }
 
-.carrossel .cardCarrossel .descricao{
-  font-family: 'Nunito';
+.carrossel .cardCarrossel .descricao {
+  font-family: "Nunito";
   font-size: 2rem;
   font-weight: 250;
   margin-bottom: 4rem;
@@ -729,32 +733,29 @@ background: linear-gradient(180deg,rgba(181, 201, 154, 1) 0%, rgba(31, 47, 13, 1
 
 /* contos rápidos */
 
-.contos-container{
+.contos-container {
   grid-column: 1 / -1;
   display: grid;
-  background-color: #E8F1D4;
+  background-color: #e8f1d4;
   border-radius: 2rem;
   grid-template-columns: repeat(1, 1fr);
   margin-top: 10rem;
   padding: 2rem;
   width: 50vw;
   justify-self: center;
-  box-shadow:  0px 4px 18px 4px rgba(0, 0, 0, 0.25);
+  box-shadow: 0px 4px 18px 4px rgba(0, 0, 0, 0.25);
   position: relative;
   overflow: hidden;
   height: 80vh;
   text-shadow: 0px 4px 9px 2px rgba(0, 0, 0, 0.25);
-  
 }
 
-.scrollavel{
+.scrollavel {
   height: 100%;
   overflow-y: auto;
   display: grid;
   grid-template-columns: 1fr;
-  
 }
-
 
 .scrollavel::-webkit-scrollbar {
   width: 10px; /* Largura da barra de rolagem */
@@ -766,28 +767,27 @@ background: linear-gradient(180deg,rgba(181, 201, 154, 1) 0%, rgba(31, 47, 13, 1
 }
 
 .scrollavel::-webkit-scrollbar-thumb {
-  background: #B5C99A; /* Cor do "polegar" da barra */
+  background: #b5c99a; /* Cor do "polegar" da barra */
   border-radius: 10px;
-  
 }
 
 .scrollavel::-webkit-scrollbar-thumb:hover {
-  background: #B5C99A; /* Cor do "polegar" ao passar o mouse */
+  background: #b5c99a; /* Cor do "polegar" ao passar o mouse */
   border-radius: 2rem;
 }
 
-.contos-container a{
+.contos-container a {
   text-decoration: none;
-  color: #1F2F0D;
+  color: #1f2f0d;
 }
 
-.contos-container a:hover{
+.contos-container a:hover {
   transform: scale(1.05);
-  box-shadow: 0px 2px 9px 2px rgba(92,109,73, 0.75);
+  box-shadow: 0px 2px 9px 2px rgba(92, 109, 73, 0.75);
 }
 
-.contos-container .Titulo{
-  font-family: 'Merriweather';
+.contos-container .Titulo {
+  font-family: "Merriweather";
   font-size: 4rem;
   text-align: center;
   font-weight: bolder;
@@ -795,8 +795,8 @@ background: linear-gradient(180deg,rgba(181, 201, 154, 1) 0%, rgba(31, 47, 13, 1
   text-shadow: 0px 4px 9px 2px rgba(0, 0, 0, 0.25);
 }
 
-.contos-container .genero{
-  font-family: 'Merriweather';
+.contos-container .genero {
+  font-family: "Merriweather";
   font-size: 2.5rem;
   text-align: start;
   font-weight: bold;
@@ -804,7 +804,7 @@ background: linear-gradient(180deg,rgba(181, 201, 154, 1) 0%, rgba(31, 47, 13, 1
 }
 
 .contos-container .texto-expandido {
-  font-family: 'Nunito';
+  font-family: "Nunito";
   font-size: 1.3rem;
   text-align: left;
   max-height: 0;
@@ -815,12 +815,12 @@ background: linear-gradient(180deg,rgba(181, 201, 154, 1) 0%, rgba(31, 47, 13, 1
   pointer-events: none;
 }
 
-.contos-container .descricao{
+.contos-container .descricao {
   text-align: center;
   font-size: 2rem;
 }
 
-.contos-container .card{
+.contos-container .card {
   box-shadow: 0px 4px 9px 2px rgba(0, 0, 0, 0.3);
   border-radius: 2rem;
   display: grid;
@@ -829,15 +829,15 @@ background: linear-gradient(180deg,rgba(181, 201, 154, 1) 0%, rgba(31, 47, 13, 1
   height: auto;
   margin: 1rem;
   text-shadow: 0px 4px 9px 2px rgba(0, 0, 0, 0.25);
-  border: solid 2px #B5C99A;
+  border: solid 2px #b5c99a;
   transition: all 0.3s ease;
 }
 
-.contos-container a{
+.contos-container a {
   border-radius: 2rem;
   transition: all 0.5 ease;
   text-decoration: none;
-  color: #1F2F0D;
+  color: #1f2f0d;
 }
 
 .contos-container .card:hover .texto-expandido {
@@ -847,82 +847,80 @@ background: linear-gradient(180deg,rgba(181, 201, 154, 1) 0%, rgba(31, 47, 13, 1
   pointer-events: auto; /* Permite interações com o texto */
 }
 
-.contos-container .card:hover{
-  border: 2px solid #1F2F0D;
-
+.contos-container .card:hover {
+  border: 2px solid #1f2f0d;
 }
 
 /* FORMULÁRIO */
 
-.formulario{
+.formulario {
   grid-column: 1 / -1;
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: repeat(5, auto);
-  background-color: #E8F1D4;
+  background-color: #e8f1d4;
   border-radius: 3rem;
-  box-shadow:  0px 4px 18px 4px rgba(0, 0, 0, 0.25);
+  box-shadow: 0px 4px 18px 4px rgba(0, 0, 0, 0.25);
   margin-top: 10vh;
   padding: 3rem;
   width: 50vw;
   height: 100vh;
   justify-self: center;
-  font-family: 'Merriweather';
+  font-family: "Merriweather";
   font-size: 3rem;
   font-weight: bold;
-  color: #1F2F0D;
+  color: #1f2f0d;
   overflow: hidden;
 }
 
-.formulario .Titulo{
+.formulario .Titulo {
   text-align: center;
   font-size: 5rem;
   margin-top: 0;
 }
 
-.formulario p{
+.formulario p {
   margin-bottom: 2vh;
 }
 
-.formulario .input{
+.formulario .input {
   width: 100%;
   margin: 0;
   text-align: start;
 }
 
 .formulario .textoPrincipal {
- height: 15vh;
- resize: none;
+  height: 15vh;
+  resize: none;
 }
 
 .input::-webkit-scrollbar {
-  width: 10px; 
+  width: 10px;
 }
 
 .input::-webkit-scrollbar-track {
-  background: #f1f1f1; 
+  background: #f1f1f1;
   border-radius: 10px;
 }
 
 .input::-webkit-scrollbar-thumb {
-  background: #B5C99A; 
+  background: #b5c99a;
   border-radius: 10px;
-  
 }
 
 .input::-webkit-scrollbar-thumb:hover {
-  background: #5C6D49; 
+  background: #5c6d49;
   border-radius: 2rem;
   cursor: default;
 }
 
-.formulario .input:hover{
+.formulario .input:hover {
   transform: scale(1.025);
-  border-color: #1F2F0D;
+  border-color: #1f2f0d;
   box-shadow: 0px 4px 9px 2px (rgba(1, 116, 35, 0.5));
 }
 
-.formulario select{
+.formulario select {
   width: fit-content;
   align-self: center;
   justify-self: center;
@@ -931,19 +929,18 @@ background: linear-gradient(180deg,rgba(181, 201, 154, 1) 0%, rgba(31, 47, 13, 1
   font-weight: bold;
 }
 
-.formulario button{
+.formulario button {
   justify-self: center;
   padding: 1.5rem;
   border-radius: 3rem;
-  font-family: 'Nunito';
+  font-family: "Nunito";
   font-size: 2rem;
   margin-top: 1rem;
-  
 }
 
 /* QUESTIONARIO */
-.questionnaire{
-  grid-column:  1 / -1;
+.questionnaire {
+  grid-column: 1 / -1;
   justify-self: center;
   height: 80vh;
   align-content: center;
@@ -953,13 +950,12 @@ background: linear-gradient(180deg,rgba(181, 201, 154, 1) 0%, rgba(31, 47, 13, 1
   margin-bottom: 2rem;
 }
 
-
-.Questionario{
+.Questionario {
   grid-column: 1 / -1;
   display: grid;
   justify-self: center;
   grid-template-rows: repeat(4, auto);
-  background-color: #E8F1D4;
+  background-color: #e8f1d4;
   box-shadow: 0px 4px 18px 4px rgba(0, 0, 0, 0.25);
   border-radius: 3rem;
   padding: 2rem;
@@ -967,40 +963,40 @@ background: linear-gradient(180deg,rgba(181, 201, 154, 1) 0%, rgba(31, 47, 13, 1
   text-align: center;
   width: 70vw;
   height: 85vh;
-  color: #1F2F0D;
+  color: #1f2f0d;
 }
 
-.Questionario .numero{
+.Questionario .numero {
   grid-row: 1;
   grid-column: 1;
   text-align: start;
   padding-left: 2vw;
   font-weight: bolder;
-  color: #5C6D49;
+  color: #5c6d49;
 }
 
-.Questionario .Titulo{
+.Questionario .Titulo {
   grid-row: 1;
   grid-column: 1 / -1;
   text-align: center;
   justify-self: center;
-  font-family: 'Nunito';
+  font-family: "Nunito";
   font-weight: bolder;
-  color: #5C6D49;
+  color: #5c6d49;
 }
 
-.Questionario .opcoes{
+.Questionario .opcoes {
   grid-row: 2 / 3;
   grid-column: 1 / -1;
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr 1fr;
   margin: 1rem;
-  font-family: 'Nunito';
+  font-family: "Nunito";
   gap: 1rem;
 }
 
-.Questionario .opcoes .opcao{
+.Questionario .opcoes .opcao {
   border-radius: 0.75rem;
   margin: 0.2rem;
   width: 30vw;
@@ -1008,7 +1004,7 @@ background: linear-gradient(180deg,rgba(181, 201, 154, 1) 0%, rgba(31, 47, 13, 1
   justify-content: start;
 }
 
-.Questionario .botoes{
+.Questionario .botoes {
   margin: 1rem;
   grid-row: -1;
   grid-column: 1 / -1;
@@ -1016,70 +1012,69 @@ background: linear-gradient(180deg,rgba(181, 201, 154, 1) 0%, rgba(31, 47, 13, 1
   grid-template-columns: 1fr 1fr 1fr;
   gap: 1rem;
   height: 7vh;
-  
 }
 
-.Questionario button{
+.Questionario button {
   padding: 1rem;
   border-radius: 2rem;
   font-size: 2rem;
   height: 8vh;
-  text-align: center; 
+  text-align: center;
   margin-top: 2rem;
 }
 
 .opcao {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      cursor: pointer;
-      background-color: #B5C99A;
-      border-radius: 16px;
-      padding: 12px 20px;
-      width: fit-content;
-      transition: 0.3s ease;
-      justify-self: center;
-      box-shadow: 0px 4px 9px 2px rgba(0, 0, 0, 0.25);
-      display: grid;
-      grid-template-columns: auto 1fr;
-      height: 20vh;
-    }
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+  background-color: #b5c99a;
+  border-radius: 16px;
+  padding: 12px 20px;
+  width: fit-content;
+  transition: 0.3s ease;
+  justify-self: center;
+  box-shadow: 0px 4px 9px 2px rgba(0, 0, 0, 0.25);
+  display: grid;
+  grid-template-columns: auto 1fr;
+  height: 20vh;
+}
 
-    /* Checkbox escondido, mas acessível */
-    .opcao input[type="checkbox"] {
-      display: none;
-    }
+/* Checkbox escondido, mas acessível */
+.opcao input[type="checkbox"] {
+  display: none;
+}
 
-    .custom-checkbox {
-      height: 2rem;
-      width: 2rem;
-      border-radius: 50%;
-      background-color: #5C6D49;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: transparent;
-      font-size: 14px;
-      transition: all 0.3s ease;
-    }
+.custom-checkbox {
+  height: 2rem;
+  width: 2rem;
+  border-radius: 50%;
+  background-color: #5c6d49;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: transparent;
+  font-size: 14px;
+  transition: all 0.3s ease;
+}
 
-    /* Quando o checkbox está marcado */
-    .opcao input[type="checkbox"]:checked + .custom-checkbox {
-      background-color: #1F2F0D;
-      color: #fff;
-    }
+/* Quando o checkbox está marcado */
+.opcao input[type="checkbox"]:checked + .custom-checkbox {
+  background-color: #1f2f0d;
+  color: #fff;
+}
 
-    .label-text {
-      font-weight: 600;
-      color: #1F2F0D;
-    }
+.label-text {
+  font-weight: 600;
+  color: #1f2f0d;
+}
 
-.opcao:hover{
+.opcao:hover {
   transform: scale(1.025);
   box-shadow: 0px 2px 9px 4px rgba(1, 116, 35, 0.5);
 }
 
-button.button.iniciar{
+button.button.iniciar {
   grid-column: 1 / -1;
   grid-row: 1 / -1;
   border-radius: 2rem;
@@ -1090,3 +1085,50 @@ button.button.iniciar{
   font-weight: 1000;
 }
 
+.questionnaire .respostaQuestionario {
+  font-size: 3rem;
+  font-weight: bolder;
+  font-family: "Merriweather";
+}
+
+.questionnaire .livroImagens {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.questionnaire .livroImagens .descricao {
+  font-size: 1rem;
+  font-family: "Nunito";
+}
+
+.questionnaire .livroImagens .margin-right {
+  margin-right: 2rem;
+}
+
+.questionnaire .livroImagens .margin-left {
+  margin-left: 2rem;
+}
+
+.questionnaire img {
+  height: 20vh;
+  width: auto;
+}
+
+.livroImagens .genero {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, auto);
+}
+
+.livroImagens .titulo {
+  grid-column: 1 / -1;
+  font-family: "Merriweather";
+  font-weight: 750;
+  font-size: 2.5rem;
+}
+
+.livroImagens .subtitulo {
+  font-family: "Merriweather";
+  font-size: 1.5rem;
+  font-weight: 600;
+}
