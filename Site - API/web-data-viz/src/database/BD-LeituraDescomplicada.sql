@@ -1,5 +1,3 @@
-drop database leituraDescomplicada;
-
 create database leituraDescomplicada;
 
 use leituraDescomplicada;
@@ -13,13 +11,47 @@ generoFavorito varchar(20)
 );
 
 create table formulario(
-id int primary key auto_increment,
-classeFormulario varchar(20),
-titulo varchar(100),
-mensagem varchar(100),
+id int auto_increment,
 fkUsuario int,
-constraint fk_formulario_usuario foreign key (fkUsuario) references usuario(id)
+classeFormulario varchar(20),
+titulo varchar(50),
+mensagem varchar(1000),
+constraint fk_usuario_formulario foreign key (fkUsuario) references usuario(id),
+primary key (id, fkUsuario)
+);
+
+create table questionario(
+id int auto_increment,
+fkUsuario int,
+genero1 varchar(30),
+genero2 varchar(30),
+constraint fk_usuario_questionario foreign key (fkUsuario) references usuario(id),
+primary key (id, fkusuario)
+);
+
+create table lista(
+nome varchar(100),
+img varchar(200),
+genero varchar(40),
+descricao varchar(300),
+fkUsuario int,
+constraint fk_usuario_lista foreign key (fkUsuario) references usuario(id),
+primary key (nome, fkusuario)
 );
 
 select * from usuario;
 select * from formulario;
+select * from questionario;
+select * from lista;
+
+select u.nome as nome_usuario, u.email, f.classeformulario as classe_formulario, f.mensagem
+from formulario f
+join usuario u on f.fkusuario = u.id;
+
+select u.nome nome_usuario, u.email, q.genero1 genêro_top_1, q.genero2 genêro_top_2
+from questionario q
+join usuario u on q.fkusuario = u.id;
+
+select u.nome nome_usuario, u.email, l.nome nome_do_livro, l.genero genero_do_livro
+from lista l
+join usuario u on l.fkUsuario = u.id;

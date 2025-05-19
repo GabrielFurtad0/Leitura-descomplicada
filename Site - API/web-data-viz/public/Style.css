@@ -731,6 +731,20 @@ select:hover {
   margin-right: 2rem;
 }
 
+.carrossel .btn_lista{
+  justify-self: center;
+  font-size: 2rem;
+  height: 10vh;
+  padding: 1.5rem;
+  width: max-content;
+}
+
+.carrossel .respostaCarrossel{
+  font-size: 1.5rem;
+  font-family: 'Nunito';
+  color: #1f2f0d;
+}
+
 /* contos rápidos */
 
 .contos-container {
@@ -783,7 +797,7 @@ select:hover {
 
 .contos-container a:hover {
   transform: scale(1.05);
-  box-shadow: 0px 2px 9px 2px rgba(92, 109, 73, 0.75);
+  
 }
 
 .contos-container .Titulo {
@@ -1094,30 +1108,26 @@ button.button.iniciar {
 .questionnaire .livroImagens {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
 }
 
 .questionnaire .livroImagens .descricao {
   font-size: 1rem;
   font-family: "Nunito";
-}
-
-.questionnaire .livroImagens .margin-right {
-  margin-right: 2rem;
-}
-
-.questionnaire .livroImagens .margin-left {
-  margin-left: 2rem;
+  grid-row: 4;
 }
 
 .questionnaire img {
   height: 20vh;
   width: auto;
+  border-radius: 0.3rem;
+  box-shadow: 0px 4px 9px 2px rgba(0, 0, 0, 0.3);
 }
 
 .livroImagens .genero {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: repeat(2, auto);
+  grid-column-gap: 0.5rem;
 }
 
 .livroImagens .titulo {
@@ -1131,4 +1141,16 @@ button.button.iniciar {
   font-family: "Merriweather";
   font-size: 1.5rem;
   font-weight: 600;
+}
+
+.livroImagens .card{
+  display: grid;
+  grid-template-rows: auto auto auto 120px auto;
+  justify-items: center;
+  align-items: center;
+}
+
+.livroImagens .card button{
+  grid-row: -1;
+  font-size: 1.5rem;
 }

@@ -1,136 +1,284 @@
 <!DOCTYPE html>
 <html lang="PT-BR">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Carrossel</title>
-  <link rel="stylesheet" href="Style.css">
-</head>
-<link rel="icon" href="Imagens/Navbar/Logo.svg">
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Carrossel</title>
+    <link rel="stylesheet" href="Style.css" />
+  </head>
+  <link rel="icon" href="Imagens/Navbar/Logo.svg" />
 
-  <div class="navbar">
-    <a href="Landing-page.html"><img src="Imagens/Navbar/home-outline.svg" alt="Ícone de menu Principal" class="Home icone"></a>
-    <div class="navbar-center">
-     <a href="Landing-page.html"><img src="Imagens/Navbar/Logo.svg" alt="Logo" class="Logo"></a> 
-      <p class="Titulo"><i>Leitura Descomplicada</i></p>
+  <body>
+    <div class="navbar">
+      <a href="Landing-page.html"
+        ><img
+          src="Imagens/Navbar/home-outline.svg"
+          alt="Ícone de menu Principal"
+          class="Home icone"
+      /></a>
+      <div class="navbar-center">
+        <a href="Landing-page.html"
+          ><img src="Imagens/Navbar/Logo.svg" alt="Logo" class="Logo"
+        /></a>
+        <p class="Titulo"><i>Leitura Descomplicada</i></p>
+      </div>
+      <a href="Menu.html"
+        ><img
+          src="Imagens/Navbar/More.svg"
+          alt="Ícone de menu de funcionalidades"
+          class="Mais icone"
+      /></a>
+      <a href="Login.html"
+        ><img
+          src="Imagens/Navbar/profile-outline.svg"
+          alt="Ícone de Perfil"
+          class="Perfil icone"
+      /></a>
     </div>
-    <a href="Menu.html"><img src="Imagens/Navbar/More.svg" alt="Ícone de menu de funcionalidades" class="Mais icone"></a>
-    <a href="Login.html"><img src="Imagens/Navbar/profile-outline.svg" alt="Ícone de Perfil" class="Perfil icone"></a>
-  </div>
 
-
-  <div class="todo">
-    <div class="carrossel">
-    <button onclick="sorteio()" id="botao">Sortear</button>
-      <div class="cardCarrossel" id="cardCarrossel">
-        <p class="Titulo" id="p_Titulo"></p>
-        <img src="" alt="" id="img_livro">
-        <p class="subtitulo" id="p_subtitulo"></p>
-        <p class="descricao" id="p_descricao"></p>
-        <p class="descricao" id="p_tempoLeituraHoras"></p>
+    <div class="todo">
+      <div class="carrossel">
+        <button onclick="sorteio()" id="botao">Sortear</button>
+        <div class="cardCarrossel" id="cardCarrossel">
+          <p class="Titulo" id="p_Titulo"></p>
+          <img src="" alt="" id="img_livro" />
+          <p class="subtitulo" id="p_subtitulo"></p>
+          <p class="descricao" id="p_descricao"></p>
+          <button
+            onclick="salvarLista()"
+            style="display: none"
+            id="btn_lista"
+            class="btn_lista"
+          >
+            Salvar na minha lista
+          </button>
+           <p class="respostaCarrossel" id="p_respostaQuestionario">
+              
+            </p>
+          <p class="descricao" id="p_tempoLeituraHoras"></p>
+        </div>
       </div>
     </div>
-  </div>
 
+    <div class="footer">
+      <div class="card" id="div_card">
+        <div class="cima">
+          <p class="Titulo">Links rápidos</p>
+          <p class="textoPrincipal">
+            <a href="">•Home</a> <br />
+            <a href="">•Dicas de leitura</a> <br />
+            <a href="">•Ferramentas</a>
+          </p>
+        </div>
+      </div>
 
-  <div class="footer">
+      <div class="vertical">
+        <img src="Imagens/footer/LinhaVertical-footer.svg" alt="" />
+      </div>
 
-    <div class="card" id="div_card">
-      <div class="cima">
-        <p class="Titulo">Links rápidos</p>
-        <p class="textoPrincipal">
-          <a href="">•Home</a> <br>
-          <a href="">•Dicas de leitura</a> <br>
-          <a href="">•Ferramentas</a>
+      <div class="card">
+        <div class="cima">
+          <p class="Titulo">Contato</p>
+          <p class="textoPrincipal">
+            •Email <br />
+            <a href="">•Formulário</a>
+          </p>
+        </div>
+      </div>
+      <div class="vertical2">
+        <img src="Imagens/footer/LinhaVertical-footer.svg" alt="" />
+      </div>
+
+      <div class="card">
+        <div class="cima">
+          <p class="Titulo">Sobre o projeto</p>
+          <p class="textoPrincipal">
+            •Desenvolvido por:
+            <a href="https://www.linkedin.com/in/gabriel-furtado-165aa72bb/"
+              >Gabriel Furtado</a
+            ><br />
+            •Instituição:
+            <a href="https://sptech.school/">São Paulo tech school</a><br />
+            <a
+              href="https://bandteccom-my.sharepoint.com/:w:/g/personal/gabriel_dsousa_sptech_school/ETqZHxX_WZRAosnKsa7ZKWoBycfvJnAFzxgmrulGgwWgwA?e=OjjrFT"
+              >•Documentação do projeto</a
+            >
+          </p>
+        </div>
+      </div>
+      <div class="horizontal"></div>
+
+      <div class="baixo">
+        <p class="disclaimer">
+          © 2025 Leitura Descomplicada - Todos os direitos reservados Projeto
+          acadêmico desenvolvido para o curso de Ciências da Computação
         </p>
       </div>
     </div>
+  </body>
+  <script>
+    let indexDaVez = 0
 
-    <div class="vertical">
-      <img src="Imagens/footer/LinhaVertical-footer.svg" alt="">
-    </div>
+    let nomesLivro = [
+      "Como Fazer Amigos e Influenciar Pessoas",
+      "O Alquimista",
+      "1984",
+    ];
+    let capasLivro = [
+      "Imagens/Carrossel/Como fazer amigos.jpg",
+      "Imagens/Carrossel/OAlquimista.jpg",
+      "Imagens/Carrossel/1984-Capa.jpg",
+    ];
+    let GenerosLivro = [
+      "Não ficção",
+      "Aventura",
+      "Distopia",
+    ];
+    let descricoesLivro = [
+      "Descubra o poder transformador das palavras e atitudes em um guia leve e prático que já mudou a vida de milhões. Com histórias reais e dicas simples, este livro revela como se conectar com qualquer pessoa — seja no trabalho, nos estudos ou no dia a dia — e mostra que a chave para abrir portas está na forma como tratamos os outros.",
+      "Embarque em uma jornada mágica com Santiago, um jovem pastor que segue os sinais do destino em busca de um tesouro escondido. O que ele encontra, porém, vai muito além do ouro. Com uma linguagem simples e profunda, este livro fala sobre sonhos, propósito e as surpresas que o universo guarda para quem ousa escutá-lo.",
+      "Imagine viver em um lugar onde até seus pensamentos podem ser vigiados. Em um mundo cinza e controlado por uma força invisível, Winston Smith se arrisca a desafiar o sistema. Este clássico não é apenas uma ficção — é um alerta, um suspense psicológico e uma leitura que prende do começo ao fim, fazendo você questionar o que é liberdade de verdade.",
+    ];
+    let tamanhoLeituraHoras = [
+      "5 horas e 50 minutos",
+      "3 horas e 25 minutos",
+      "7 horas e 20 minutos",
+    ];
+
+    function sorteio() {
+      let tamanhoLista = nomesLivro.length;
+      let numeroAletório = Math.floor(Math.random() * tamanhoLista);
+      indexDaVez = numeroAletório
+      console.log(numeroAletório);
+
+      let imgExibida = document.getElementById("img_livro");
+      let tituloExibido = document.getElementById("p_Titulo");
+      let subtituloExibido = document.getElementById("p_subtitulo");
+      let descricaoExibida = document.getElementById("p_descricao");
+      let tamanhoLeituraHorasExibida = document.getElementById(
+        "p_tempoLeituraHoras"
+      );
+      let btn_lista = document.getElementById("btn_lista");
+
+      // mudando a exibição
+
+      imgExibida.src = capasLivro[numeroAletório];
+      tituloExibido.innerHTML = nomesLivro[numeroAletório];
+      subtituloExibido.innerHTML = GenerosLivro[numeroAletório];
+      descricaoExibida.innerHTML = descricoesLivro[numeroAletório];
+      tamanhoLeituraHorasExibida.innerHTML = `Tempo medio de leitura: ${tamanhoLeituraHoras[numeroAletório]}`;
+      btn_lista.style.display = "block";
+
+      // mudando o tamanho e a mensagem do botão
+      let botaoEscolhido = document.getElementById("botao");
+      botaoEscolhido.style.width = "10vw";
+      botaoEscolhido.style.height = "10vh";
+      botaoEscolhido.style.fontSize = "1rem";
+      botaoEscolhido.style.padding = "1rem";
+      botaoEscolhido.innerHTML = "Sortear Novamente";
+      botaoEscolhido.style.gridRow = "2";
+
+      // mudando o tamanho da imagem
+      imgExibida.style.height = "30vw";
+      imgExibida.style.marginLeft = "2rem";
+      imgExibida.style.marginRight = "2rem";
+      imgExibida.style.boxShadow = "0px 4px 9px 2px rgba(0, 0, 0, 0.3)";
+
+      // modificando a div card
+      let divEscolhida = document.getElementById("cardCarrossel");
+      console.log(divEscolhida);
+      divEscolhida.style.padding = "2rem";
+      divEscolhida.style.opacity = "1";
+
+      window.scrollTo(0, 150);
+    }
+
+    function salvarLista() {
       
-    <div class="card">
-      <div class="cima">
-        <p class="Titulo">Contato</p>
-        <p class="textoPrincipal">
-          •Email <br>
-          <a href="">•Formulário</a>
-        </p>
-      </div>
-    </div>
-    <div class="vertical2">
-      <img src="Imagens/footer/LinhaVertical-footer.svg" alt="">
-    </div>
+        let botaoSorteio = document.getElementById('botao');
+        let cardCarrosselDiv = document.getElementById('cardCarrossel');
+        let tituloParagrafo = document.getElementById('p_Titulo');
+        let imagemLivro = document.getElementById('img_livro');
+        let genero = document.getElementById('p_subtitulo');
+        let descricao = document.getElementById('p_descricao');
+        let botaoSalvarLista = document.getElementById('btn_lista');
+        let tempoLeituraHorasParagrafo = document.getElementById('p_tempoLeituraHoras');
+  
+    const id = sessionStorage.getItem("ID_USUARIO") || null;
 
-    <div class="card">
-      <div class="cima">
-        <p class="Titulo">Sobre o projeto</p>
-        <p class="textoPrincipal">
-          •Desenvolvido por: <a href="https://www.linkedin.com/in/gabriel-furtado-165aa72bb/">Gabriel Furtado</a><br>
-          •Instituição: <a href="https://sptech.school/">São Paulo tech school</a><br>
-          <a href="https://bandteccom-my.sharepoint.com/:w:/g/personal/gabriel_dsousa_sptech_school/ETqZHxX_WZRAosnKsa7ZKWoBycfvJnAFzxgmrulGgwWgwA?e=OjjrFT">•Documentação do projeto</a>
-        </p>
-      </div>
-    </div>
+    if (id == null){
+      alert ('Você precisa estar logado para adicionar este livro a sua lista!')
+      window.location.href = "./Login.html";
+    }else{
 
-    <div class="horizontal"></div>
+    const divResposta = document.getElementById("p_respostaQuestionario")
 
-    <div class="baixo">
-      <p class="disclaimer"> © 2025 Leitura Descomplicada - Todos os direitos reservados
-        Projeto acadêmico desenvolvido para o curso de Ciências da Computação</p>
-    </div>
-</body>
-<script>
-  let nomesLivro = ['Como Fazer Amigos e Influenciar Pessoas', 'O Alquimista', '1984']
-  let capasLivro = ['Imagens/Carrossel/Como fazer amigos.jpg', 'Imagens/Carrossel/OAlquimista.jpg', 'Imagens/Carrossel/1984-Capa.jpg']
-  let GenerosLivro = ['Desenvolvimento pessoal (não ficção)', 'Aventura', 'Distopia histórica']
-  let descricoesLivro = ['Descubra o poder transformador das palavras e atitudes em um guia leve e prático que já mudou a vida de milhões. Com histórias reais e dicas simples, este livro revela como se conectar com qualquer pessoa — seja no trabalho, nos estudos ou no dia a dia — e mostra que a chave para abrir portas está na forma como tratamos os outros.', 'Embarque em uma jornada mágica com Santiago, um jovem pastor que segue os sinais do destino em busca de um tesouro escondido. O que ele encontra, porém, vai muito além do ouro. Com uma linguagem simples e profunda, este livro fala sobre sonhos, propósito e as surpresas que o universo guarda para quem ousa escutá-lo.', 'Imagine viver em um lugar onde até seus pensamentos podem ser vigiados. Em um mundo cinza e controlado por uma força invisível, Winston Smith se arrisca a desafiar o sistema. Este clássico não é apenas uma ficção — é um alerta, um suspense psicológico e uma leitura que prende do começo ao fim, fazendo você questionar o que é liberdade de verdade.']
-  let tamanhoLeituraHoras = ['5 horas e 50 minutos' , '3 horas e 25 minutos', '7 horas e 20 minutos']
+     
 
-  function sorteio(){
-    let tamanhoLista = nomesLivro.length
-    let numeroAletório = Math.floor(Math.random() * tamanhoLista);
-    console.log(numeroAletório);
+    const dadosParaApi = {      
+        "tituloParagrafoServer": tituloParagrafo.innerHTML,
+        "imagemLivroServer": imagemLivro.src,                                
+        "generoServer": genero.innerHTML,
+        "descricaoServer": descricao.innerHTML,
+        "idServer": id,
+    };
+
+    // Tentar a conversão para JSON e ver se há erros
+    const jsonString = JSON.stringify(dadosParaApi);
     
-    let imgExibida = document.getElementById('img_livro')
-    let tituloExibido = document.getElementById('p_Titulo')
-    let subtituloExibido = document.getElementById('p_subtitulo')
-    let descricaoExibida = document.getElementById('p_descricao')
-    let tamanhoLeituraHorasExibida = document.getElementById('p_tempoLeituraHoras')
+    // Exibir os resultados
+    console.log("Objeto original:", dadosParaApi);
+    console.log("JSON convertido:", jsonString);
+
+    console.log('Dados que serão enviados para a API:', dadosParaApi);
+  
+  // Modifique a URL se necessário para corresponder ao endpoint correto
+  const urlApi = `http://localhost:3333/favoritos/enviar`;
+  
+  // Exibir algum indicador de carregamento
+  divResposta.innerHTML = `<p style="color: blue;" class="erro">Processando Mensagem...</p>`;
+  
+  fetch(urlApi, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(dadosParaApi) // Converte o objeto para uma string JSON
+  })
+  .then(response => {
+    // Primeiro verifica se a resposta é ok
+    if (!response.ok) {
+      return response.json().then(erroApi => {
+        const mensagemErro = erroApi.mensagem || `Erro ao enviar: ${response.status}`;
+        throw new Error(mensagemErro);
+      }).catch(error => {
+        // Se não conseguir obter JSON, ainda mostra um erro genérico
+        throw new Error(`Erro ao enviar: ${response.status}`);
+      });
+    }
+    return response.json();
+  })
+  .then(data => {
+    console.log("Sucesso do cadastro:", data);
+    divResposta.innerHTML = `<p style="color: green;"  class="erro">${data.mensagem || "Adicionado a sua lista com sucesso!"}</p>`;
+              
+         botaoSalvarLista.style.borderColor = "#6fde73"
+      
+            setTimeout(() => {
+  
+            botaoSalvarLista.style.borderColor = "#a67c52";
+            
+            }, 3000);
     
-    // mudando a exibição
     
-    imgExibida.src = capasLivro[numeroAletório]
-    tituloExibido.innerHTML = nomesLivro[numeroAletório]
-    subtituloExibido.innerHTML = GenerosLivro[numeroAletório]
-    descricaoExibida.innerHTML = descricoesLivro[numeroAletório]
-    tamanhoLeituraHorasExibida.innerHTML = `Tempo medio de leitura: ${tamanhoLeituraHoras[numeroAletório]}`
+
+  })
+  .catch(error => {
+    console.error("Erro geral no fetch:", error);
+    divResposta.innerHTML = `<p style="color: red;"  class="erro">${error.message || "Ocorreu um erro ao adicionar esse livro a sua lista. Tente novamente mais tarde, ou, mande uma mensagem para nos atrávez do formulario."}</p>`;
     
-    // mudando o tamanho e a mensagem do botão
-    let botaoEscolhido = document.getElementById('botao')
-    botaoEscolhido.style.width = '10vw'
-    botaoEscolhido.style.height = '10vh'
-    botaoEscolhido.style.fontSize = '1rem'
-    botaoEscolhido.style.padding = '1rem'
-    botaoEscolhido.innerHTML = 'Sortear Novamente'
-    botaoEscolhido.style.gridRow = '2'
-
-    // mudando o tamanho da imagem
-    imgExibida.style.height = '30vw'
-    imgExibida.style.marginLeft = '2rem'
-    imgExibida.style.marginRight = '2rem'
-    imgExibida.style.boxShadow = "0px 4px 9px 2px rgba(0, 0, 0, 0.3)"
-
-    // modificando a div card
-    let divEscolhida = document.getElementById('cardCarrossel')
-    console.log(divEscolhida);
-    divEscolhida.style.padding = '2rem'
-    divEscolhida.style.opacity = '1'
-
-    window.scrollTo(0,150)
-  }
-
-</script>
+  });
+}
+}   
+  </script>
 </html>

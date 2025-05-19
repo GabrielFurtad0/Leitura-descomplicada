@@ -25,7 +25,7 @@
 
 
   <div class="todo">
-    <div class="questionnaire">
+    <div class="questionnaire" id="div_questionnaire">
 
 
       <button onclick="iniciar()" id="button_iniciar" class="button iniciar">Iniciar Questionario</button>
@@ -75,8 +75,84 @@
           <div class="questionarioFinalizado" id="div_questionarioFinalizado">
             <p class="respostaQuestionario" id="p_respostaQuestionario"></p>
           </div>
-          <div id="div_fotos" class="livroImagens">
+          <div id="div_fotos" class="livroImagens" style="display: none;">
+            <div class="genero">
+              <p id="p_titulo1" class="titulo"></p>
+              <div class="card">
+                <img src="" alt="" id="img1.1" />
+                <p class="subtitulo" id="p_subtitulo1.1"></p>
+                <p class="descricao" id="p_descricao1.1">
+                  
+                </p>
+                <button
+                onclick="salvarLista1()"
+                style="display: none"
+                id="btn_lista1"
+                class="btn_listaQ"
+                >
+                Salvar na minha lista
+                </button>
+                <p class="respostaCarrossel" id="p_respostaQuestionario2.1" style="display: none;">
+              
+                </p>
+              </div>
+              <div class="card margin-right">
+                <img src="" alt="" id="img1.2"/>
+                <p class="subtitulo" id="p_subtitulo1.2"></p>
+                <p class="descricao" id="p_descricao1.2">
+                  
+                </p>
+                <button
+                onclick="salvarLista2()"
+                style="display: none"
+                id="btn_lista2"
+                class="btn_listaQ"
+                >
+                Salvar na minha lista
+                </button>
+                <p class="respostaCarrossel" id="p_respostaQuestionario2.2" style="display: none;">
+              
+                </p>
+              </div>
+            </div>
 
+            <div class="genero">
+              <p id="p_titulo2" class="titulo"></p>
+              <div class="card margin-left">
+                <img src="" alt="" id="img2.1">
+                <p class="subtitulo" id="p_subtitulo2.1"></p>
+                <p class="descricao" id="p_descricao2.1">                  
+                </p>
+                <button
+                onclick="salvarLista3()"
+                style="display: none"
+                id="btn_lista3"
+                class="btn_listaQ"
+                >
+                Salvar na minha lista
+                </button>
+                <p class="respostaCarrossel" id="p_respostaQuestionario2.3" style="display: none;">
+              
+                </p>
+              </div>
+              <div class="card">
+                <img src="" alt="" id="img2.2"/>
+                <p class="subtitulo" id="p_subtitulo2.2"></p>
+                <p class="descricao" id="p_descricao2.2">                  
+                </p>
+                <button
+                onclick="salvarLista4()"
+                style="display: none"
+                id="btn_lista4"
+                class="btn_listaQ"
+                >
+                Salvar na minha lista
+                </button>
+                <p class="respostaCarrossel" id="p_respostaQuestionario2.4" style="display: none;">
+              
+                </p>
+              </div>
+            </div>
           </div>
       </div>
     </div>
@@ -199,12 +275,12 @@
   let respostas = []
 
   let indexDaVez = 0;
-
+  
   let A = document.getElementById("label-textA")
   let B = document.getElementById("label-textB")
   let C = document.getElementById("label-textC")
   let D = document.getElementById("label-textD")
-
+  
   let checkA = document.getElementById("opcaoA")
   let checkB = document.getElementById("opcaoB")
   let checkC = document.getElementById("opcaoC")
@@ -221,7 +297,7 @@
   let div_perguntas = document.getElementById("div_perguntas")
   let div_finalizar = document.getElementById("div_questionarioFinalizado")
   let respostaQuestionario = document.getElementById("p_respostaQuestionario")
-
+  
   let generoUsuario = []
 
   let pontuacao = {
@@ -236,96 +312,99 @@
     'Não Ficção': 0,
     'Poesia': 0
   };
-
+ 
   let imagensLivros = {
   "Fantasia": {
     "titulo1": "O Senhor dos Anéis",
     "titulo2": "Harry Potter e a Pedra Filosofal",
-    "img_url1": "URL_DA_IMAGEM_AQUI",
-    "img_url2": "URL_DA_IMAGEM_AQUI",
+    "img_url1": "./Imagens/Questionario/O Senhor dos Anéis por J.R.R. Tolkien.jpg",
+    "img_url2": "./Imagens/Questionario/Harry Potter e a Pedra Filosofal por J.K. Rowling.jpg",
     "resumo1": "Em uma terra mágica, hobbits, elfos e anões se unem para destruir um anel do poder e derrotar o Senhor do Escuro Sauron.",
     "resumo2": "Um jovem órfão descobre que é um bruxo e é convidado a estudar na Escola de Magia e Bruxaria de Hogwarts, onde enfrenta desafios e mistérios.",
   },
   "Ficção Científica": {
     "titulo1": "Duna",
     "titulo2": "1984",
-    "img_url1": "URL_DA_IMAGEM_AQUI",
-    "img_url2": "URL_DA_IMAGEM_AQUI",
+    "img_url1": "./Imagens/Questionario/Dune by Frank Herbert.jpg",
+    "img_url2": "./Imagens/Questionario/1984 by George Orwell.jpg",
     "resumo1": "Em um futuro distante, a luta pelo controle do planeta deserto Arrakis, a única fonte da valiosa especiaria melange, desencadeia uma teia de intrigas políticas e profecias messiânicas.",
     "resumo2": "Em um estado totalitário, Winston Smith se rebela contra o Partido e seu líder Big Brother, buscando a liberdade de pensamento e expressão.",
   },
   "Romance": {
     "titulo1": "Orgulho e Preconceito",
     "titulo2": "O Diário de Uma Paixão",
-    "img_url1": "URL_DA_IMAGEM_AQUI",
-    "img_url2": "URL_DA_IMAGEM_AQUI",
+    "img_url1": "./Imagens/Questionario/Orgulho e Preconceito por Jane Austen_.jpg",
+    "img_url2": "./Imagens/Questionario/O Diário de Uma Paixão por Nicholas Sparks.jpg",
     "resumo1": "A história acompanha Elizabeth Bennet enquanto lida com questões de moral, educação, ética e casamento na sociedade inglesa do século XIX.",
     "resumo2": "A história de amor entre Noah e Allie, separados por circunstâncias sociais, que se reencontram anos depois, mostrando a força e a durabilidade do verdadeiro amor.",
   },
   "Drama": {
     "titulo1": "O Grande Gatsby",
     "titulo2": "O Sol É Para Todos",
-    "img_url1": "URL_DA_IMAGEM_AQUI",
-    "img_url2": "URL_DA_IMAGEM_AQUI",
+    "img_url1": "./Imagens/Questionario/O Grande Gatsby por F. Scott Fitzgerald.jpg",
+    "img_url2": "./Imagens/Questionario/O Sol É Para Todos por Harper Lee.jpg",
     "resumo1": "Ambientado na Era do Jazz, o livro explora temas como riqueza, decadência, amor e ilusão através da vida misteriosa do milionário Jay Gatsby.",
     "resumo2": "Narrado pela perspectiva de uma criança, o romance aborda questões de racismo, injustiça e perda da inocência em uma pequena cidade do sul dos Estados Unidos.",
   },
   "Mistério": {
     "titulo1": "E Não Sobrou Nenhum",
     "titulo2": "Os Homens que Não Amavam as Mulheres",
-    "img_url1": "URL_DA_IMAGEM_AQUI",
-    "img_url2": "URL_DA_IMAGEM_AQUI",
+    "img_url1": "./Imagens/Questionario/E Não Sobrou Nenhum por Agatha Christie.jpg",
+    "img_url2": "./Imagens/Questionario/Os Homens que Não Amavam as Mulheres por Stieg Larsson (primeiro livro da série Millennium).jpg",
     "resumo1": "Dez estranhos são convidados para uma ilha e são assassinados um a um, seguindo os versos de uma sinistra canção de ninar.",
     "resumo2": "Um jornalista e uma investigadora se unem para desvendar o desaparecimento de uma jovem de uma rica família, expondo segredos sombrios e corrupção.",
   },
   "Terror": {
     "titulo1": "It: A Coisa",
     "titulo2": "Drácula",
-    "img_url1": "URL_DA_IMAGEM_AQUI",
-    "img_url2": "URL_DA_IMAGEM_AQUI",
+    "img_url1": "./Imagens/Questionario/It A Coisa por Stephen King.jpg",
+    "img_url2": "./Imagens/Questionario/61MgodE1s0L._AC_UF1000,1000_QL80_.jpg",
     "resumo1": "Um grupo de crianças se une para enfrentar Pennywise, um palhaço maligno que aterroriza sua cidade a cada 27 anos, explorando seus medos mais profundos.",
     "resumo2": "A história clássica do vampiro Conde Drácula e sua busca por sangue e imortalidade, combatido por um grupo determinado a destruí-lo.",
   },
   "Distopia": {
     "titulo1": "Jogos Vorazes",
     "titulo2": "Fahrenheit 451",
-    "img_url1": "URL_DA_IMAGEM_AQUI",
-    "img_url2": "URL_DA_IMAGEM_AQUI",
+    "img_url1": "./Imagens/Questionario/Jogos Vorazes por Suzanne Collins.jpg",
+    "img_url2": "./Imagens/Questionario/Fahrenheit 451 por Ray Bradbury.jpg",
     "resumo1": "Em um futuro onde os distritos são forçados a enviar tributos para lutar em jogos mortais televisionados, Katniss Everdeen se torna um símbolo de rebelião.",
     "resumo2": "Em uma sociedade onde os livros são proibidos e queimados, um bombeiro começa a questionar seu papel e busca conhecimento em obras literárias.",
   },
   "Biografia": {
     "titulo1": "O Diário de Anne Frank",
     "titulo2": "Steve Jobs",
-    "img_url1": "URL_DA_IMAGEM_AQUI",
-    "img_url2": "URL_DA_IMAGEM_AQUI",
+    "img_url1": "./Imagens/Questionario/O Diário de Anne Frank por Anne Frank.jpg",
+    "img_url2": "./Imagens/Questionario/Steve Jobs por Walter Isaacson.jpg",
     "resumo1": "O relato pessoal de uma jovem judia escondida dos nazistas durante a Segunda Guerra Mundial, oferecendo uma visão íntima de seus medos, esperanças e amadurecimento.",
     "resumo2": "A biografia autorizada do cofundador da Apple, explorando sua vida pessoal e profissional, sua genialidade e sua personalidade complexa.",
   },
   "Não Ficção": {
     "titulo1": "Sapiens: Uma Breve História da Humanidade",
     "titulo2": "Os 7 Hábitos das Pessoas Altamente Eficazes",
-    "img_url1": "URL_DA_IMAGEM_AQUI",
-    "img_url2": "URL_DA_IMAGEM_AQUI",
+    "img_url1": "./Imagens/Questionario/Sapiens Uma Breve História da Humanidade por Yuval Noah Harari.jpg",
+    "img_url2": "./Imagens/Questionario/Os 7 Hábitos das Pessoas Altamente Eficazes por Stephen R. Covey.jpg",
     "resumo1": "Uma análise abrangente da história da humanidade, desde os primeiros humanos até o presente, explorando o impacto da nossa espécie no planeta.",
     "resumo2": "Um guia de desenvolvimento pessoal que apresenta sete princípios para alcançar a eficácia em diversas áreas da vida, tanto pessoal quanto profissional.",
   },
   "Poesia": {
     "titulo1": "As Obras Completas de William Shakespeare",
     "titulo2": "Folhas de Relva",
-    "img_url1": "URL_DA_IMAGEM_AQUI",
-    "img_url2": "URL_DA_IMAGEM_AQUI",
+    "img_url1": "./Imagens/Questionario/As Obras Completas de William Shakespeare.jpg",
+    "img_url2": "./Imagens/Questionario/Folhas de Relva por Walt Whitman.jpg",
     "resumo1": "Uma coleção de todas as peças, sonetos e poemas do renomado dramaturgo e poeta inglês, explorando uma vasta gama de temas e emoções humanas.",
     "resumo2": "Uma obra revolucionária da poesia americana, celebrando a natureza, o corpo humano, a democracia e a individualidade com uma linguagem inovadora e ousada.",
   }
 }
 
+  let genero1 = ''
+  let genero2 = ''
+
   function iniciar() {
-   // const id = sessionStorage.getItem("ID_USUARIO") || null;
-   // if (id == null){
+   const id = sessionStorage.getItem("ID_USUARIO") || null;
+    if (id == null){
       alert('Você precisa estar logado para fazer o quiz!')
 
-    //}else{
+    }else{
 
       
       let divQuestionario = document.getElementById("div_questionario")
@@ -343,10 +422,10 @@
       B.innerHTML = opcoesB[0]
       C.innerHTML = opcoesC[0]
       D.innerHTML = opcoesD[0]
-    //}
+      }
     }
  
-    function proxima() {
+  function proxima() {
       
       if (checkA.checked || checkB.checked || checkC.checked || checkD.checked){
         
@@ -447,7 +526,7 @@
   }
 
   function finalizar() {
-
+    
      if (checkA.checked || checkB.checked || checkC.checked || checkD.checked){
 
        if (checkA.checked) {
@@ -461,10 +540,17 @@
         }
         
         console.log(respostas);
-        
+
+        const buttons = document.querySelectorAll('.btn_listaQ');
+        buttons.forEach(button => {
+          button.style.display = 'block';
+        });
         
         div_perguntas.style.display = 'none'
         respostaQuestionario.innerHTML = `Questionario finalizado enviando resposta ao sistema...`
+        div_questionario.style.height = 'fit-content'
+        div_fotos.style.display = 'grid'
+        div_questionnaire.style.marginBottom = '6rem'
         
         //algoritmo pra identificar os generos favoritos do usuario
         algoritmoCalculoGeneroFavorito()
@@ -597,13 +683,14 @@ function encontrarTopGeneros(pontuacao) {
   // pega os dois primeiros da lista (os dois maiores) e "corta" o resto fora
   const topTwoGenres = genreScores.slice(0, 2);
 
-  let genero1 = topTwoGenres[0] ? topTwoGenres[0][0] : null;
-  let genero2 = topTwoGenres[1] ? topTwoGenres[1][0] : null;
+  genero1 = topTwoGenres[0] ? topTwoGenres[0][0] : null;
+  genero2 = topTwoGenres[1] ? topTwoGenres[1][0] : null;
 
   return {genero1, genero2};
 
 
 }
+
 
   function enviarQuestionarioAPI(){
     let topGeneros = encontrarTopGeneros(pontuacao);
@@ -613,6 +700,7 @@ function encontrarTopGeneros(pontuacao) {
     const id = sessionStorage.getItem("ID_USUARIO") || null;
 
     const divResposta = document.getElementById("p_respostaQuestionario")
+    
 
     // declaração para a exibição no final questionario
     const p_titulo1 = document.getElementById("p_titulo1");
@@ -675,27 +763,35 @@ function encontrarTopGeneros(pontuacao) {
     console.log("Sucesso do cadastro:", data);
     divResposta.innerHTML = `${data.mensagem || `Os gêneros que mais combinam com você são:`}`;    
 
+    p_titulo1.innerHTML = `${genero1}`
+
+    p_subtitulo1_1.innerHTML = imagensLivros[genero1].titulo1
+    p_descricao1_1.innerHTML = imagensLivros[genero1].resumo1
+    img1_1.src = imagensLivros[genero1].img_url1
+    img1_1.alt = imagensLivros[genero1].titulo1
+
+    p_subtitulo1_2.innerHTML = imagensLivros[genero1].titulo2  
+    p_descricao1_2.innerHTML = imagensLivros[genero1].resumo2
+    img1_2.src = imagensLivros[genero1].img_url2
+    img1_2.alt = imagensLivros[genero1].titulo2
+
+    p_titulo2.innerHTML = `${genero2}`
+
+    p_subtitulo2_1.innerHTML = imagensLivros[genero2].titulo1
+    p_descricao2_1.innerHTML = imagensLivros[genero2].resumo1
+    img2_1.src = imagensLivros[genero2].img_url1
+    img2_1.alt = imagensLivros[genero2].titulo1
+
+    p_subtitulo2_2.innerHTML = imagensLivros[genero2].titulo2    
+    p_descricao2_2.innerHTML = imagensLivros[genero2].resumo2    
+    img2_2.src = imagensLivros[genero2].img_url2    
+    img2_2.alt = imagensLivros[genero2].titulo2
+
   })
   .catch(error => {
     console.error("Erro geral no fetch:", error);
     divResposta.innerHTML = `<p style="color: red;"  class="erro">${error.message || "Ocorreu um erro ao mandar a mensagem. Tente novamente."}</p>`;
     
-    p_titulo1.innerHTML = `${genero1}`
-    p_titulo2.innerHTML = `${genero2}`
-    p_subtitulo1_1.innerHTML = imagensLivros[genero1].titulo1
-    p_subtitulo1_2.innerHTML = imagensLivros[genero1].titulo2
-    p_descricao1_1.innerHTML = imagensLivros[genero1].resumo1
-    p_descricao1_2.innerHTML = imagensLivros[genero1].resumo2
-    img1_1.src = imagensLivros[genero1].img_url1
-    img1_2.src = imagensLivros[genero1].img_url2
-
-
-    p_subtitulo2_1.innerHTML = imagensLivros[genero2].titulo1
-    p_subtitulo2_2.innerHTML = imagensLivros[genero2].titulo2
-    p_descricao2_1.innerHTML = imagensLivros[genero2].resumo1
-    p_descricao2_2.innerHTML = imagensLivros[genero2].resumo2
-    img2_1.src = imagensLivros[genero1].img_url1
-    img2_2.src = imagensLivros[genero1].img_url2
     
 
     // ${imagensLivros[categoria]["titulo2"]}
@@ -703,6 +799,153 @@ function encontrarTopGeneros(pontuacao) {
   });
 }
   
+  let adicionarLista = {
+      "genero": "", 
+      "titulo1": "",
+      "img_url1": "",
+      "resumo1": "",
+    }
+
+  let botaoSalvarLista = ''
+  
+  let divResposta = ''
+
+  function salvarLista1(){
+    adicionarLista = {
+    "genero": genero1, 
+    "titulo1": imagensLivros[genero1].titulo1,
+    "img_url1": imagensLivros[genero1].img_url1,
+    "resumo1": imagensLivros[genero1].resumo1,
+  }
+    botaoSalvarLista = document.getElementById('btn_lista1')
+    divResposta = document.getElementById("p_respostaQuestionario2.1")
+    salvarLista()
+  }
+
+  function salvarLista2(){
+    adicionarLista = {
+    "genero": genero1, 
+    "titulo1": imagensLivros[genero1].titulo2,
+    "img_url1": imagensLivros[genero1].img_url2,
+    "resumo1": imagensLivros[genero1].resumo2,
+  }
+    botaoSalvarLista = document.getElementById('btn_lista2')
+    divResposta = document.getElementById("p_respostaQuestionario2.2")
+    salvarLista()
+  }
+
+  function salvarLista3(){
+    adicionarLista = {
+    "genero": genero2, 
+    "titulo1": imagensLivros[genero2].titulo1,
+    "img_url1": imagensLivros[genero2].img_url1,
+    "resumo1": imagensLivros[genero2].resumo1,
+  }
+    botaoSalvarLista = document.getElementById('btn_lista3')
+    divResposta = document.getElementById("p_respostaQuestionario2.3")
+    salvarLista()
+  }
+
+  function salvarLista4(){
+    adicionarLista = {
+    "genero": genero2, 
+    "titulo1": imagensLivros[genero2].titulo2,
+    "img_url1": imagensLivros[genero2].img_url2,
+    "resumo1": imagensLivros[genero2].resumo2,
+  }
+    botaoSalvarLista = document.getElementById('btn_lista4')
+    divResposta = document.getElementById("p_respostaQuestionario2.4")
+    salvarLista()
+  }
+
+
+  function salvarLista(){
+    let tituloParagrafo = adicionarLista.titulo1
+    let imagemLivro = adicionarLista.img_url1
+    let genero = adicionarLista.genero
+    let descricao = adicionarLista.resumo1
+    
+    
+
+    const id = sessionStorage.getItem("ID_USUARIO") || null;
+
+    if (id == null){
+      alert ('Você precisa estar logado para adicionar este livro a sua lista!')
+      window.location.href = "./Login.html";
+    }else{     
+
+      divResposta.style.display = 'inline'
+
+    const dadosParaApi = {      
+        "tituloParagrafoServer": tituloParagrafo,
+        "imagemLivroServer": imagemLivro,                                
+        "generoServer": genero,
+        "descricaoServer": descricao,
+        "idServer": id,
+    };
+
+    // Tentar a conversão para JSON e ver se há erros
+    const jsonString = JSON.stringify(dadosParaApi);
+    
+    // Exibir os resultados
+    console.log("Objeto original:", dadosParaApi);
+    console.log("JSON convertido:", jsonString);
+
+    console.log('Dados que serão enviados para a API:', dadosParaApi);
+  
+  // Modifique a URL se necessário para corresponder ao endpoint correto
+  const urlApi = `http://localhost:3333/favoritos/enviar`;
+  
+  // Exibir algum indicador de carregamento
+  divResposta.innerHTML = `<p style="color: blue;" class="erro">Processando Mensagem...</p>`;
+  
+  fetch(urlApi, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(dadosParaApi) // Converte o objeto para uma string JSON
+  })
+  .then(response => {
+    // Primeiro verifica se a resposta é ok
+    if (!response.ok) {
+      return response.json().then(erroApi => {
+        const mensagemErro = erroApi.mensagem || `Erro ao enviar: ${response.status}`;
+        throw new Error(mensagemErro);
+      }).catch(error => {
+        // Se não conseguir obter JSON, ainda mostra um erro genérico
+        throw new Error(`Erro ao enviar: ${response.status}`);
+      });
+    }
+    return response.json();
+  })
+  .then(data => {
+    console.log("Sucesso do cadastro:", data);
+    divResposta.innerHTML = `<p style="color: green;"  class="erro">${data.mensagem || "Adicionado a sua lista com sucesso!"}</p>`;
+              
+         botaoSalvarLista.style.borderColor = "#6fde73"
+      
+            setTimeout(() => {
+  
+            botaoSalvarLista.style.borderColor = "#a67c52";
+            
+            }, 3000);
+    
+    
+
+  })
+  .catch(error => {
+    if (error.message == "Erro ao enviar: 500"){
+      error.mensagem = "Este livro já está na sua lista!"
+    }
+    console.error("Erro geral no fetch:", error);
+    divResposta.innerHTML = `<p style="color: red;"  class="erro">Este livro já está na sua lista!</p>`;
+    
+  });
+}
+}
+
+
 
 
 </script>
