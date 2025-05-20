@@ -138,15 +138,15 @@ let capasLivro = [
   "Imagens/Carrossel/Como fazer amigos.jpg",
   "Imagens/Carrossel/OAlquimista.jpg",
   "Imagens/Carrossel/1984-Capa.jpg",
-  "Imagens/Questionario/Admirável Mundo Novo.jpg", // Distopia (Image 9)
-  "Imagens/Questionario/A Morte do Caixeiro-Viajante.jpg", // Drama (Image 7)
-  "Imagens/Questionario/O Hobbit.jpg", // Fantasia (Image 4)
-  "Imagens/Questionario/Neuromancer.jpg", // Ficção Científica (Image 3)
-  "Imagens/Questionario/O Nome da Rosa.jpg", // Ficção Histórica (Image 6)
-  "Imagens/Questionario/Em Busca de Sentido.jpg", // Não Ficção (Image 2)
-  "Imagens/Questionario/Cem Anos de Solidão.jpg", // Romance (Image 1)
-  "Imagens/Questionario/O Iluminado.jpg", // Terror/Horror (Image 5)
-  "Imagens/Questionario/A Paciente Silenciosa.jpg"  // Mistério/Suspense (Image 8)
+  "Imagens/Carrossel/Admirável Mundo Novo.jpg", // Distopia (Image 9)
+  "Imagens/Carrossel/A Morte do Caixeiro-Viajante_.jpg", // Drama (Image 7)
+  "Imagens/Carrossel/O Hobbit.jpg", // Fantasia (Image 4)
+  "Imagens/Carrossel/Neuromancer.jpg", // Ficção Científica (Image 3)
+  "Imagens/Carrossel/O Nome da Rosa.jpg", // Ficção Histórica (Image 6)
+  "Imagens/Carrossel/Em Busca de Sentido.jpg", // Não Ficção (Image 2)
+  "Imagens/Carrossel/Cem Anos de Solidão.jpg", // Romance (Image 1)
+  "Imagens/Carrossel/O Iluminado.jpg", // Terror/Horror (Image 5)
+  "Imagens/Carrossel/A Paciente Silenciosa.jpg"  // Mistério/Suspense (Image 8)
 ];
 
 let GenerosLivro = [
@@ -194,13 +194,39 @@ let tamanhoLeituraHoras = [
   "9 horas e 30 minutos"   // Mistério/Suspense
 ];
 
+let ultimoNumeroGerado = null
+
+    function numeroAleatorio(){
+      let tamanhoLista = nomesLivro.length;
+      let novoNumero;
+  
+    do {
+      // Fórmula para gerar número aleatório entre min e max (inclusivo)
+      novoNumero = Math.floor(Math.random() * (tamanhoLista - 0 + 1)) + 0;
+    } while (novoNumero === ultimoNumeroGerado);
+  
+    // Armazenar o número gerado para a próxima verificação
+    ultimoNumeroGerado = novoNumero;
+  
+    return novoNumero;
+}
 
     
 
     function sorteio() {
-      let tamanhoLista = nomesLivro.length;
-      let numeroAletório = Math.floor(Math.random() * tamanhoLista);
+      
+      let numeroAletório = numeroAleatorio()
+      let numeroAnterior = ''
+
+      if (numeroAletório === numeroAnterior) {
+        
+        do {
+          numeroAletório = Math.floor(Math.random() * tamanhoLista);
+        } while (numeroAletório === numeroAnterior);
+      }else{
+
       indexDaVez = numeroAletório
+      numeroAletório = numeroAnterior
       console.log(numeroAletório);
 
       let imgExibida = document.getElementById("img_livro");
@@ -243,6 +269,7 @@ let tamanhoLeituraHoras = [
       divEscolhida.style.opacity = "1";
 
       window.scrollTo(0, 150);
+      }
     }
 
     function salvarLista() {
@@ -315,9 +342,9 @@ let tamanhoLeituraHoras = [
     divResposta.innerHTML = `<p style="color: green;"  class="erro">${data.mensagem || "Adicionado a sua lista com sucesso!"}</p>`;
               
          botaoSalvarLista.style.borderColor = "#6fde73"
-      
+
             setTimeout(() => {
-  
+              divResposta.innerHTML = ''
             botaoSalvarLista.style.borderColor = "#a67c52";
             
             }, 3000);
@@ -329,6 +356,11 @@ let tamanhoLeituraHoras = [
     console.error("Erro geral no fetch:", error);
     divResposta.innerHTML = `<p style="color: red;"  class="erro">${error.message || "Ocorreu um erro ao adicionar esse livro a sua lista. Tente novamente mais tarde, ou, mande uma mensagem para nos atrávez do formulario."}</p>`;
     
+     setTimeout(() => {
+              divResposta.innerHTML = ''
+            
+            
+            }, 3000);
   });
 }
 }   
