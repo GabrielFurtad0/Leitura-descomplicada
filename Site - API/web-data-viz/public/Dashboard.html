@@ -1,91 +1,363 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-  <link rel="stylesheet" href="Style.css">
-</head>
-  <link rel="icon" href="Imagens/Navbar/Logo.svg">
-<body>
-  <div class="navbar">
-    <a href="Landing-page.html"><img src="Imagens/Navbar/home-outline.svg" alt="Ícone de menu Principal" class="Home icone"></a>
-    <div class="navbar-center">
-     <a href="Landing-page.html"><img src="Imagens/Navbar/Logo.svg" alt="Logo" class="Logo"></a> 
-      <p class="Titulo"><i>Leitura Descomplicada</i></p>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="Style.css" />
+  </head>
+  <link rel="icon" href="Imagens/Navbar/Logo.svg" />
+  <body>
+    <div class="navbar">
+      <a href="Landing-page.html"
+        ><img
+          src="Imagens/Navbar/home-outline.svg"
+          alt="Ícone de menu Principal"
+          class="Home icone"
+      /></a>
+      <div class="navbar-center">
+        <a href="Landing-page.html"
+          ><img src="Imagens/Navbar/Logo.svg" alt="Logo" class="Logo"
+        /></a>
+        <p class="Titulo"><i>Leitura Descomplicada</i></p>
+      </div>
+      <a href="Menu.html"
+        ><img
+          src="Imagens/Navbar/More-outline.svg"
+          alt="Ícone de menu de funcionalidades"
+          class="Mais icone"
+      /></a>
+      <a href="Login.html"
+        ><img
+          src="Imagens/Navbar/Perfil.svg"
+          alt="Ícone de Perfil"
+          class="Perfil icone"
+      /></a>
     </div>
-    <a href="Menu.html"><img src="Imagens/Navbar/More-outline.svg" alt="Ícone de menu de funcionalidades" class="Mais icone"></a>
-    <a href="Login.html"><img src="Imagens/Navbar/Perfil.svg" alt="Ícone de Perfil" class="Perfil icone"></a>
-  </div>
-  
-  <div class="todo">
 
-    <div class="dashboard">
+    <div class="todo">
+      <div class="dashboard">
+        <div class="kpis">
+          <p class="titulo">Indicadores:</p>
+          <div class="kpi1" id="div_kpi1"></div>
 
-      <div class="kpi1" id="div_kpi1">
-        p.texto
+          <div class="kpi2" id="div_kpi2"></div>
+        </div>
+
+        <div class="chart" id="div_chart">
+          <p class="titulo">Seus generos favoritos!</p>
+          <canvas id="grafico_generos"></canvas>
+        </div>
+
+        <div class="envelopamento">
+          <p>Sua lista de livros</p>
+          <div class="lista" id="div_salvo">
+            
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer">
+      <div class="card">
+        <div class="cima">
+          <p class="Titulo">Links rápidos</p>
+          <p class="textoPrincipal">
+            <a href="">•Home</a> <br />
+            <a href="">•Dicas de leitura</a> <br />
+            <a href="">•Ferramentas</a>
+          </p>
+        </div>
       </div>
 
-      <div class="kpi2" id="div_kpi2"></div>
+      <div class="vertical">
+        <img src="Imagens/footer/LinhaVertical-footer.svg" alt="" />
+      </div>
 
-      <div class="chart" id="div_chart"></div>
+      <div class="card">
+        <div class="cima">
+          <p class="Titulo">Contato</p>
+          <p class="textoPrincipal">
+            •Email <br />
+            <a href="">•Formulário</a>
+          </p>
+        </div>
+      </div>
+      <div class="vertical2">
+        <img src="Imagens/footer/LinhaVertical-footer.svg" alt="" />
+      </div>
 
-      <div class="listaSalvo" id="div_salvo"></div>
+      <div class="card">
+        <div class="cima">
+          <p class="Titulo">Sobre o projeto</p>
+          <p class="textoPrincipal">
+            •Desenvolvido por:
+            <a href="https://www.linkedin.com/in/gabriel-furtado-165aa72bb/"
+              >Gabriel Furtado</a
+            ><br />
+            •Instituição:
+            <a href="https://sptech.school/">São Paulo tech school</a><br />
+            <a
+              href="https://bandteccom-my.sharepoint.com/:w:/g/personal/gabriel_dsousa_sptech_school/ETqZHxX_WZRAosnKsa7ZKWoBycfvJnAFzxgmrulGgwWgwA?e=OjjrFT"
+              >•Documentação do projeto</a
+            >
+          </p>
+        </div>
+      </div>
 
-    </div>
+      <div class="horizontal"></div>
 
-  </div>
-
-
-  <div class="footer">
-
-    <div class="card">
-      <div class="cima">
-        <p class="Titulo">Links rápidos</p>
-        <p class="textoPrincipal">
-          <a href="">•Home</a> <br>
-          <a href="">•Dicas de leitura</a> <br>
-          <a href="">•Ferramentas</a>
+      <div class="baixo">
+        <p class="disclaimer">
+          © 2025 Leitura Descomplicada - Todos os direitos reservados Projeto
+          acadêmico desenvolvido para o curso de Ciências da Computação
         </p>
       </div>
     </div>
+  </body>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script>
+    const id = sessionStorage.getItem("ID_USUARIO") || null;
+    if (id == null) {
+      window.location.href = "./Login.html";
+    }
 
-    <div class="vertical">
-      <img src="Imagens/footer/LinhaVertical-footer.svg" alt="">
-    </div>
-      
-    <div class="card">
-      <div class="cima">
-        <p class="Titulo">Contato</p>
-        <p class="textoPrincipal">
-          •Email <br>
-          <a href="">•Formulário</a>
-        </p>
-      </div>
-    </div>
-    <div class="vertical2">
-      <img src="Imagens/footer/LinhaVertical-footer.svg" alt="">
-    </div>
+    // Função para carregar a KPI de total de livros
+    function obterTotalLivros() {
+      // Obter o ID do usuário
+      const idUsuario = id;
 
-    <div class="card">
-      <div class="cima">
-        <p class="Titulo">Sobre o projeto</p>
-        <p class="textoPrincipal">
-          •Desenvolvido por: <a href="https://www.linkedin.com/in/gabriel-furtado-165aa72bb/">Gabriel Furtado</a><br>
-          •Instituição: <a href="https://sptech.school/">São Paulo tech school</a><br>
-          <a href="https://bandteccom-my.sharepoint.com/:w:/g/personal/gabriel_dsousa_sptech_school/ETqZHxX_WZRAosnKsa7ZKWoBycfvJnAFzxgmrulGgwWgwA?e=OjjrFT">•Documentação do projeto</a>
-        </p>
-      </div>
-    </div>
+      // Mostrar indicador de carregamento (opcional)
+      div_kpi1.innerHTML = `<p>Carregando...</p>`;
 
-    <div class="horizontal"></div>
+      // Fazer a requisição para o endpoint
+      fetch(`/dashboards/contarLivrosPorUsuario/${idUsuario}`)
+        .then((resposta) => {
+          if (resposta.ok) {
+            return resposta.json();
+          } else {
+            throw new Error("Erro na requisição");
+          }
+        })
+        .then((dados) => {
+          console.log("Dados recebidos:", dados);
 
-    <div class="baixo">
-      <p class="disclaimer"> © 2025 Leitura Descomplicada - Todos os direitos reservados
-        Projeto acadêmico desenvolvido para o curso de Ciências da Computação</p>
-    </div>
-</body>
-<script>
-  
-</script>
+          // Verificar se há dados
+          if (dados && dados.length > 0) {
+            // Exibir o total de livros na KPI
+            div_kpi1.innerHTML = `
+                    <p class="titulo">Total de Livros</p>
+                    <p class="numero">${dados[0].totalLivros}</p>
+                `;
+          } else {
+            div_kpi1.innerHTML = `
+                    <p class="titulo">Total de Livros</p>
+                    <p class="numero">0</p>
+                `;
+          }
+        })
+        .catch((erro) => {
+          console.error("Erro ao obter total de livros:", erro);
+          div_kpi1.innerHTML = `<p class="erro">Erro ao carregar dados</p>`;
+        });
+    }
+
+    // Função para carregar a KPI de total de livros
+    function obterGeneroFavorito() {
+      // Obter o ID do usuário
+      const idUsuario = id;
+
+      // Mostrar indicador de carregamento (opcional)
+      div_kpi2.innerHTML = `<p>Carregando...</p>`;
+
+      // Fazer a requisição para o endpoint
+      fetch(`/dashboards/obterGeneroPreferido/${idUsuario}`)
+        .then((resposta) => {
+          if (resposta.ok) {
+            return resposta.json();
+          } else {
+            throw new Error("Erro na requisição");
+          }
+        })
+        .then((dados) => {
+          console.log("Dados recebidos:", dados);
+
+          // Verificar se há dados
+          if (dados && dados.length > 0) {
+            // Exibir o total de livros na KPI
+            div_kpi2.innerHTML = `
+                    <p class="titulo">Seu gênero literário do momento!</p>
+                    <p class="numero">${dados[0].genero}</p>
+                `;
+          } else {
+            div_kpi2.innerHTML = `
+                    <p class="titulo">Seu gênero literário do momento ainda não foi definido</p>
+                    
+                `;
+          }
+        })
+        .catch((erro) => {
+          console.error("Erro ao obter total de livros:", erro);
+          div_kpi2.innerHTML = `<p class="erro">Erro ao carregar dados</p>`;
+        });
+    }
+
+    // Função para obter os dados de livros por gênero e criar o gráfico
+    function obterLivrosPorGenero() {
+      const idUsuario = id;
+
+      fetch(`/dashboards/contarLivrosPorGenero/${idUsuario}`)
+        .then((resposta) => {
+          if (resposta.ok) {
+            return resposta.json();
+          } else {
+            throw new Error("Erro na requisição");
+          }
+        })
+        .then((dados) => {
+          console.log("Dados de gêneros recebidos:", dados);
+
+          if (dados && dados.length > 0) {
+            let generos = [];
+            let quantidades = [];
+
+            for (let index = 0; index < dados.length; index++) {
+              generos.push(dados[index].genero);
+              quantidades.push(dados[index].quantidade);
+            }
+
+            console.log("generos", generos);
+            console.log("quantidades", quantidades);
+
+            criarGrafico(generos, quantidades);
+          } else {
+            document.getElementById(
+              "div_chart"
+            ).innerHTML = `<p class="erro">Vamos descobrir juntos seus gêneros literários favoritos! Explore as funcionalidades do Leitura Descomplicada e personalize sua experiência.</p>`;
+          }
+        })
+        .catch((erro) => {
+          console.error("Erro ao obter dados para o gráfico:", erro);
+
+          document.getElementById(
+            "div_chart"
+          ).innerHTML = `<p class="erro">Erro ao carregar dados</p>`;
+        });
+    }
+
+    // Função para criar o gráfico usando Chart.js
+    function criarGrafico(labels, dados) {
+      // PASSO 1: Obter o contexto do canvas
+      // TODO: Substitua 'seuCanvas' pelo ID do seu elemento canvas
+      const ctx = document.querySelector("#div_chart canvas").getContext("2d");
+
+      // PASSO 2: Definir cores para o gráfico
+      // TODO: Personalize as cores conforme desejado
+      const cores = [
+        "rgba(168, 113, 75, 0.7)",
+        "rgba(92, 135, 39, 0.7)",
+        "rgba(72, 126, 116, 0.7)",
+        "rgba(186, 177, 127, 0.7)",
+        "rgba(77, 86, 59, 0.7)",
+        "rgba(143, 151, 121, 0.7)",
+        "rgba(133, 94, 66, 0.7)",
+        "rgba(207, 213, 176, 0.7)",
+        "rgba(181, 146, 104, 0.7)",
+        "rgba(120, 147, 98, 0.7)",
+        "rgba(162, 123, 92, 0.7)",
+      ];
+
+      new Chart(ctx, {
+        type: "pie",
+        data: {
+          labels: labels, // Os gêneros literários
+          datasets: [
+            {
+              label: "Livros por Gênero",
+              data: dados, // As quantidades de livros
+              backgroundColor: cores,
+              borderColor: cores.map((cor) => cor.replace("0.7", "1")), // Bordas mais escuras
+              borderWidth: 1,
+            },
+          ],
+        },
+        options: {
+          responsive: true,
+          plugins: {
+            legend: {
+              position: "top",
+            },
+            title: {
+              display: true,
+              text: "Seus gêneros preferidos!",
+            },
+            tooltip: {
+              callbacks: {
+                label: function (context) {
+                  // Personalizar o texto do tooltip
+                  if(context.raw > 1){
+                    return `${context.label}: ${context.raw} livros`
+                  }else return `${context.label}: ${context.raw} livro`
+                   ;
+                },
+              },
+            },
+          },
+        },
+      });
+    }
+
+    function obterLista() {
+      const idUsuario = id;
+
+      fetch(`/dashboards/listarPorUsuario/${idUsuario}`)
+        .then((resposta) => {
+          if (resposta.ok) {
+            return resposta.json();
+          } else {
+            throw new Error("Erro na requisição");
+          }
+        })
+        .then((dados) => {
+          console.log("Dados recebidos:", dados);
+
+          if (dados && dados.length > 0) {
+
+            
+
+            dados.forEach((item) => {
+              div_salvo.innerHTML += `
+                     <div class="livroLista" id="div_livroLista">
+                      <img src="${item.img}" alt="${item.nome}">
+                      <p class="p_nomeLivro" class="nomeLivro">${item.nome}</p>
+                      <p class="texto-expandido titulo">${item.genero}</p>
+                      <p class="texto-expandido">${item.descricao}</p>
+                    </div>
+
+                  `;
+            });
+          } else {
+            document.getElementById(
+              "div_salvo"
+            ).innerHTML = `<p class="erro">Vamos descobrir juntos seus gêneros literários favoritos! Explore as funcionalidades do Leitura Descomplicada e personalize sua experiência.</p>`;
+          }
+        })
+        .catch((erro) => {
+          console.error("Erro ao obter dados para o gráfico:", erro);
+
+          document.getElementById(
+            "div_salvo"
+          ).innerHTML = `<p class="erro">Erro ao carregar dados</p>`;
+        });
+    }
+
+    // Chamar a função quando a página carregar
+    window.onload = function () {
+      obterTotalLivros();
+      obterGeneroFavorito();
+      obterLivrosPorGenero();
+      obterLista();
+      // Aqui você chamará as outras funções para carregar os demais dados
+    };
+  </script>
 </html>

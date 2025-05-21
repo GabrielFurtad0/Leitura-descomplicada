@@ -17,9 +17,10 @@ var app = express();
 
 var indexRouter = require("./src/routes/index");
 var usuarioRouter = require("./src/routes/usuarios");
-var formularioRouter = require("./src/routes/formularios")
-var questionarioRouter = require("./src/routes/questionarios")
-var favoritosRouter = require("./src/routes/favoritos")
+var formularioRouter = require("./src/routes/formularios");
+var questionarioRouter = require("./src/routes/questionarios");
+var favoritosRouter = require("./src/routes/favoritos");
+var dashboardRouter = require("./src/routes/dashboards");
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -31,7 +32,8 @@ app.use("/", indexRouter);
 app.use("/usuarios", usuarioRouter);
 app.use("/formularios", formularioRouter);
 app.use("/questionarios", questionarioRouter);
-app.use("/favoritos", favoritosRouter)
+app.use("/favoritos", favoritosRouter);
+app.use("/dashboards", dashboardRouter);
 
 app.listen(PORTA_APP, function () {
     console.log(`
