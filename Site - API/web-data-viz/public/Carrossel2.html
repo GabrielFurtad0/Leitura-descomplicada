@@ -198,16 +198,16 @@ let ultimoNumeroGerado = null
 
     function numeroAleatorio(){
       let tamanhoLista = nomesLivro.length;
-      let novoNumero;
-  
+    let novoNumero;
+
     do {
-      // Fórmula para gerar número aleatório entre min e max (inclusivo)
-      novoNumero = Math.floor(Math.random() * (tamanhoLista - 0 + 1)) + 0;
+        // Gera número entre 0 e tamanhoLista-1 (inclusivo)
+        novoNumero = Math.floor(Math.random() * tamanhoLista);
     } while (novoNumero === ultimoNumeroGerado);
-  
+
     // Armazenar o número gerado para a próxima verificação
     ultimoNumeroGerado = novoNumero;
-  
+    
     return novoNumero;
 }
 
@@ -218,15 +218,8 @@ let ultimoNumeroGerado = null
       let numeroAletório = numeroAleatorio()
       let numeroAnterior = ''
 
-      if (numeroAletório === numeroAnterior) {
-        
-        do {
-          numeroAletório = Math.floor(Math.random() * tamanhoLista);
-        } while (numeroAletório === numeroAnterior);
-      }else{
-
       indexDaVez = numeroAletório
-      numeroAletório = numeroAnterior
+      
       console.log(numeroAletório);
 
       let imgExibida = document.getElementById("img_livro");
@@ -269,7 +262,7 @@ let ultimoNumeroGerado = null
       divEscolhida.style.opacity = "1";
 
       window.scrollTo(0, 150);
-      }
+      
     }
 
     function salvarLista() {
