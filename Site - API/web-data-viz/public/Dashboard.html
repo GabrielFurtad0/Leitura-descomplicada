@@ -37,20 +37,20 @@
 
     <div class="todo">
       <div class="dashboard">
+        <h1>Olá, Gabriel!</h1>
         <div class="kpis">
-          <p class="titulo">Indicadores:</p>
-          <div class="kpi1" id="div_kpi1"></div>
+          <div class="kpi1 kpi" id="div_kpi1"></div>
 
-          <div class="kpi2" id="div_kpi2"></div>
+          <div class="kpi2 kpi" id="div_kpi2"></div>
         </div>
 
         <div class="chart" id="div_chart">
           <p class="titulo">Seus generos favoritos!</p>
-          <canvas id="grafico_generos"></canvas>
+          <canvas id="grafico_generos" class="grafico"></canvas>
         </div>
 
         <div class="envelopamento">
-          <p>Sua lista de livros</p>
+          <p class="titulo">Sua lista de livros</p>
           <div class="lista" id="div_salvo">
             
           </div>
@@ -329,7 +329,7 @@
               div_salvo.innerHTML += `
                      <div class="livroLista" id="div_livroLista">
                       <img src="${item.img}" alt="${item.nome}">
-                      <p class="p_nomeLivro" class="nomeLivro">${item.nome}</p>
+                      <p id="p_nomeLivro" class="nomeLivro">${item.nome}</p>
                       <p class="texto-expandido titulo">${item.genero}</p>
                       <p class="texto-expandido">${item.descricao}</p>
                     </div>
