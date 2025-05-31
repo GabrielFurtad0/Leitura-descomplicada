@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Teste Questionario LD</title>
+  <link rel="stylesheet" href="Style.css">
+</head>
+<link rel="icon" href="Imagens/Navbar/Logo.svg">
+
+<body>
+  <!-- Navbar -->
+  <div class="todo">
+    <div class="navbar relative">
+      <div class="navbar-center">
+        <a href="./Index.html"><img src="Imagens/Navbar/novo_icone.svg" alt="Logo" class="Logo icone" /></a>
+        <p class="Titulo"><i>Leitura Descomplicada</i></p>
+      </div>
+      <div class="perfil-mais">
+        <a href="./Menu.html"><img src="Imagens/Navbar/menu.svg" alt="Ícone de menu de funcionalidades" class="Mais icone" /></a>
+        <div class="container-perfildeslogado" id="div_perfil">
+          <a href="./Login.html"><img src="Imagens/Navbar/perfil.svg" alt="Ícone de Perfil" class="Perfil icone" id="perfil" /></a>
+
+          <div class="perfil-dropdown">
+            <p class="nome-usuario" id="nickname" style="margin: 0.2rem; text-align: start;">Usuário</p>
+            <p class="email-usuario" id="emailUser" style="margin: 0.2rem; text-align: start;"></p>
+            <button onclick="deslogar()" class="botao-logout" id="btn_logout">Finalizar sessão <img src="./Imagens/Navbar/logout.svg" alt="logout"></button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <div class="todo">
+    <div class="questionnaire" id="div_questionnaire">
+      <!-- Add test button at the top -->
+      <button onclick="toggleResults()" style="margin: 1rem;">Toggle Results View</button>
+      <div class="Questionario" id="div_questionario">
+        <!-- Resultado do Questionário -->
+        <div class="questionarioFinalizado" id="div_questionarioFinalizado">
+          <p class="respostaQuestionario" id="p_respostaQuestionario">
+            Os gêneros que mais combinam com você são:
+          </p>
+        </div>
+
+        <!-- Exibição dos Livros -->
+        <div id="div_fotos" class="livroImagens">
+          <!-- Primeiro Gênero -->
+          <div class="genero">
+            <p id="p_titulo1" class="titulo">Fantasia</p>
+            <div class="card">
+              <img src="./Imagens/Questionario/O Senhor dos Anéis por J.R.R. Tolkien.jpg" alt="O Senhor dos Anéis" id="img1.1" />
+              <p class="subtitulo" id="p_subtitulo1.1">O Senhor dos Anéis</p>
+              <p class="descricao" id="p_descricao1.1">
+                Em uma terra mágica, hobbits, elfos e anões se unem para destruir um anel do poder e derrotar o Senhor do Escuro Sauron.
+              </p>
+              <button onclick="salvarLista1()" id="btn_lista1" class="btn_listaQ">
+                Salvar na minha lista
+              </button>
+              <p class="respostaAPIQuestionario" id="p_respostaQuestionario2.1" style="display: none;"></p>
+            </div>
+            <div class="card margin-right">
+              <img src="./Imagens/Questionario/Harry Potter e a Pedra Filosofal por J.K. Rowling.jpg" alt="Harry Potter" id="img1.2" />
+              <p class="subtitulo" id="p_subtitulo1.2">Os 7 Hábitos das Pessoas Altamente Eficazes</p>
+              <p class="descricao" id="p_descricao1.2">
+                Um jovem órfão descobre que é um bruxo e é convidado a estudar na Escola de Magia e Bruxaria de Hogwarts, onde enfrenta desafios e mistérios.
+              </p>
+              <button onclick="salvarLista2()" id="btn_lista2" class="btn_listaQ">
+                Salvar na minha lista
+              </button>
+              <p class="respostaAPIQuestionario" id="p_respostaQuestionario2.2" style="display: none;"></p>
+            </div>
+          </div>
+
+          <!-- Segundo Gênero -->
+          <div class="genero">
+            <p id="p_titulo2" class="titulo">Ficção Científica</p>
+            <div class="card margin-left">
+              <img src="./Imagens/Questionario/Dune by Frank Herbert.jpg" alt="Duna" id="img2.1">
+              <p class="subtitulo" id="p_subtitulo2.1">Duna</p>
+              <p class="descricao" id="p_descricao2.1">
+                Em um futuro distante, a luta pelo controle do planeta deserto Arrakis, a única fonte da valiosa especiaria melange, desencadeia uma teia de intrigas políticas e profecias messiânicas.
+              </p>
+              <button onclick="salvarLista3()" id="btn_lista3" class="btn_listaQ">
+                Salvar na minha lista
+              </button>
+              <p class="respostaAPIQuestionario" id="p_respostaQuestionario2.3" style="display: none;"></p>
+            </div>
+            <div class="card">
+              <img src="./Imagens/Questionario/1984 by George Orwell.jpg" alt="1984" id="img2.2" />
+              <p class="subtitulo" id="p_subtitulo2.2">1984</p>
+              <p class="descricao" id="p_descricao2.2">
+                Em um estado totalitário, Winston Smith se rebela contra o Partido e seu líder Big Brother, buscando a liberdade de pensamento e expressão.
+              </p>
+              <button onclick="salvarLista4()" id="btn_lista4" class="btn_listaQ">
+                Salvar na minha lista
+              </button>
+              <p class="respostaAPIQuestionario" id="p_respostaQuestionario2.4" style="display: none;"></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="div_btn-voltar" style="display: none;">
+      <button class="voltar"><img src="./Imagens/Questionario/menu_open.svg" alt=""></button>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <div class="footer">
+    <div class="card">
+      <div class="cima">
+        <p class="Titulo">Links rápidos</p>
+        <p class="textoPrincipal">
+          <a href="./Index.html">•Home</a> <br>
+          <a href="Menu.html">•Ferramentas</a>
+        </p>
+      </div>
+    </div>
+    <div class="vertical">
+      <img src="Imagens/footer/LinhaVertical-footer.svg" alt="">
+    </div>
+    <div class="card">
+      <div class="cima">
+        <p class="Titulo">Contato</p>
+        <p class="textoPrincipal">
+          <a href="./Formulário.html">•Email</a><br>
+          <a href="./Formulário.html">•Formulário</a>
+        </p>
+      </div>
+    </div>
+    <div class="vertical2">
+      <img src="Imagens/footer/LinhaVertical-footer.svg" alt="">
+    </div>
+    <div class="card">
+      <div class="cima">
+        <p class="Titulo">Sobre o projeto</p>
+        <p class="textoPrincipal">
+          •Desenvolvido por: <a href="https://www.linkedin.com/in/gabriel-furtado-165aa72bb/">Gabriel Furtado</a><br>
+          •Instituição: <a href="https://sptech.school/">São Paulo tech school</a><br>
+          <a href="https://bandteccom-my.sharepoint.com/:w:/g/personal/gabriel_dsousa_sptech_school/ETqZHxX_WZRAosnKsa7ZKWoBycfvJnAFzxgmrulGgwWgwA?e=OjjrFT">•Documentação do projeto</a>
+        </p>
+      </div>
+    </div>
+    <div class="horizontal"></div>
+    <div class="baixo">
+      <p class="disclaimer"> © 2025 Leitura Descomplicada - Todos os direitos reservados
+        Projeto acadêmico desenvolvido para o curso de Ciências da Computação</p>
+    </div>
+  </div>
+  <script>
+    let resultsVisible = false;
+
+    window.onload = function () {
+      iconePerfil()
+    }
+
+    function toggleResults() {
+      resultsVisible = !resultsVisible;
+      if (resultsVisible) {
+        showResults();
+      } else {
+        hideResults();
+      }
+    }
+
+    function showResults() {
+      document.querySelector('.div_btn-voltar').style.display = 'grid';
+      document.getElementById('div_fotos').style.display = 'grid';
+      document.getElementById('div_questionnaire').style.marginBottom = '10rem';
+    }
+
+    function hideResults() {
+      document.querySelector('.div_btn-voltar').style.display = 'none';
+      document.getElementById('div_fotos').style.display = 'none';
+      document.getElementById('div_questionnaire').style.marginBottom = '0';
+    }
+
+    function iconePerfil() {
+      if (sessionStorage.getItem('ID_USUARIO')) {
+        const perfil = document.getElementById("perfil")
+        const div_perfil = document.getElementById("div_perfil")
+        const nickname = document.getElementById("nickname")
+        const email = document.getElementById("emailUser")
+        perfil.src = "Imagens/Navbar/perfil-circulo.svg"
+        div_perfil.classList.add("container-perfil")
+        nickname.innerHTML = sessionStorage.getItem("NOME_USUARIO")
+        email.innerHTML = sessionStorage.getItem("EMAIL_USUARIO")
+      }
+    }
+
+    function deslogar() {
+      sessionStorage.clear()
+      window.location.href = "./Login.html"
+    }
+  </script>
+  <script>
+    // Funções básicas para teste dos botões
+    function salvarLista1() {
+      document.getElementById('p_respostaQuestionario2.1').style.display = 'inline';
+      document.getElementById('p_respostaQuestionario2.1').innerHTML = '<p style="color: green;" class="erro">Adicionado a sua lista com sucesso!</p>';
+      document.getElementById('btn_lista1').style.borderColor = "#6fde73";
+      setTimeout(() => {
+        document.getElementById('btn_lista1').style.borderColor = "#a67c52";
+      }, 3000);
+    }
+
+    function salvarLista2() {
+      document.getElementById('p_respostaQuestionario2.2').style.display = 'inline';
+      document.getElementById('p_respostaQuestionario2.2').innerHTML = '<p style="color: green;" class="erro">Adicionado a sua lista com sucesso!</p>';
+      document.getElementById('btn_lista2').style.borderColor = "#6fde73";
+      setTimeout(() => {
+        document.getElementById('btn_lista2').style.borderColor = "#a67c52";
+      }, 3000);
+    }
+
+    function salvarLista3() {
+      document.getElementById('p_respostaQuestionario2.3').style.display = 'inline';
+      document.getElementById('p_respostaQuestionario2.3').innerHTML = '<p style="color: green;" class="erro">Adicionado a sua lista com sucesso!</p>';
+      document.getElementById('btn_lista3').style.borderColor = "#6fde73";
+      setTimeout(() => {
+        document.getElementById('btn_lista3').style.borderColor = "#a67c52";
+      }, 3000);
+    }
+
+    function salvarLista4() {
+      document.getElementById('p_respostaQuestionario2.4').style.display = 'inline';
+      document.getElementById('p_respostaQuestionario2.4').innerHTML = '<p style="color: green;" class="erro">Adicionado a sua lista com sucesso!</p>';
+      document.getElementById('btn_lista4').style.borderColor = "#6fde73";
+      setTimeout(() => {
+        document.getElementById('btn_lista4').style.borderColor = "#a67c52";
+      }, 3000);
+    }
+  </script>
+
+</body>
+
+</html>

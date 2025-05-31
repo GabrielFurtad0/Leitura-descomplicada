@@ -1,5 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap");
-
+@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
 *,
 *::before,
 *::after {
@@ -63,67 +62,133 @@ a:hover {
 /* NAVBAR */
 
 .navbar {
-  height: 10vh;
+  justify-self: center;
+  height: 7.5vh;
+  width: 87.2vw;
   display: grid;
   gap: 0px;
   margin-top: 0px;
   grid-column: 1/-1;
-  background: #b5c99a;
-  background: linear-gradient(
-    0deg,
-    rgba(181, 201, 154, 1) 0%,
-    rgba(31, 47, 13, 1) 5%
-  );
+  background: linear-gradient(180deg,rgba(31, 47, 13, 1) 0%, rgba(31, 47, 13, 0.7) 100%);
   place-content: center;
-  grid-template-columns: auto 1fr auto auto;
+  grid-template-columns: 1fr 1fr;
   align-items: center;
+  padding: 1rem 2rem;
+  position: fixed;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  z-index: 9999;
 }
+
+.navbar.relative{
+  position: relative;
+}
+
 .navbar-center {
-  font-family: "Playfair Display";
+  font-family: "Lora";
   color: #e8f1d4;
   font-weight: bolder;
-  font-size: 4rem;
+  font-size: 2rem;
   display: flex;
   justify-content: center;
   align-items: center;
   column-gap: 30px;
-}
-
-.Logo {
-  margin-bottom: -1vh;
-}
-
-.Home {
-  margin-left: 6vw;
-}
-
-.Mais {
-  margin-right: 2vw;
-  margin-left: -2vw;
+  justify-self: start;
+  gap: 0.5rem;
 }
 
 .icone {
-  height: 4rem;
+  height: 2.5rem;
   width: auto;
+  opacity: 100%;
 }
 
-.Perfil {
-  margin-right: 7vw;
+.perfil-mais{
+  justify-self: end;
+  display: grid;
+  grid-template-rows: auto;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.menu{
+  grid-column: 1;
+}
+
+.container-perfil{
+  grid-column: 2;
+  display: inline-block;
+  transition: all 0.3s ease;
+  font-family: 'Nunito';
+}
+
+.perfil-dropdown{
+    justify-items: start;
+    position: absolute; /* Positions relative to the container */
+    top: 100%; /* Places it right below the icon */
+    right: 0; /* Aligns to the right edge */
+    
+    background-color: #e8f1d4;
+    border: 1px solid #b5c99a;
+    border-radius: 8px;
+    padding: 15px;
+    min-width: 150px;
+    
+    /* Shadow for a nice effect */
+    box-shadow: 0px 4px 9px 2px rgba(0, 0, 0, 0.3);
+    
+    /* Initially hidden */
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all 0.3s ease;
+    opacity: 0;
+    margin-top: 0.75rem;
+    color: #1f2f0d;
+    text-align: start;
+    z-index: 9999;
+}
+
+.perfil-dropdown .botao-logout{
+  justify-self: center;
+  border-radius: 1rem;
+  height: 3vh;
+  transition: 0.3s ease all;
+  display: grid;
+  grid-template-columns: 4fr 1fr;
+  justify-items: end;
+  text-align: center;
+  align-items: center;
+}
+
+.perfil-dropdown:hover{
+  border: solid 2px #1f2f0d;
+  box-shadow: 0px 2px 18px 4px rgba(92, 109, 73, 0.75);
+}
+
+.botao-logout:hover{
+  transform: scale(1.025);
+}
+
+.container-perfil:hover .perfil-dropdown{
+  display: grid;
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0px);
 }
 
 /*SEÇÃO HERO*/
 
 .hero {
-  margin-top: 10vh;
   height: 100vh;
-  border-radius: 50px;
   background-image: url(Imagens/LandingPage/heroimgtruemelhor.png);
   background-size: cover;
   grid-column: 1/-1;
   background-repeat: no-repeat;
   display: grid;
   grid-template-columns: 5vw 1fr 1fr 1fr 1fr;
-  box-shadow: 0px 4px 9px 2px rgba(0, 0, 0, 0.3);
+
 }
 
 .imgtitulo {
@@ -164,6 +229,10 @@ a:hover {
   width: 30vw;
   background-color: #a67c52;
   font-size: 2.2rem;
+}
+
+button.no-pointer{
+  cursor: default;
 }
 
 /*Citações*/
@@ -456,13 +525,16 @@ a:hover {
 .funcionalidades {
   grid-column: 1 / -1;
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   grid-template-rows: auto auto;
   column-gap: 2rem;
-  margin-top: 10vh;
+  margin-top: 0vh;
   height: 60vh;
   grid-row-gap: 2rem;
-  margin-bottom: 45vh;
+  margin-bottom: 50vh;
+  grid-column-gap: 5rem;
+  justify-content: center;
+  margin: 5vh 5rem 30vh 5rem;
 }
 
 .funcionalidades .card {
@@ -470,9 +542,9 @@ a:hover {
   border-radius: 2rem;
   padding: 1rem;
   justify-items: center;
-  justify-self: center;
-  min-height: 50vh;
+  min-height: 37vh;
   max-height: 50vh;
+  width: 20vw;
   position: relative;
   overflow: hidden;
   transition: all 0.3s ease;
@@ -481,11 +553,11 @@ a:hover {
 }
 
 .funcionalidades .card .Titulo {
-  margin-top: 0;
+  margin-top: 0.5rem;
   font-family: "Merriweather";
   font-weight: 1000;
   color: #1f2f0d;
-  font-size: 2.8rem;
+  font-size: 2rem;
 }
 
 .funcionalidades a {
@@ -502,6 +574,7 @@ a:hover {
   justify-self: center;
   align-self: center;
   font-size: 1.5rem;
+  margin-top: 0.5rem;
 }
 
 .texto-expandido {
@@ -511,26 +584,44 @@ a:hover {
   transition: max-height 0.3s ease, opacity 0.3s ease, margin-top 0.3s ease;
   font-family: "Nunito";
   text-align: center;
-  font-size: 1.3rem;
+  font-size: 1rem;
   margin-top: 0;
   pointer-events: none;
 }
 
 .funcionalidades .card:hover .texto-expandido {
-  max-height: 200px;
+  max-height: 12rem;
   opacity: 1;
   margin-top: 1rem;
 }
 
 .funcionalidades .card:hover {
-  max-height: 80vh;
-  min-height: 50vh;
   border: solid 2px #1f2f0d;
   box-shadow: 0px 2px 18px 4px rgba(92, 109, 73, 0.75);
 }
 
 .funcionalidades img.contos {
   margin-bottom: 0.5rem;
+}
+
+.funcionalidades img{
+  margin: 0 ;
+}
+
+img.dashboard-icone{
+  height: 12rem;
+}
+
+.linha2{
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10rem;
+  margin: 0 15rem;
+}
+
+.funcionalidades img{
+  height: 13vh;
 }
 
 /* LOGIN e CADASTRO */
@@ -542,12 +633,12 @@ a:hover {
   justify-self: center;
   background-color: #e8f1d4;
   border-radius: 2rem;
-  margin-top: 10vh;
+  margin-top: 5vh;
   width: fit-content;
   text-align: center;
   padding: 2.5rem;
   font-family: "Merriweather";
-  font-size: 4rem;
+  font-size: 3rem;
   width: 30vw;
   box-shadow: 0px 4px 9px 2px rgba(0, 0, 0, 0.3);
   color: #1f2f0d;
@@ -566,6 +657,10 @@ a:hover {
   padding: 0.5rem;
   color: #1f2f0d;
   transition: all 0.3s ease;
+}
+
+.input::placeholder{
+  text-align: center;
 }
 
 .Login .textoPrincipal {
@@ -753,7 +848,7 @@ select:hover {
   background-color: #e8f1d4;
   border-radius: 2rem;
   grid-template-columns: repeat(1, 1fr);
-  margin-top: 10rem;
+  margin-top: 3rem;
   padding: 2rem;
   width: 50vw;
   justify-self: center;
@@ -778,6 +873,7 @@ select:hover {
 .scrollavel::-webkit-scrollbar-track {
   background: #f1f1f1; /* Cor do "trilho" da barra */
   border-radius: 10px;
+  box-shadow: 0px 1px 9px 2px rgba(0, 0, 0, 0.25);
 }
 
 .scrollavel::-webkit-scrollbar-thumb {
@@ -785,8 +881,8 @@ select:hover {
   border-radius: 10px;
 }
 
-.scrollavel::-webkit-scrollbar-thumb:hover {
-  background: #b5c99a; /* Cor do "polegar" ao passar o mouse */
+.contos-container .scrollavel::-webkit-scrollbar-thumb:hover {
+  background: #99b37c;
   border-radius: 2rem;
 }
 
@@ -863,6 +959,14 @@ select:hover {
 
 .contos-container .card:hover {
   border: 2px solid #1f2f0d;
+}
+
+.titulo-pagina{
+  grid-column: 1 / -1;
+  justify-self: center;
+  font-family: 'Merriweather';
+  color: #1f2f0d;
+  font-size: 4rem;
 }
 
 /* FORMULÁRIO */
@@ -954,20 +1058,21 @@ select:hover {
 
 /* QUESTIONARIO */
 .questionnaire {
-  grid-column: 1 / -1;
+  grid-column: 3 / 11;
   justify-self: center;
   height: 80vh;
   align-content: center;
   margin-bottom: -10rem;
   transform: 0.5s;
-  margin-top: 5rem;
+  margin-top: 2rem;
   margin-bottom: 2rem;
 }
 
 .Questionario {
-  grid-column: 1 / -1;
+  grid-column: 2 / 11;
   display: grid;
   justify-self: center;
+  align-self: start;
   grid-template-rows: repeat(4, auto);
   background-color: #e8f1d4;
   box-shadow: 0px 4px 18px 4px rgba(0, 0, 0, 0.25);
@@ -975,8 +1080,8 @@ select:hover {
   padding: 2rem;
   font-size: 2rem;
   text-align: center;
+  height: fit-content;
   width: 70vw;
-  height: 85vh;
   color: #1f2f0d;
 }
 
@@ -989,7 +1094,7 @@ select:hover {
   color: #5c6d49;
 }
 
-.Questionario .Titulo {
+.Questionario .Titulo{
   grid-row: 1;
   grid-column: 1 / -1;
   text-align: center;
@@ -1020,7 +1125,7 @@ select:hover {
 
 .Questionario .botoes {
   margin: 1rem;
-  grid-row: -1;
+  grid-row: 4;
   grid-column: 1 / -1;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
@@ -1145,12 +1250,347 @@ button.button.iniciar {
 
 .livroImagens .card{
   display: grid;
-  grid-template-rows: auto auto auto 120px auto;
+  grid-template-rows: auto auto auto auto auto;
   justify-items: center;
-  align-items: center;
+  align-items: start;
 }
 
 .livroImagens .card button{
   grid-row: -1;
   font-size: 1.5rem;
+}
+
+p#p_titulo1{
+  margin: 1rem;
+  font-size: 2rem;
+}
+
+p#p_titulo2{
+  margin: 1rem;
+  font-size: 2rem;
+}
+
+p#p_respostaQuestionario{
+  margin: 0rem 1rem 1rem 1rem;
+  font-size: 2.5rem;
+}
+
+p.respostaAPIQuestionario{
+  margin: 0;
+  grid-row: 5;
+}
+
+.Questionario p.erro{
+  margin: 0;
+  grid-row: -1;
+}
+
+.div_btn-voltar{
+  margin-top: 2rem;
+  grid-column: -1;
+}
+
+button.voltar{
+  grid-row: 2;
+  height: 8vh;
+  width: 8vh;
+  border-radius: 100%;
+}
+
+button.voltar img{
+  height: 70%;
+}
+
+/* DASHBOARD */
+
+.dashboard{
+  grid-column: 1 / -1;
+  justify-self: center;
+  align-self: center;
+  justify-items: center;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: repeat(3, auto);
+  margin-top: 3vh;
+  margin-bottom: 10vh;
+  gap: 4rem;
+  color: #1f2f0d;
+  grid-row-gap: 3rem;
+  transition: all ease 0.3s;
+}
+
+.dashboard h1{
+  grid-row: 1;
+  grid-column: 1 / -1;
+  font-family: 'Merriweather';
+  font-size: 3rem;
+  margin: 0;
+}
+
+.dashboard .kpis{
+  grid-column: 1 / -1;
+  grid-row: 2;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 4rem;
+  transition: all ease 0.3s;
+}
+
+.dashboard .kpi{
+  background-color: #e8f1d4;
+  padding: 1rem 1.5rem;
+  font-family: 'Nunito';
+  font-weight: bold;
+  border-radius: 2.5rem;
+  width: 40vw;
+  box-shadow: 0px 4px 9px 2px rgba(0, 0, 0, 0.3);
+  font-size: 1.5rem;
+  transition: all 0.3s ease;
+  border-color: #e8f1d4;
+}
+
+.dashboard .kpi1{
+  grid-column: 1;
+  display: grid;
+  grid-template-columns: repeat(2, auto);
+  text-align: center;
+  align-items: center;
+  justify-self: center;
+  transition: all ease 0.3s;
+  height: 12vh;
+  
+}
+
+.dashboard .kpi1 .titulo{
+  padding: 0;
+  margin: 0;
+  font-weight: lighter;
+  text-align: start;
+  
+}
+
+.dashboard .kpi1 .numero{
+  font-size: 3rem;
+  padding: 0;
+  margin: 0;
+  font-weight: 800;
+  justify-items: center;
+}
+
+ .kpi1:hover{
+  transform: scale(1.025);
+  border: solid 1px #1f2f0d;
+}
+
+.dashboard .kpi2{
+  display: grid;
+  grid-template-columns: auto auto;
+  align-items: center;
+  transition: all ease 0.3s;
+}
+
+.dashboard .kpi2 .titulo{
+  font-weight: lighter;
+  margin: 0;
+  padding-right: 2rem;
+  line-height: 2rem;
+}
+
+.dashboard .kpi2 .numero{
+  font-weight: 800;
+  font-size: 2rem;
+  margin: 0;
+  text-align: center;
+}
+
+ .kpi2:hover{
+  transform: scale(1.025);
+  border: solid 1px #1f2f0d;
+}
+
+.dashboard .chart{
+  grid-column: 1;
+  background-color: #e8f1d4;
+  justify-items: center;
+  padding: 1rem;
+  border-radius: 2rem;
+  box-shadow: 0px 4px 9px 2px rgba(0, 0, 0, 0.3);
+  font-family: 'Merriweather';
+  font-size: 3rem;
+  justify-self: center;
+  height: 90vh;
+  width: 30vw;
+  transition: all 0.3s ease;
+  border-color: #e8f1d4;
+}
+
+.dashboard .chart:hover{
+  transform: scale(1.025);
+  border: solid 1px #1f2f0d;
+}
+
+.dashboard .chart .titulo{
+  margin: 0;
+}
+
+.dashboard .chart .grafico{
+
+  width: 10vw;
+}
+
+.dashboard .envelopamento{
+  grid-row: 3 / -1;
+  grid-column: 2;
+  background-color: #e8f1d4;
+  padding: 2rem;
+  height: 90vh;
+  width: 30vw;
+  border-radius: 2rem;
+  box-shadow: 0px 4px 9px 2px rgba(0, 0, 0, 0.3);
+  font-size: 2rem;
+  text-align: center;
+  font-family: 'Nunito';
+  transition: all 0.3s ease;
+}
+
+.dashboard .envelopamento .titulo{
+  font-weight: bold;
+  font-size: 3rem;
+  margin: 0;
+}
+
+.dashboard .envelopamento .lista{
+  height: 85%;
+  overflow-y: scroll;
+  padding: 1rem 0rem;
+}
+
+.dashboard .livroLista{
+  justify-items: center;
+  align-items: center;
+  display: grid;
+  grid-template-columns: 0.5fr 1fr;
+  margin: 1rem 0;
+  box-shadow: inset 0px 4px 9px 2px rgba(0, 0, 0, 0.3);
+  border-radius: 1rem;
+  padding: 0.5rem;
+  padding-top: 1.5rem;
+  margin-right: 1rem;
+  gap: 1rem;
+  height: 15vh;
+  font-size: 1.25rem;
+  font-weight: bold;
+  border-color: #e8f1d4;
+  transition: all 0.3s ease;
+}
+
+.lista::-webkit-scrollbar {
+  width: 10px; /* Largura da barra de rolagem */
+  box-shadow: 0px 1px 9px 2px rgba(0, 0, 0, 0.25);
+}
+
+.lista::-webkit-scrollbar-track {
+  background: #f1f1f1; /* Cor do "trilho" da barra */
+  border-radius: 10px;
+}
+
+.lista::-webkit-scrollbar-thumb {
+  background: #b5c99a; /* Cor do "polegar" da barra */
+  border-radius: 10px;
+  transition: background 2s ease;
+}
+
+.lista::-webkit-scrollbar-thumb:hover {
+  background: #99b37c; /* Cor do "polegar" ao passar o mouse */
+  border-radius: 2rem;
+}
+
+.dashboard .envelopamento .p_nomeLivro{
+  margin: 0;
+  justify-self: start;
+}
+
+.livroLista .texto-expandido.titulo{
+  font-size: 1.75rem;
+}
+
+.dashboard .envelopamento img{
+  height: 10vh;
+  grid-column: 1;
+  box-shadow: inset 0px 4px 9px 2px rgba(0, 0, 0, 0.3);
+  border-radius: 0.3rem;
+  
+}
+
+.envelopamento .livroLista:hover .texto-expandido {
+  max-height: 50px;
+  opacity: 1;
+  margin-top: 1rem;
+  
+}
+
+.livroLista .texto-expandido {
+  font-family: "Nunito";
+  font-size: 0.75rem;
+  text-align: left;
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  margin-top: 0;
+  pointer-events: none;
+  border-color: #e8f1d4;
+  transition: all 0.3s ease;
+}
+
+.lista .livroLista:hover .texto-expandido {
+  max-height: 28vh;
+  opacity: 1;
+  margin-top: 1rem;
+  pointer-events: auto; /* Permite interações com o texto */
+}
+
+.lista .livroLista:hover {
+  border: 2px solid #1f2f0d;
+  height: 28vh;
+  display: grid;
+  grid-template-columns: 0.5fr 1fr auto;
+}
+
+.div_btn_remover{
+  align-self: center;
+  grid-column: 3;
+  height: 5vh;
+}
+
+.lista .livroLista:hover .div_btn_remover {
+  visibility: visible;
+  opacity: 1;
+}
+
+button.btn_remover{
+  padding: 0;
+  background-color: red;
+  grid-column: 3;
+  border-radius: 3rem;
+  opacity: 0;
+  height: 5vh;
+  transition: all 0.3s ease; 
+  transform: translateY(-30px);
+}
+
+button.btn_remover:hover{
+  transform: scale(1.1);
+  height: 5vh;
+  border: 1px solid rgb(170, 3, 3) !important; 
+}
+
+.lista .livroLista:hover button.btn_remover{
+  opacity: 1;
+  transform: translateY(0px)
+}
+
+button.btn_remover .deletar{
+  box-shadow: none;
+  height: 5vh;
+  align-self: center;
 }

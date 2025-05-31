@@ -9,19 +9,43 @@
 <link rel="icon" href="Imagens/Navbar/Logo.svg">
 <body>
   
-  <div class="navbar">
-    <a href="Landing-page.html"><img src="Imagens/Navbar/home-outline.svg" alt="Ícone de menu Principal" class="Home icone"></a>
-    <div class="navbar-center">
-     <a href="Landing-page.html"><img src="Imagens/Navbar/Logo.svg" alt="Logo" class="Logo"></a> 
-      <p class="Titulo"><i>Leitura Descomplicada</i></p>
+  <div class="todo">
+      <div class="navbar relative">
+        <div class="navbar-center">
+          <a href="./Index.html"
+            ><img src="Imagens/Navbar/novo_icone.svg" alt="Logo" class="Logo icone"
+          /></a>
+          <p class="Titulo"><i>Leitura Descomplicada</i></p>
+        </div>
+        <div class="perfil-mais">
+        <a href="./Menu.html"
+          ><img
+            src="Imagens/Navbar/menu.svg"
+            alt="Ícone de menu de funcionalidades"
+            class="Mais icone"
+        /></a>
+        <div class="container-perfildeslogado" id="div_perfil">
+          <a href="./Login.html"
+          ><img
+          src="Imagens/Navbar/perfil.svg"
+          alt="Ícone de Perfil"
+          class="Perfil icone"
+          id="perfil"
+          /></a>
+
+          <div class="perfil-dropdown">
+            <p class="nome-usuario" id="nickname" style="margin: 0.2rem; text-align: start;">Usuário</p>
+            <p class="email-usuario" id="emailUser"  style="margin: 0.2rem; text-align: start;"></p>
+            <button onclick="deslogar()" class="botao-logout" id="btn_logout">Finalizar sessão <img src="./Imagens/Navbar/logout.svg" alt="logout"></button>
+          </div>
+        </div>
+        </div>
+      </div>
     </div>
-    <a href="Menu.html"><img src="Imagens/Navbar/More-outline.svg" alt="Ícone de menu de funcionalidades" class="Mais icone"></a>
-    <a href="Login.html"><img src="Imagens/Navbar/Perfil.svg" alt="Ícone de Perfil" class="Perfil icone"></a>
-  </div>
 
 
   <div class="todo">
-    <div class="Login">
+    <div class="Login login">
       <p class="Titulo">Faça seu login</p>
       <input type="text" id="ipt_email" class="input" placeholder="Insira seu E-mail">
       <input type="text" id="ipt_senha" class="input" placeholder="Insira sua senha">
@@ -34,52 +58,72 @@
 
   <div class="footer">
 
-    <div class="card">
+  <div class="card">
       <div class="cima">
         <p class="Titulo">Links rápidos</p>
         <p class="textoPrincipal">
-          <a href="">•Home</a> <br>
-          <a href="">•Dicas de leitura</a> <br>
-          <a href="">•Ferramentas</a>
+          <a href="./Index.html">•Home</a> <br>
+          <a href="Menu.html">•Ferramentas</a>
         </p>
       </div>
-    </div>
-
+  </div>
     <div class="vertical">
       <img src="Imagens/footer/LinhaVertical-footer.svg" alt="">
     </div>
-      
     <div class="card">
       <div class="cima">
         <p class="Titulo">Contato</p>
-        <p class="textoPrincipal">
-          •Email <br>
-          <a href="">•Formulário</a>
+          <a href="./Formulário.html">•Email</a><br>
+          <a href="./Formulário.html">•Formulário</a>
         </p>
       </div>
     </div>
     <div class="vertical2">
       <img src="Imagens/footer/LinhaVertical-footer.svg" alt="">
     </div>
-
     <div class="card">
       <div class="cima">
         <p class="Titulo">Sobre o projeto</p>
         <p class="textoPrincipal">
           •Desenvolvido por: <a href="https://www.linkedin.com/in/gabriel-furtado-165aa72bb/">Gabriel Furtado</a><br>
           •Instituição: <a href="https://sptech.school/">São Paulo tech school</a><br>
-          <a href="https://bandteccom-my.sharepoint.com/:w:/g/personal/gabriel_dsousa_sptech_school/ETqZHxX_WZRAosnKsa7ZKWoBycfvJnAFzxgmrulGgwWgwA?e=OjjrFT">•Documentação do projeto</a>
+          <a
+            href="https://bandteccom-my.sharepoint.com/:w:/g/personal/gabriel_dsousa_sptech_school/ETqZHxX_WZRAosnKsa7ZKWoBycfvJnAFzxgmrulGgwWgwA?e=OjjrFT">•Documentação
+            do projeto</a>
         </p>
       </div>
     </div>
-
     <div class="horizontal"></div>
-
     <div class="baixo">
       <p class="disclaimer"> © 2025 Leitura Descomplicada - Todos os direitos reservados
         Projeto acadêmico desenvolvido para o curso de Ciências da Computação</p>
-    </div>
+     </div>   
+  </div>
 </body>
+<script>
+  window.onload = function(){
+    iconePerfil()
+  }
+
+  function iconePerfil(){
+    if (sessionStorage.getItem('ID_USUARIO')){
+    const perfil = document.getElementById("perfil")
+    const div_perfil = document.getElementById("div_perfil")
+    const nickname = document.getElementById("nickname")
+    const email = document.getElementById("emailUser")
+      perfil.src="Imagens/Navbar/perfil-circulo.svg"
+      div_perfil.classList.add("container-perfil")
+      nickname.innerHTML = sessionStorage.getItem("NOME_USUARIO")
+      email.innerHTML = sessionStorage.getItem("EMAIL_USUARIO")
+    }
+  }
+
+
+  function deslogar(){
+    sessionStorage.clear()
+    window.location.href = "./Login.html"
+  }
+</script>
 <script>
   function autenticarUsuario(){
     var emailVar = ipt_email.value;
@@ -87,9 +131,16 @@
     
 
     if (emailVar == "" || senhaVar == "") {
-        div_resposta.innerHTML = "Ambos os campos devem estar preenchidos";
+        div_resposta.innerHTML =`<p class="textoPrincipal">Ambos os campos devem estar preenchidos</p>`
         document.getElementById("ipt_email").style.borderColor = "#D32F2F"
         document.getElementById("ipt_senha").style.borderColor = "#D32F2F"
+         setTimeout(() => {
+          div_resposta.innerHTML = ''
+          document.getElementById("ipt_email").value = ""
+          document.getElementById("ipt_senha").value = "";
+          document.getElementById("ipt_email").style.borderColor = "#B5C99A";
+          document.getElementById("ipt_senha").style.borderColor = "#B5C99A";
+        }, 3000);
         return false;
     }
     else {
@@ -124,11 +175,13 @@
                 document.getElementById("ipt_email").value = ""
                 document.getElementById("ipt_senha").value = "";
 
+                div_resposta.innerHTML = `<p style="color: green;" class="textoPrincipal">Usuário reconhecido</p>`
                 document.getElementById("ipt_email").style.borderColor = "#00f514";
                 document.getElementById("ipt_senha").style.borderColor = "#00f514";
                 setTimeout(() => {
-                document.getElementById("ipt_email").style.borderColor = "#B5C99A";
-                document.getElementById("ipt_senha").style.borderColor = "#B5C99A";
+                  div_resposta.innerHTML = ``
+                  document.getElementById("ipt_email").style.borderColor = "#B5C99A";
+                  document.getElementById("ipt_senha").style.borderColor = "#B5C99A";
                 }, 900);
 
 
@@ -140,9 +193,11 @@
           
             
         } else {
+            div_resposta.innerHTML = `<p style="color: red;" class="textoPrincipal">Email ou senha inválidos</p>`
             document.getElementById("ipt_email").style.borderColor = "#D32F2F";
             document.getElementById("ipt_senha").style.borderColor = "#D32F2F";
             setTimeout(() => {
+            div_resposta.innerHTML = ``
             document.getElementById("ipt_email").style.borderColor = "#B5C99A";
             document.getElementById("ipt_senha").style.borderColor = "#B5C99A";
             }, 3000);

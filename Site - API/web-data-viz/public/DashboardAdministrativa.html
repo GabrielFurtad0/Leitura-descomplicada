@@ -214,7 +214,7 @@
     function obterLivrosPorGenero() {
       const idUsuario = id;
 
-      fetch(`/dashboards/contarLivrosPorGenero/${idUsuario}`)
+      fetch(`/dashboardAdministrativa/contarTotalEnvios/${idUsuario}`)
         .then((resposta) => {
           if (resposta.ok) {
             return resposta.json();
@@ -311,16 +311,7 @@
             },
             datalabels: {
               align: 'center',
-              color: function(context){
-                const backgroundColor = context.dataset.backgroundColor[context.dataIndex]
-                const brightness = darkOrBright(backgroundColor)
-
-                if (brightness >= 128){
-                    return '#1f2f0d' 
-                } else {
-                    return '#d8e9d0'  
-                }
-              },
+              color: '#d8e9d0',
               // da controle sobre o que aparece no datalabels
               formatter: (value, context) =>{
                 function somaTotal(total, dataponto){
@@ -336,21 +327,6 @@
         },
         plugins: [ChartDataLabels],
       });
-    }
-
-    function darkOrBright(backgroundColor){
-      const regex = /rgba?\((\d+),\s*(\d+),\s*(\d+)/
-      const match = backgroundColor.match(regex)
-
-      if (match){
-        const r = parseInt(match[1]);
-        const g = parseInt(match[2]);
-        const b = parseInt(match[3]);
-
-        const brightness = (r * 0.299 + g * 0.587 + b * 0.114)
-        
-         return brightness
-      }
     }
 
     function obterLista() {
@@ -376,7 +352,6 @@
                      <div class="livroLista" id="div_livroLista">
                       <img src="${item.img}" alt="${item.nome}">
                       <p id="p_nomeLivro" class="nomeLivro">${item.nome}</p>
-                      <button onclick="removerDaLista(${item.nome})" class="btn_remover"><img src="./Imagens/Dashboard/close.svg" alt="Deletar" class="deletar"></button>
                       <p class="texto-expandido titulo">${item.genero}</p>
                       <p class="texto-expandido">${item.descricao}</p>
                     </div>
@@ -411,42 +386,6 @@
       window.location.href = "./Login.html"
     }
   }
-
-  function removerDaLista(nomeLivro){
-    console.log('Nome do livro a ser removido: ', nomeLivro);
-    
-
-    fetch("/usuarios/autenticar", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-            emailServer: emailVar,
-            senhaServer: senhaVar,
-        })
-    }).then(function (resposta) {
-        console.log("ESTOU NO THEN DO entrar()!")
-
-        if (resposta.ok) {
-     
-        } else {
-            
-            
-            console.log("Houve um erro ao tentar remover esse livro!");
-
-            resposta.text().then(texto => {
-                console.error(texto);
-                
-            });
-        }
-
-    }).catch(function (erro) {
-        console.log(erro);
-    })
-
-    return false;
-}
 
 
   function deslogar(){

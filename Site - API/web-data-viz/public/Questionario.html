@@ -12,16 +12,39 @@
 <body>
 
 
-  <div class="navbar">
-    <a href="./Index.html"><img src="Imagens/Navbar/Home.svg" alt="Ícone de menu Principal" class="Home icone"></a>
-    <div class="navbar-center">
-      <a href="./Index.html"><img src="Imagens/Navbar/Logo.svg" alt="Logo" class="Logo"></a>
-      <p class="Titulo"><i>Leitura Descomplicada</i></p>
+  <div class="todo">
+      <div class="navbar relative">
+        <div class="navbar-center">
+          <a href="./Index.html"
+            ><img src="Imagens/Navbar/novo_icone.svg" alt="Logo" class="Logo icone"
+          /></a>
+          <p class="Titulo"><i>Leitura Descomplicada</i></p>
+        </div>
+        <div class="perfil-mais">
+        <a href="./Menu.html"
+          ><img
+            src="Imagens/Navbar/menu.svg"
+            alt="Ícone de menu de funcionalidades"
+            class="Mais icone"
+        /></a>
+        <div class="container-perfildeslogado" id="div_perfil">
+          <a href="./Login.html"
+          ><img
+          src="Imagens/Navbar/perfil.svg"
+          alt="Ícone de Perfil"
+          class="Perfil icone"
+          id="perfil"
+          /></a>
+
+          <div class="perfil-dropdown">
+            <p class="nome-usuario" id="nickname" style="margin: 0.2rem; text-align: start;">Usuário</p>
+            <p class="email-usuario" id="emailUser"  style="margin: 0.2rem; text-align: start;"></p>
+            <button onclick="deslogar()" class="botao-logout" id="btn_logout">Finalizar sessão <img src="./Imagens/Navbar/logout.svg" alt="logout"></button>
+          </div>
+        </div>
+        </div>
+      </div>
     </div>
-    <a href="./Menu.html"><img src="Imagens/Navbar/More-outline.svg" alt="Ícone de menu de funcionalidades"
-        class="Mais icone"></a>
-    <a href="./Login.html"><img src="Imagens/Navbar/profile-outline.svg" alt="Ícone de Perfil" class="Perfil icone"></a>
-  </div>
 
 
   <div class="todo">
@@ -156,6 +179,11 @@
           </div>
       </div>
     </div>
+    <div class="div_btn-voltar" style="display: none;">
+      <button class="voltar" onclick="window.location.href='./Menu.html'">
+        <img src="./Imagens/Questionario/menu_open.svg" alt="">
+      </button>
+    </div>
   </div>
 
 
@@ -165,8 +193,7 @@
       <div class="cima">
         <p class="Titulo">Links rápidos</p>
         <p class="textoPrincipal">
-          <a href="">•Home</a> <br>
-          <a href="">•Dicas de leitura</a> <br>
+          <a href="./Index.html">•Home</a> <br>
           <a href="Menu.html">•Ferramentas</a>
         </p>
       </div>
@@ -177,9 +204,8 @@
     <div class="card">
       <div class="cima">
         <p class="Titulo">Contato</p>
-        <p class="textoPrincipal">
-          •Email <br>
-          <a href="">•Formulário</a>
+          <a href="./Formulário.html">•Email</a><br>
+          <a href="./Formulário.html">•Formulário</a>
         </p>
       </div>
     </div>
@@ -205,6 +231,33 @@
      </div>   
   </div>
 </body>
+<script>
+  window.onload = function(){
+    iconePerfil()
+  }
+
+  function iconePerfil(){
+    if (sessionStorage.getItem('ID_USUARIO')){
+    const perfil = document.getElementById("perfil")
+    const div_perfil = document.getElementById("div_perfil")
+    const nickname = document.getElementById("nickname")
+    const email = document.getElementById("emailUser")
+      perfil.src="Imagens/Navbar/perfil-circulo.svg"
+      div_perfil.classList.add("container-perfil")
+      nickname.innerHTML = sessionStorage.getItem("NOME_USUARIO")
+      email.innerHTML = sessionStorage.getItem("EMAIL_USUARIO")
+    }else {
+      alert('Para utilizar as funcionalidades do Leitura descomplicada você deve estar logado!')
+      window.location.href = "./Login.html"
+    }
+  }
+
+
+  function deslogar(){
+    sessionStorage.clear()
+    window.location.href = "./Login.html"
+  }
+</script>
 <script>
 
 
@@ -546,11 +599,14 @@
           button.style.display = 'block';
         });
         
+        // Mudanças no display para mostrar a finalização do questionario
         div_perguntas.style.display = 'none'
         respostaQuestionario.innerHTML = `Questionario finalizado enviando resposta ao sistema...`
         div_questionario.style.height = 'fit-content'
         div_fotos.style.display = 'grid'
-        div_questionnaire.style.marginBottom = '6rem'
+        div_questionnaire.style.marginBottom = '10rem'
+        // Show back button
+        document.querySelector('.div_btn-voltar').style.display = 'grid'
         
         //algoritmo pra identificar os generos favoritos do usuario
         algoritmoCalculoGeneroFavorito()
@@ -691,7 +747,6 @@ function encontrarTopGeneros(pontuacao) {
 
 }
 
-
   function enviarQuestionarioAPI(){
     let topGeneros = encontrarTopGeneros(pontuacao);
      const genero1 = topGeneros.genero1
@@ -790,11 +845,12 @@ function encontrarTopGeneros(pontuacao) {
   })
   .catch(error => {
     console.error("Erro geral no fetch:", error);
-    divResposta.innerHTML = `<p style="color: red;"  class="erro">${error.message || "Ocorreu um erro ao mandar a mensagem. Tente novamente."}</p>`;
-    
-    
-
-    // ${imagensLivros[categoria]["titulo2"]}
+    console.error("Erro geral no fetch:", error);
+    if (error.message == 'Erro ao enviar: 500'){
+      divResposta.innerHTML = `<p style="color: red;" class="erro">Este livro ja está na sua lista!</p>`
+    }else 
+    divResposta.innerHTML = `<p style="color: red;"  class="erro">"Ocorreu um erro ao adicionar esse livro a sua lista. Tente novamente mais tarde, ou, mande uma mensagem para nós através do formulário."
+    </p>`;
 
   });
 }
@@ -945,7 +1001,9 @@ function encontrarTopGeneros(pontuacao) {
 }
 }
 
-
+function menu(){
+  window.location.href = "Menu.html"
+}
 
 
 </script>

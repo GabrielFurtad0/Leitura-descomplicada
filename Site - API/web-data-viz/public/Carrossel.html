@@ -9,31 +9,38 @@
   <link rel="icon" href="Imagens/Navbar/Logo.svg" />
 
   <body>
-    <div class="navbar">
-      <a href="Landing-page.html"
-        ><img
-          src="Imagens/Navbar/home-outline.svg"
-          alt="Ícone de menu Principal"
-          class="Home icone"
-      /></a>
-      <div class="navbar-center">
-        <a href="Landing-page.html"
-          ><img src="Imagens/Navbar/Logo.svg" alt="Logo" class="Logo"
+    <div class="todo">
+      <div class="navbar relative">
+        <div class="navbar-center ">
+          <a href="./Index.html"
+            ><img src="Imagens/Navbar/novo_icone.svg" alt="Logo" class="Logo icone"
+          /></a>
+          <p class="Titulo"><i>Leitura Descomplicada</i></p>
+        </div>
+        <div class="perfil-mais">
+        <a href="./Menu.html"
+          ><img
+            src="Imagens/Navbar/menu.svg"
+            alt="Ícone de menu de funcionalidades"
+            class="Mais icone"
         /></a>
-        <p class="Titulo"><i>Leitura Descomplicada</i></p>
-      </div>
-      <a href="Menu.html"
-        ><img
-          src="Imagens/Navbar/More.svg"
-          alt="Ícone de menu de funcionalidades"
-          class="Mais icone"
-      /></a>
-      <a href="Login.html"
-        ><img
-          src="Imagens/Navbar/profile-outline.svg"
+        <div class="container-perfildeslogado" id="div_perfil">
+          <a href="./Login.html"
+          ><img
+          src="Imagens/Navbar/perfil.svg"
           alt="Ícone de Perfil"
           class="Perfil icone"
-      /></a>
+          id="perfil"
+          /></a>
+
+          <div class="perfil-dropdown">
+            <p class="nome-usuario" id="nickname" style="margin: 0.2rem; text-align: start;">Usuário</p>
+            <p class="email-usuario" id="emailUser"  style="margin: 0.2rem; text-align: start;"></p>
+            <button onclick="deslogar()" class="botao-logout" id="btn_logout">Finalizar sessão <img src="./Imagens/Navbar/logout.svg" alt="logout"></button>
+          </div>
+        </div>
+        </div>
+      </div>
     </div>
 
     <div class="todo">
@@ -61,61 +68,76 @@
     </div>
 
     <div class="footer">
-      <div class="card" id="div_card">
-        <div class="cima">
-          <p class="Titulo">Links rápidos</p>
-          <p class="textoPrincipal">
-            <a href="">•Home</a> <br />
-            <a href="">•Dicas de leitura</a> <br />
-            <a href="">•Ferramentas</a>
-          </p>
-        </div>
-      </div>
 
-      <div class="vertical">
-        <img src="Imagens/footer/LinhaVertical-footer.svg" alt="" />
+  <div class="card">
+      <div class="cima">
+        <p class="Titulo">Links rápidos</p>
+        <p class="textoPrincipal">
+          <a href="./Index.html">•Home</a> <br>
+          <a href="Menu.html">•Ferramentas</a>
+        </p>
       </div>
-
-      <div class="card">
-        <div class="cima">
-          <p class="Titulo">Contato</p>
-          <p class="textoPrincipal">
-            •Email <br />
-            <a href="">•Formulário</a>
-          </p>
-        </div>
-      </div>
-      <div class="vertical2">
-        <img src="Imagens/footer/LinhaVertical-footer.svg" alt="" />
-      </div>
-
-      <div class="card">
-        <div class="cima">
-          <p class="Titulo">Sobre o projeto</p>
-          <p class="textoPrincipal">
-            •Desenvolvido por:
-            <a href="https://www.linkedin.com/in/gabriel-furtado-165aa72bb/"
-              >Gabriel Furtado</a
-            ><br />
-            •Instituição:
-            <a href="https://sptech.school/">São Paulo tech school</a><br />
-            <a
-              href="https://bandteccom-my.sharepoint.com/:w:/g/personal/gabriel_dsousa_sptech_school/ETqZHxX_WZRAosnKsa7ZKWoBycfvJnAFzxgmrulGgwWgwA?e=OjjrFT"
-              >•Documentação do projeto</a
-            >
-          </p>
-        </div>
-      </div>
-      <div class="horizontal"></div>
-
-      <div class="baixo">
-        <p class="disclaimer">
-          © 2025 Leitura Descomplicada - Todos os direitos reservados Projeto
-          acadêmico desenvolvido para o curso de Ciências da Computação
+  </div>
+    <div class="vertical">
+      <img src="Imagens/footer/LinhaVertical-footer.svg" alt="">
+    </div>
+    <div class="card">
+      <div class="cima">
+        <p class="Titulo">Contato</p>
+          <a href="./Formulário.html">•Email</a><br>
+          <a href="./Formulário.html">•Formulário</a>
         </p>
       </div>
     </div>
+    <div class="vertical2">
+      <img src="Imagens/footer/LinhaVertical-footer.svg" alt="">
+    </div>
+    <div class="card">
+      <div class="cima">
+        <p class="Titulo">Sobre o projeto</p>
+        <p class="textoPrincipal">
+          •Desenvolvido por: <a href="https://www.linkedin.com/in/gabriel-furtado-165aa72bb/">Gabriel Furtado</a><br>
+          •Instituição: <a href="https://sptech.school/">São Paulo tech school</a><br>
+          <a
+            href="https://bandteccom-my.sharepoint.com/:w:/g/personal/gabriel_dsousa_sptech_school/ETqZHxX_WZRAosnKsa7ZKWoBycfvJnAFzxgmrulGgwWgwA?e=OjjrFT">•Documentação
+            do projeto</a>
+        </p>
+      </div>
+    </div>
+    <div class="horizontal"></div>
+    <div class="baixo">
+      <p class="disclaimer"> © 2025 Leitura Descomplicada - Todos os direitos reservados
+        Projeto acadêmico desenvolvido para o curso de Ciências da Computação</p>
+     </div>   
+  </div>
   </body>
+  <script>
+  window.onload = function(){
+    iconePerfil()
+  }
+
+  function iconePerfil(){
+    if (sessionStorage.getItem('ID_USUARIO')){
+    const perfil = document.getElementById("perfil")
+    const div_perfil = document.getElementById("div_perfil")
+    const nickname = document.getElementById("nickname")
+    const email = document.getElementById("emailUser")
+      perfil.src="Imagens/Navbar/perfil-circulo.svg"
+      div_perfil.classList.add("container-perfil")
+      nickname.innerHTML = sessionStorage.getItem("NOME_USUARIO")
+      email.innerHTML = sessionStorage.getItem("EMAIL_USUARIO")
+    }else {
+      alert('Para utilizar as funcionalidades do Leitura descomplicada você deve estar logado!')
+      window.location.href = "./Login.html"
+    }
+  }
+
+
+  function deslogar(){
+    sessionStorage.clear()
+    window.location.href = "./Login.html"
+  }
+</script>
   <script>
     let indexDaVez = 0
 
@@ -160,8 +182,8 @@ let GenerosLivro = [
   "Ficção Histórica",
   "Não Ficção",
   "Romance",
-  "Terror/Horror",
-  "Mistério/Suspense"
+  "Terror",
+  "Suspense"
 ];
 
 let descricoesLivro = [
@@ -198,16 +220,16 @@ let ultimoNumeroGerado = null
 
     function numeroAleatorio(){
       let tamanhoLista = nomesLivro.length;
-      let novoNumero;
-  
+    let novoNumero;
+
     do {
-      // Fórmula para gerar número aleatório entre min e max (inclusivo)
-      novoNumero = Math.floor(Math.random() * (tamanhoLista - 0 + 1)) + 0;
+        // Gera número entre 0 e tamanhoLista-1 (inclusivo)
+        novoNumero = Math.floor(Math.random() * tamanhoLista);
     } while (novoNumero === ultimoNumeroGerado);
-  
+
     // Armazenar o número gerado para a próxima verificação
     ultimoNumeroGerado = novoNumero;
-  
+    
     return novoNumero;
 }
 
@@ -218,15 +240,8 @@ let ultimoNumeroGerado = null
       let numeroAletório = numeroAleatorio()
       let numeroAnterior = ''
 
-      if (numeroAletório === numeroAnterior) {
-        
-        do {
-          numeroAletório = Math.floor(Math.random() * tamanhoLista);
-        } while (numeroAletório === numeroAnterior);
-      }else{
-
       indexDaVez = numeroAletório
-      numeroAletório = numeroAnterior
+      
       console.log(numeroAletório);
 
       let imgExibida = document.getElementById("img_livro");
@@ -249,12 +264,18 @@ let ultimoNumeroGerado = null
 
       // mudando o tamanho e a mensagem do botão
       let botaoEscolhido = document.getElementById("botao");
-      botaoEscolhido.style.width = "10vw";
+      botaoEscolhido.style.width = "max-content";
       botaoEscolhido.style.height = "10vh";
-      botaoEscolhido.style.fontSize = "1rem";
-      botaoEscolhido.style.padding = "1rem";
+      botaoEscolhido.style.fontSize = "1.7rem";
+      botaoEscolhido.style.padding = "1.3rem";
       botaoEscolhido.innerHTML = "Sortear Novamente";
       botaoEscolhido.style.gridRow = "2";
+
+  //     justify-self: center;
+  // font-size: 2rem;
+  // height: 10vh;
+  // padding: 1.5rem;
+  // width: max-content;
 
       // mudando o tamanho da imagem
       imgExibida.style.height = "30vw";
@@ -269,7 +290,7 @@ let ultimoNumeroGerado = null
       divEscolhida.style.opacity = "1";
 
       window.scrollTo(0, 150);
-      }
+      
     }
 
     function salvarLista() {
@@ -354,7 +375,11 @@ let ultimoNumeroGerado = null
   })
   .catch(error => {
     console.error("Erro geral no fetch:", error);
-    divResposta.innerHTML = `<p style="color: red;"  class="erro">${error.message || "Ocorreu um erro ao adicionar esse livro a sua lista. Tente novamente mais tarde, ou, mande uma mensagem para nos atrávez do formulario."}</p>`;
+    if (error.message == 'Erro ao enviar: 500'){
+      divResposta.innerHTML = `<p style="color: red;" class="erro">Este livro ja está na sua lista!</p>`
+    }else 
+    divResposta.innerHTML = `<p style="color: red;"  class="erro">"Ocorreu um erro ao adicionar esse livro a sua lista. Tente novamente mais tarde, ou, mande uma mensagem para nós através do formulário."
+    </p>`;
     
      setTimeout(() => {
               divResposta.innerHTML = ''
