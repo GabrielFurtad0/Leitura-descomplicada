@@ -376,13 +376,14 @@
                      <div class="livroLista" id="div_livroLista">
                       <img src="${item.img}" alt="${item.nome}">
                       <p id="p_nomeLivro" class="nomeLivro">${item.nome}</p>
-                      <button onclick="removerDaLista(${item.nome})" class="btn_remover"><img src="./Imagens/Dashboard/close.svg" alt="Deletar" class="deletar"></button>
+                      <button data-nome-livro="${item.nome}" class="btn_remover"><img src="./Imagens/Dashboard/close.svg" alt="Deletar" class="deletar"></button>
                       <p class="texto-expandido titulo">${item.genero}</p>
                       <p class="texto-expandido">${item.descricao}</p>
                     </div>
 
                   `;
             });
+            verificarBotaoRemover()
           } else {
           }
         })
@@ -415,21 +416,25 @@
   function removerDaLista(nomeLivro){
     console.log('Nome do livro a ser removido: ', nomeLivro);
     
+    const livro = nomeLivro
+    const idUsuario = sessionStorage.getItem("ID_USUARIO")
 
-    fetch("/usuarios/autenticar", {
-        method: "POST",
+    
+
+    fetch(`dashboards/removerLivroDaLista`, {
+        method: "DELETE",
         headers: {
             "Content-Type": "application/json"
         },
         body: JSON.stringify({
-            emailServer: emailVar,
-            senhaServer: senhaVar,
+            'livroServer': livro,
+            "idUsuarioServer": idUsuario,
         })
     }).then(function (resposta) {
         console.log("ESTOU NO THEN DO entrar()!")
 
         if (resposta.ok) {
-     
+          location.reload()
         } else {
             
             
@@ -448,6 +453,23 @@
     return false;
 }
 
+  function verificarBotaoRemover(){
+    const div_salvo = document.getElementById("div_livroLista")
+    div_salvo.addEventListener("click", function(event){
+       const botaoClicado = event.target.closest(".btn_remover");
+      if (botaoClicado){
+        
+        const nomeLivroParaRemover = botaoClicado.getAttribute("data-nome-livro");
+
+        console.log("Botão remover clicado para:", nomeLivroParaRemover)
+        if (nomeLivroParaRemover){
+          if(confirm(`Tem certeza que deseja remover "${nomeLivroParaRemover}"?`)){
+            removerDaLista(nomeLivroParaRemover)
+          }
+        }
+      }
+    })
+  }
 
   function deslogar(){
     sessionStorage.clear()
@@ -461,7 +483,7 @@
       obterLivrosPorGenero();
       obterLista();
       exibirNomeDashboard();
-      iconePerfil()
+      iconePerfil();
       // Aqui você chamará as outras funções para carregar os demais dados
     };
   </script>

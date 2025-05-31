@@ -45,11 +45,20 @@ function obterGeneroPreferido(idUsuario) {
     return database.executar(instrucaoSql);
 }
 
-
+function removerLivroDaLista(idUsuario, nomeLivro){
+    const instrucaoSql = `
+    delete from lista
+    where nome = "${nomeLivro}"
+    and fkUsuario = "${idUsuario}"
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql)
+}
 
 module.exports = {
     contarLivrosPorUsuario,
     listarPorUsuario,
     contarLivrosPorGenero,
-    obterGeneroPreferido
+    obterGeneroPreferido,
+    removerLivroDaLista,
 };

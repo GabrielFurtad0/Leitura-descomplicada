@@ -106,9 +106,43 @@ const idUsuario = req.params.idUsuario;
     });
 }
 
+function removerLivroDaLista(req,res){
+  const idUsuario = req.body.idUsuarioServer;
+  const nomeLivro = req.body.livroServer
+  
+  // Validação do parâmetro
+  if (idUsuario == undefined ) {
+    res.status(400).send("ID do usuário está undefined!");
+    return;
+  }else if (nomeLivro == undefined){
+    res.status(400).send("Nome do livro está undefine")
+    return;
+  }
+  
+  dashboardModel.removerLivroDaLista(idUsuario, nomeLivro)
+    .then((resultado) => {
+      if (resultado.affectedRows > 0) { 
+        // Sucesso! O livro foi removido. 
+        console.log(`${resultado.affectedRows} linha(s) removida(s)`); 
+        res.status(204).end();} 
+        else{
+        // Nada foi deletado (talvez o livro/usuário não existisse com essa combinação) 
+        console.log("Nenhuma linha removida. Livro não encontrado?"); 
+        res.status(404).send("Livro não encontrado para este usuário.");
+      
+      }
+    })
+    .catch(function (erro) {
+      console.log(erro);
+      console.log("Houve um erro ao contar os livros: ", erro.sqlMessage);
+      res.status(500).json(erro.sqlMessage);
+    });
+}
+
 module.exports = {
   contarLivrosPorUsuario,
   listarPorUsuario,
   contarLivrosPorGenero,
   obterGeneroPreferido,
+  removerLivroDaLista,
 }

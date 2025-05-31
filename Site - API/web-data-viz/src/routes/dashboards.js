@@ -19,4 +19,8 @@ router.get("/obterGeneroPreferido/:idUsuario", function(req, res){
   dashboardController.obterGeneroPreferido(req, res);
 })
 
+router.delete("/removerLivroDaLista" , function(req, res){
+  dashboardController.removerLivroDaLista(req,res)
+})
+
 module.exports = router;
