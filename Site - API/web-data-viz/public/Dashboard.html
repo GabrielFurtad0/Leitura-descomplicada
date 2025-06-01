@@ -44,24 +44,32 @@
 
     <div class="todo">
       <div class="dashboard">
-        <h1 id="exibir-nome">Olá, Gabriel!</h1>
-        <div class="kpis">
-          <div class="kpi1 kpi" id="div_kpi1"></div>
-
-          <div class="kpi2 kpi" id="div_kpi2"></div>
+        <div class="lado-esquerdo">
+          <div class="kpis">
+            <div class="kpi1 kpi" id="div_kpi1"></div>
+  
+            <div class="kpi2 kpi" id="div_kpi2"></div>
+          </div>
+  
+          <div class="envelopamento">
+            <p class="titulo">Sua lista de livros</p>
+            <div class="lista" id="div_salvo">
+              
+            </div>
+          </div>
         </div>
 
         <div class="chart" id="div_chart">
-          <p class="titulo">Seus generos favoritos!</p>
+          <p class="titulo"></p>
           <canvas id="grafico_generos" class="grafico"></canvas>
         </div>
 
-        <div class="envelopamento">
-          <p class="titulo">Sua lista de livros</p>
-          <div class="lista" id="div_salvo">
-            
-          </div>
+        
+
+        <div class="div_histograma" id="div_histograma">
+          <canvas id="grafico_tempo" class="histograma"></canvas>
         </div>
+
       </div>
     </div>
 
@@ -119,14 +127,14 @@
       window.location.href = "./Login.html";
     }
 
-    function exibirNomeDashboard(){
-      const nome = sessionStorage.getItem("NOME_USUARIO")
-      const exibirNome = document.getElementById("exibir-nome")
-      if (nome){
-        exibirNome.innerHTML = `Olá, ${nome}`
-      }else exibirNome.innerHTML = ''
+    // function exibirNomeDashboard(){
+    //   const nome = sessionStorage.getItem("NOME_USUARIO")
+    //   const exibirNome = document.getElementById("exibir-nome")
+    //   if (nome){
+    //     exibirNome.innerHTML = `Olá, ${nome}`
+    //   }else exibirNome.innerHTML = ''
 
-    }
+    // }
 
     // Função para carregar a KPI de total de livros
     function obterTotalLivros() {
@@ -208,8 +216,8 @@
                                 <p class="numero">Ainda não sabemos!</p>`;
         });
     }
-
     let quantidades;   
+
     // Função para obter os dados de livros por gênero e criar o gráfico
     function obterLivrosPorGenero() {
       const idUsuario = id;
@@ -246,7 +254,7 @@
 
          document.getElementById(
               "div_chart"
-            ).innerHTML = `<p class="titulo">Seus gêneros preferidos</p>
+            ).innerHTML = `
                             <p class="erro" style = 'text-align: center; font-size: 2rem; width: 18vw'>Vamos descobrir juntos seus 
                             gêneros literários favoritos! Explore as 
                             funcionalidades do Leitura Descomplicada e personalize sua experiência.</p>`
@@ -297,6 +305,11 @@
             title: {
               display: true,
               text: "Seus gêneros preferidos!",
+              color: "#1f2f0d",
+              font: {
+                size: 20,
+                family: 'Merriweather'
+              }
             },
             tooltip: {
               callbacks: {
@@ -348,7 +361,6 @@
         const b = parseInt(match[3]);
 
         const brightness = (r * 0.299 + g * 0.587 + b * 0.114)
-        
          return brightness
       }
     }
@@ -373,7 +385,7 @@
 
             dados.forEach((item) => {
               div_salvo.innerHTML += `
-                     <div class="livroLista" id="div_livroLista">
+                     <div class="livroLista">
                       <img src="${item.img}" alt="${item.nome}">
                       <p id="p_nomeLivro" class="nomeLivro">${item.nome}</p>
                       <button data-nome-livro="${item.nome}" class="btn_remover"><img src="./Imagens/Dashboard/close.svg" alt="Deletar" class="deletar"></button>
@@ -383,7 +395,7 @@
 
                   `;
             });
-            verificarBotaoRemover()
+            
           } else {
           }
         })
@@ -454,14 +466,15 @@
 }
 
   function verificarBotaoRemover(){
-    const div_salvo = document.getElementById("div_livroLista")
+    const div_salvo = document.getElementById("div_salvo")
     div_salvo.addEventListener("click", function(event){
+      console.log("Clique detectado dentro do container! Elemento clicado:", event.target);
        const botaoClicado = event.target.closest(".btn_remover");
+       console.log("Resultado do closest('.btn_remover'):", botaoClicado)
       if (botaoClicado){
-        
         const nomeLivroParaRemover = botaoClicado.getAttribute("data-nome-livro");
-
         console.log("Botão remover clicado para:", nomeLivroParaRemover)
+
         if (nomeLivroParaRemover){
           if(confirm(`Tem certeza que deseja remover "${nomeLivroParaRemover}"?`)){
             removerDaLista(nomeLivroParaRemover)
@@ -469,6 +482,184 @@
         }
       }
     })
+  }
+
+  let quantidadeTempo = {
+    "ateDois": 0,
+    "tresaQuatro": 0,
+    "cincoaSeis": 0,
+    "seteaOito": 0,
+    "noveaDez": 0,
+    "onzeMais":0,
+  }
+  function obterTempoLeitura(){
+
+    const idUsuario = id;
+
+      fetch(`/dashboards/obterTempoLeitura/${idUsuario}`)
+        .then((resposta) => {
+          if (resposta.ok) {
+            return resposta.json();
+          } else {
+            throw new Error("Erro na requisição");
+          }
+        })
+        .then((dados) => {
+          console.log("Dados de tempo de leitura recebidos:", dados);
+          if (dados && dados.length > 0) {
+            
+            for (let index = 0; index < dados.length; index++) {
+              if (dados[index].tempo_de_leitura <= 2){
+                quantidadeTempo.ateDois ++
+              }else if (dados[index].tempo_de_leitura <= 4){
+                quantidadeTempo.tresaQuatro ++
+              }else if (dados[index].tempo_de_leitura <= 6){
+                quantidadeTempo.cincoaSeis ++
+              }else if (dados[index].tempo_de_leitura <= 8){
+                quantidadeTempo.seteaOito ++
+              }else if (dados[index].tempo_de_leitura <= 10){
+                quantidadeTempo.noveaDez ++
+              }else {
+                quantidadeTempo.onzeMais ++
+              }
+            }
+
+            console.log("Quantidade por tempo", quantidadeTempo)
+
+            criarHistogramaTempoLeitura(quantidadeTempo)
+          } else {
+            
+          }
+        })
+        .catch((erro) => {
+          console.error("Erro ao obter dados para o gráfico:", erro);
+
+         document.getElementById(
+              "div_chart"
+            ).innerHTML = `<p class="titulo">Livros separados pelo tempo de leitura</p>
+                            <p class="erro" style = 'text-align: center; font-size: 2rem; width: 18vw'>Vamos descobrir juntos seus 
+                            gêneros literários favoritos! Explore as 
+                            funcionalidades do Leitura Descomplicada e personalize sua experiência.</p>`
+        });
+  }
+
+  function criarHistogramaTempoLeitura(dadosContagem){
+    const ctx = document.querySelector("#grafico_tempo").getContext("2d");
+
+      // PASSO 2: Definir cores para o gráfico
+      // TODO: Personalize as cores conforme desejado
+      const coresVerdesHistograma = [
+        "rgba(168, 113, 75, 0.7)",
+        "rgba(92, 135, 39, 0.7)",
+        "rgba(72, 126, 116, 0.7)",
+        "rgba(186, 177, 127, 0.7)",
+        "rgba(77, 86, 59, 0.7)",
+        "rgba(143, 151, 121, 0.7)",
+        "rgba(133, 94, 66, 0.7)",
+      ];
+
+        // 1. Definir os rótulos (labels) na ordem correta das suas faixas
+        const labelsHistograma = [
+          '0-2 Horas',
+          '2-4 Horas',
+          '4-6 Horas',
+          '6-8 Horas',
+          '8-10 Horas',
+          '10+ Horas'
+        ];
+
+        // 2. Extrair os dados (contagens) do objeto na mesma ordem dos labels
+        const dadosHistograma = [
+          dadosContagem.ateDois,
+          dadosContagem.tresaQuatro,
+          dadosContagem.cincoaSeis,
+          dadosContagem.seteaOito,
+          dadosContagem.noveaDez,
+          dadosContagem.onzeMais
+        ];
+
+      new Chart(ctx, {
+        type: "bar",
+        data: {
+          labels: labelsHistograma, // Os gêneros literários
+          datasets: [
+            {
+              label: "Quantidade por tempo de leitura",
+              data: dadosHistograma, // As quantidades de livros
+              backgroundColor: coresVerdesHistograma,
+              borderColor: coresVerdesHistograma.map((cor) => cor.replace("0.7", "1")), // Bordas mais escuras
+              borderWidth: 1,
+            }],
+        },
+        options: {
+          indexAxis: 'y',
+          scales: {
+            x: { // Eixo X (horizontal - contagem)
+              beginAtZero: true, 
+              title: {
+                display: true,
+                text: 'Quantidade de Livros'
+              }
+            },
+            y: { // Eixo Y (vertical - faixas)
+              title: {
+                display: true,
+                text: 'Tempo de Leitura Estimado'
+              }
+            }
+          },
+          responsive: true,
+          plugins: {
+            legend: {
+              position: "top",
+            },
+            title: {
+              display: true,
+              text: "Distribuição por Tempo de Leitura!",
+              color: "#1f2f0d",
+              font: {
+                size: 20,
+                family: 'Merriweather'
+              }
+            },
+            tooltip: {
+              callbacks: {
+                label: function (context) {
+                  // Personalizar o texto do tooltip
+                  if(context.raw > 1){
+                    return `${context.label}: ${context.raw} livros`
+                  }else return `${context.label}: ${context.raw} livro`
+                   ;
+                },
+              },
+            },
+            datalabels: {
+              align: 'center',
+              color: function(context){
+                const backgroundColor = context.dataset.backgroundColor[context.dataIndex]
+                const brightness = darkOrBright(backgroundColor)
+
+                if (brightness >= 128){
+                    return '#1f2f0d' 
+                } else {
+                    return '#d8e9d0'  
+                }
+              },
+              // da controle sobre o que aparece no datalabels
+              formatter: (value, context) =>{
+                function somaTotal(total, dataponto){
+                  return total + dataponto
+                }
+                const totalValue = quantidades.reduce(somaTotal, 0)
+                const percentageValue = (value / totalValue * 100).toFixed(1)
+                
+                return value
+              }
+            }
+          },
+        },
+        plugins: [ChartDataLabels],
+      });
   }
 
   function deslogar(){
@@ -482,8 +673,10 @@
       obterGeneroFavorito();
       obterLivrosPorGenero();
       obterLista();
-      exibirNomeDashboard();
+      // exibirNomeDashboard();
       iconePerfil();
+      verificarBotaoRemover();
+      obterTempoLeitura();
       // Aqui você chamará as outras funções para carregar os demais dados
     };
   </script>

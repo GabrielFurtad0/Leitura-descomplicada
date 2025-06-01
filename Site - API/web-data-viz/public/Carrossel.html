@@ -216,6 +216,8 @@ let tamanhoLeituraHoras = [
   "9 horas e 30 minutos"   // Mistério/Suspense
 ];
 
+let tamanhoLeituraHorasNumerico = [5.83, 3.42, 7.33, 8.25, 2.5, 9.0, 7.75, 14.0, 6.0, 10.5, 11.0, 9.5];
+
 let ultimoNumeroGerado = null
 
     function numeroAleatorio(){
@@ -269,16 +271,13 @@ let ultimoNumeroGerado = null
       botaoEscolhido.style.fontSize = "1.7rem";
       botaoEscolhido.style.padding = "1.3rem";
       botaoEscolhido.innerHTML = "Sortear Novamente";
-      botaoEscolhido.style.gridRow = "2";
+      botaoEscolhido.style.gridRow = "-1";
 
-  //     justify-self: center;
-  // font-size: 2rem;
-  // height: 10vh;
-  // padding: 1.5rem;
-  // width: max-content;
+      // limpando a mensagem de adicionado quando sortear novamente 
+      document.getElementById("p_respostaQuestionario").innerHTML = ''
 
       // mudando o tamanho da imagem
-      imgExibida.style.height = "30vw";
+      imgExibida.style.height = "20vw";
       imgExibida.style.marginLeft = "2rem";
       imgExibida.style.marginRight = "2rem";
       imgExibida.style.boxShadow = "0px 4px 9px 2px rgba(0, 0, 0, 0.3)";
@@ -302,7 +301,6 @@ let ultimoNumeroGerado = null
         let genero = document.getElementById('p_subtitulo');
         let descricao = document.getElementById('p_descricao');
         let botaoSalvarLista = document.getElementById('btn_lista');
-        let tempoLeituraHorasParagrafo = document.getElementById('p_tempoLeituraHoras');
   
     const id = sessionStorage.getItem("ID_USUARIO") || null;
 
@@ -320,6 +318,7 @@ let ultimoNumeroGerado = null
         "imagemLivroServer": imagemLivro.src,                                
         "generoServer": genero.innerHTML,
         "descricaoServer": descricao.innerHTML,
+        "tempoLeituraServer": tamanhoLeituraHorasNumerico[indexDaVez],
         "idServer": id,
     };
 
@@ -362,12 +361,8 @@ let ultimoNumeroGerado = null
     console.log("Sucesso do cadastro:", data);
     divResposta.innerHTML = `<p style="color: green;"  class="erro">${data.mensagem || "Adicionado a sua lista com sucesso!"}</p>`;
               
-         botaoSalvarLista.style.borderColor = "#6fde73"
-
             setTimeout(() => {
               divResposta.innerHTML = ''
-            botaoSalvarLista.style.borderColor = "#a67c52";
-            
             }, 3000);
     
     

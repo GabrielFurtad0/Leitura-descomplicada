@@ -139,10 +139,37 @@ function removerLivroDaLista(req,res){
     });
 }
 
+function obterTempoLeitura(req,res){
+const idUsuario = req.params.idUsuario;
+  
+  // Validação do parâmetro
+  if (idUsuario == undefined) {
+    res.status(400).send("ID do usuário está undefined!");
+    return;
+  }
+  
+  dashboardModel.obterTempoLeitura(idUsuario)
+    .then((resultado) => {
+      if (resultado.length > 0) {
+        res.status(200).json(resultado);
+      } else {
+        // Opção 1: Status 204 sem corpo
+        res.status(204).end();
+      
+      }
+    })
+    .catch(function (erro) {
+      console.log(erro);
+      console.log("Houve um erro ao contar os livros: ", erro.sqlMessage);
+      res.status(500).json(erro.sqlMessage);
+    });
+}
+
 module.exports = {
   contarLivrosPorUsuario,
   listarPorUsuario,
   contarLivrosPorGenero,
   obterGeneroPreferido,
   removerLivroDaLista,
+  obterTempoLeitura,
 }

@@ -23,4 +23,9 @@ router.delete("/removerLivroDaLista" , function(req, res){
   dashboardController.removerLivroDaLista(req,res)
 })
 
+router.get("/obterTempoLeitura/:idUsuario", function(req, res){
+  dashboardController.obterTempoLeitura(req, res);
+})
+
+
 module.exports = router;

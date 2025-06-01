@@ -64,7 +64,7 @@
         <textarea name="" id="txta_mensagem" class="textoPrincipal input"></textarea>
       </div>
       <button onclick="enviarMensagem()">Enviar mensagem</button>
-      <div id="div_resposta"></div>
+      <div id="div_resposta" style="display: none;"></div>
     </div>
 
   </div>
@@ -150,6 +150,7 @@ function enviarMensagem(){
     const id = sessionStorage.getItem("ID_USUARIO") || null;
 
     const divResposta = document.getElementById("div_resposta")
+    divResposta.style.display = 'grid'
 
     if (classeFormulario == "#" || titulo == "" || mensagem == ""){
       divResposta.innerHTML = `<p style="color: red;"  class="erro">Por favor, preencha todos os campos!</p>`;

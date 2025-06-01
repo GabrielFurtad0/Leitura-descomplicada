@@ -128,8 +128,8 @@
 
     }
 
-    // Função para carregar a KPI de total de livros
-    function obterTotalLivros() {
+    // Função para carregar a KPI de total de mensagens
+    function obterTotaMensagens() {
       // Obter o ID do usuário
       const idUsuario = id;
 
@@ -152,12 +152,12 @@
           if (dados && dados.length > 0) {
             // Exibir o total de livros na KPI
             div_kpi1.innerHTML = `
-                    <p class="titulo">Total de Livros na salvos na sua lista no momento:</p>
-                    <p class="numero">${dados[0].totalLivros}</p>
+                    <p class="titulo">Total de mensagens registradas:</p>
+                    <p class="numero">${dados[0].totalMensagens}</p>
                 `;
           } else {
             div_kpi1.innerHTML = `
-                    <p class="titulo">Total de Livros</p>
+                    <p class="titulo">Total de mensagens registradas:</p>
                     <p class="numero">0</p>
                 `;
           }
@@ -169,7 +169,7 @@
     }
 
     // Função para carregar a KPI de total de livros
-    function obterGeneroFavorito() {
+    function obterTipoMaisComum() {
       // Obter o ID do usuário
       const idUsuario = id;
 
@@ -192,26 +192,25 @@
           if (dados && dados.length > 0) {
             // Exibir o total de livros na KPI
             div_kpi2.innerHTML = `
-                    <p class="titulo">Seu gênero literário favorito no momento!</p>
-                    <p class="numero">${dados[0].genero}</p>
+                    <p class="titulo">O tipo mais registrado, atualmente é:</p>
+                    <p class="numero">${dados[0].tipo}</p>
                 `;
           } else {
             div_kpi2.innerHTML = `
-                    <p class="titulo">Seu gênero literário do momento ainda não foi definido</p>
+                    <p class="titulo">Ainda não houve registros</p>
                     
                 `;
           }
         })
         .catch((erro) => {
-          console.error("Erro ao obter total de livros:", erro);
-          div_kpi2.innerHTML = `<p class="titulo">Seu gênero literário favorito no momento!</p>
-                                <p class="numero">Ainda não sabemos!</p>`;
+          console.error("Erro ao obter total de mensagens registradas:", erro);
+          
         });
     }
 
     let quantidades;   
-    // Função para obter os dados de livros por gênero e criar o gráfico
-    function obterLivrosPorGenero() {
+    // Função para obter os dados das mensagens por tipo e gerar o gráfico
+    function obterMensagensPorTipo() {
       const idUsuario = id;
 
       fetch(`/dashboardAdministrativa/contarTotalEnvios/${idUsuario}`)
@@ -223,20 +222,20 @@
           }
         })
         .then((dados) => {
-          console.log("Dados de gêneros recebidos:", dados);
+          console.log("Dados de mensagens recebidos:", dados);
           if (dados && dados.length > 0) {
-            let generos = [];
+            let tipo = [];
             quantidades = [];
 
             for (let index = 0; index < dados.length; index++) {
-              generos.push(dados[index].genero);
+              tipo.push(dados[index].tipo);
               quantidades.push(dados[index].quantidade);
             }
 
-            console.log("generos", generos);
+            console.log("tipo", tipo);
             console.log("quantidades", quantidades);
 
-            criarGrafico(generos, quantidades);
+            criarGrafico(tipo, quantidades);
           } else {
             
           }
@@ -281,7 +280,7 @@
           labels: labels, // Os gêneros literários
           datasets: [
             {
-              label: "Livros por Gênero",
+              label: "Mensagens por tipo",
               data: dados, // As quantidades de livros
               backgroundColor: cores,
               borderColor: cores.map((cor) => cor.replace("0.7", "1")), // Bordas mais escuras
@@ -296,22 +295,31 @@
             },
             title: {
               display: true,
-              text: "Seus gêneros preferidos!",
+              text: "Mensagens por tipo",
             },
             tooltip: {
               callbacks: {
                 label: function (context) {
                   // Personalizar o texto do tooltip
                   if(context.raw > 1){
-                    return `${context.label}: ${context.raw} livros`
-                  }else return `${context.label}: ${context.raw} livro`
+                    return `${context.label}: ${context.raw} mensagens`
+                  }else return `${context.label}: ${context.raw} mensagem`
                    ;
                 },
               },
             },
             datalabels: {
               align: 'center',
-              color: '#d8e9d0',
+              color: function(context){
+                const backgroundColor = context.dataset.backgroundColor[context.dataIndex]
+                const brightness = darkOrBright(backgroundColor)
+
+                if (brightness >= 128){
+                    return '#1f2f0d' 
+                } else {
+                    return '#d8e9d0'  
+                }
+              },
               // da controle sobre o que aparece no datalabels
               formatter: (value, context) =>{
                 function somaTotal(total, dataponto){
@@ -327,6 +335,21 @@
         },
         plugins: [ChartDataLabels],
       });
+    }
+
+    function darkOrBright(backgroundColor){
+      const regex = /rgba?\((\d+),\s*(\d+),\s*(\d+)/
+      const match = backgroundColor.match(regex)
+
+      if (match){
+        const r = parseInt(match[1]);
+        const g = parseInt(match[2]);
+        const b = parseInt(match[3]);
+
+        const brightness = (r * 0.299 + g * 0.587 + b * 0.114)
+        
+         return brightness
+      }
     }
 
     function obterLista() {

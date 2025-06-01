@@ -5,15 +5,10 @@ function puxar(req, res) {
     var imagemLivro = req.body.imagemLivroServer;
     var genero = req.body.generoServer;
     var descricao = req.body.descricaoServer;
+    var tempoLeitura = req.body.tempoLeituraServer;
     var id = req.body.idServer;
     
-
-    if (email == undefined) {
-        res.status(400).send("Seu email está undefined!");
-    } else if (senha == undefined) {
-        res.status(400).send("Sua senha está indefinida!");
-    } else {
-        favoritosModel.puxar(tituloParagrafo, imagemLivro, genero, descricao, id)
+        favoritosModel.puxar(tituloParagrafo, imagemLivro, genero, descricao, tempoLeitura, id)
             .then(
                 function (resultadoPuxar) {
                     console.log(`\nResultados encontrados: ${resultadoPuxar.length}`);
@@ -23,15 +18,13 @@ function puxar(req, res) {
                         console.log(resultadoPuxar);
                         res.json({
                             id: resultadoPuxar[0].id,
-                            tituloParagrafo: resultadoPuxar[0].tituloParagrafo,
-                            nome: resultadoPuxar[0].nome,
-                            senha: resultadoPuxar[0].senha,
+                            tituloParagrafo: resultadoPuxar[0].tituloParagrafo
 
                         });
                     } else if (resultadoPuxar.length == 0) {
-                        res.status(403).send("Email e/ou senha inválido(s)");
+                        res.status(403).send("Livro inválido");
                     } else {
-                        res.status(403).send("Mais de um usuário com o mesmo login e senha!");
+                        res.status(403).send("Mais de um livro com o mesmo nome");
                     }
                 }
             ).catch(
@@ -42,7 +35,7 @@ function puxar(req, res) {
                 }
             );
     }
-}
+
 
 function enviar(req, res) {
     // Recuperando os valores do corpo da requisição
@@ -50,16 +43,17 @@ function enviar(req, res) {
     var imagemLivro = req.body.imagemLivroServer;
     var genero = req.body.generoServer;
     var descricao = req.body.descricaoServer;
+    var tempoLeitura = req.body.tempoLeituraServer;
     var id = req.body.idServer;
 
-    console.log("Dados recebidos:", {tituloParagrafo, imagemLivro, genero, descricao, id});
+    console.log("Dados recebidos:", {tituloParagrafo, imagemLivro, genero, descricao, tempoLeitura, id});
 
     // Validações dos valores
     if (id == null) {
         res.status(400).send("Você não está logado");
     } else {
         // Passando os valores para o model
-        favoritosModel.enviar(tituloParagrafo, imagemLivro, genero, descricao, id)
+        favoritosModel.enviar(tituloParagrafo, imagemLivro, genero, descricao, tempoLeitura, id)
             .then(
                 function (resultado) {
                     res.json(resultado);

@@ -57,10 +57,10 @@
           "Um livro é um sonho que você segura nas mãos."<br />
           -Neil Gaiman
         </p>
-        <button class="no-pointer">Começe a ler agora 	&rarr;</button>
+        <button onclick="scrollarCitacoes()" class="no-pointer">Começe a ler agora 	&rarr;</button>
       </div>
     <div class="todo">
-      <div class="citacao">
+      <div class="citacao" id="div_citacao">
         <p class="Titulo">Citações</p>
         <div class="card esquerda">
           <div class="retrato">
@@ -294,9 +294,6 @@
       div_perfil.classList.add("container-perfil")
       nickname.innerHTML = sessionStorage.getItem("NOME_USUARIO")
       email.innerHTML = sessionStorage.getItem("EMAIL_USUARIO")
-    }else {
-      alert('Para utilizar as funcionalidades do Leitura descomplicada você deve estar logado!')
-      window.location.href = "./Login.html"
     }
   }
 
@@ -307,7 +304,20 @@
   }
 </script>
   <script>
+
+    function scrollarCitacoes(){
+      const div_citacao = document.getElementById("div_citacao")
+      const posicao = div_citacao.offsetTop
+      window.scrollTo({
+        top: posicao,
+        behavior: "smooth"
+      })
+    }
+
     function menu() {
+      if (sessionStorage.getItem("ID_USUARIO")){
+        window.location.href = "Menu.html"
+      }else 
       window.location.href = "./Login.html";
     }
 
