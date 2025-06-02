@@ -3,10 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Dashboard - LD</title>
     <link rel="stylesheet" href="Style.css" />
   </head>
-  <link rel="icon" href="Imagens/Navbar/Logo.svg" />
+  <link rel="icon" href="Imagens/Navbar/novo_icone.svg" />
   <body>
     <div class="todo">
       <div class="navbar relative">
@@ -254,21 +254,19 @@
 
          document.getElementById(
               "div_chart"
-            ).innerHTML = `
-                            <p class="erro" style = 'text-align: center; font-size: 2rem; width: 18vw'>Vamos descobrir juntos seus 
+            ).innerHTML = ` <p class="titulo" style="font-size: 2rem">Livros por Gênero</p>
+                            <p class="erro" style = 'text-align: center; font-size: 1.5rem; width: 18vw'>Vamos descobrir juntos seus 
                             gêneros literários favoritos! Explore as 
                             funcionalidades do Leitura Descomplicada e personalize sua experiência.</p>`
         });
     }
 
+    let porcentagemDaVez;
     // Função para criar o gráfico usando Chart.js
     function criarGrafico(labels, dados) {
-      // PASSO 1: Obter o contexto do canvas
-      // TODO: Substitua 'seuCanvas' pelo ID do seu elemento canvas
       const ctx = document.querySelector("#div_chart canvas").getContext("2d");
-
-      // PASSO 2: Definir cores para o gráfico
-      // TODO: Personalize as cores conforme desejado
+      console.log('Contexto',ctx);
+      
       const cores = [
         "rgba(168, 113, 75, 0.7)",
         "rgba(92, 135, 39, 0.7)",
@@ -307,9 +305,10 @@
               text: "Seus gêneros preferidos!",
               color: "#1f2f0d",
               font: {
-                size: 20,
-                family: 'Merriweather'
-              }
+                  size: 20,
+                  family: 'Merriweather',
+                  weight: 'bold'
+              },
             },
             tooltip: {
               callbacks: {
@@ -334,6 +333,7 @@
                     return '#d8e9d0'  
                 }
               },
+              
               // da controle sobre o que aparece no datalabels
               formatter: (value, context) =>{
                 function somaTotal(total, dataponto){
@@ -342,8 +342,31 @@
                 const totalValue = quantidades.reduce(somaTotal, 0)
                 const percentageValue = (value / totalValue * 100).toFixed(1)
                 
+                porcentagemDaVez = percentageValue
                 return `${percentageValue}%`
-              }
+              },
+              font: function(context) { // Mova a função para cá!
+                const percentage = porcentagemDaVez
+                console.log('dentro da font, apos o percentage', percentage);
+                
+
+                let fontSize;
+                if (percentage >= 30) {
+                  fontSize = 18; // Fatias grandes
+                } else if (percentage >= 15) {
+                  fontSize = 16; // Fatias médias
+                } else if (percentage >= 5) {
+                  fontSize = 14; // Fatias pequenas
+                } else {
+                  fontSize = 12; // Fatias muito pequenas
+                }
+                
+                return {
+                  size: fontSize,
+                  family: 'Merriweather',
+                  weight: 'bold'
+                };
+              },
             }
           },
         },
@@ -351,6 +374,7 @@
       });
     }
 
+    // função auxiliar, verifica se o background color do gráfico se enquandra como claro ou escuro
     function darkOrBright(backgroundColor){
       const regex = /rgba?\((\d+),\s*(\d+),\s*(\d+)/
       const match = backgroundColor.match(regex)
@@ -365,6 +389,7 @@
       }
     }
 
+    // função para puxar os dados da lista do usuario
     function obterLista() {
       const idUsuario = id;
 
@@ -405,6 +430,7 @@
         });
     }
 
+    // função que verifica se o usuario está logado para mudar o icone do perfil e permite que o usario deslogue facilmente
     function iconePerfil(){
     console.log('iconeperfil');
     
@@ -535,9 +561,9 @@
           console.error("Erro ao obter dados para o gráfico:", erro);
 
          document.getElementById(
-              "div_chart"
-            ).innerHTML = `<p class="titulo">Livros separados pelo tempo de leitura</p>
-                            <p class="erro" style = 'text-align: center; font-size: 2rem; width: 18vw'>Vamos descobrir juntos seus 
+              "div_histograma"
+            ).innerHTML = `<p class="titulo" style="font-size: 2rem">Livros separados pelo tempo de leitura</p>
+                            <p class="erro" style = 'text-align: center; font-size: 1.5rem; width: 18vw'>Vamos descobrir juntos seus 
                             gêneros literários favoritos! Explore as 
                             funcionalidades do Leitura Descomplicada e personalize sua experiência.</p>`
         });
