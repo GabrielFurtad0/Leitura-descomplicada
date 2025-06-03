@@ -89,7 +89,7 @@
           <div class="botoes">
             <button onclick="anterior()" class="perguntaAnterior" id="perguntaAnterior" style="display: none;">&#8592; Pergunta
               anterior</button>
-            <button onclick="finalizar()" style="display: none; grid-column: 2;" id="finalizarQuestionario"> Finalizar
+            <button onclick="finalizar()" style="display: none; grid-column: 2; font-size: 1.75rem;" id="finalizarQuestionario"> Finalizar
               Questionario</button>
             <button onclick="proxima()" style="grid-column: 3;" id="perguntaProxima">Próxima pergunta &#8594;</button>
           </div>
@@ -585,6 +585,7 @@
   
     respostas.splice(indexDaVez -1, 1)
     console.log(respostas);
+    limparChecks()
 
     if (indexDaVez > 0) {
       indexDaVez--

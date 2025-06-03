@@ -304,7 +304,7 @@ button.no-pointer{
   grid-column: 2/ -1;
   font-family: "Nunito";
   text-align: center;
-  font-size: 2.3rem;
+  font-size: 1.8rem;
   color: #1f2f0d;
   padding: 2vh;
   line-height: 3.5rem;
@@ -457,7 +457,7 @@ button.no-pointer{
 
 .explorar .Titulo {
   font-family: "Merriweather";
-  font-size: 6.5rem;
+  font-size: 5rem;
   text-align: center;
   color: #1f2f0d;
   font-weight: 1000;
@@ -465,9 +465,9 @@ button.no-pointer{
 
 .explorar button {
   justify-self: center;
-  height: 30vh;
+  height: 20vh;
   width: fit-content;
-  font-size: 5rem;
+  font-size: 3rem;
   border-radius: 7rem;
   padding: 3rem;
   transition: transform 0.5s;
@@ -551,7 +551,6 @@ button.no-pointer{
   padding: 1rem;
   justify-items: center;
   min-height: 37vh;
-  max-height: 50vh;
   width: 20vw;
   position: relative;
   overflow: hidden;
@@ -606,6 +605,7 @@ button.no-pointer{
 .funcionalidades .card:hover {
   border: solid 2px #1f2f0d;
   box-shadow: 0px 2px 18px 4px rgba(92, 109, 73, 0.75);
+  height: fit-content;
 }
 
 .funcionalidades img.contos {
@@ -1071,7 +1071,7 @@ img#img_livro{
   justify-self: center;
   padding: 1rem;
   border-radius: 3rem;
-  font-family: "Nunito";
+  font-family: "Merriweather";
   font-size: 2rem;
   margin-top: 0.5rem;
   height: 5rem;
@@ -1172,7 +1172,7 @@ select{
 .Questionario button {
   padding: 1rem;
   border-radius: 2rem;
-  font-size: 2rem;
+  font-size: 1.5rem;
   height: 8vh;
   text-align: center;
   margin-top: 2rem;

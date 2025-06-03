@@ -673,12 +673,7 @@
               },
               // da controle sobre o que aparece no datalabels
               formatter: (value, context) =>{
-                function somaTotal(total, dataponto){
-                  return total + dataponto
-                }
-                const totalValue = quantidades.reduce(somaTotal, 0)
-                const percentageValue = (value / totalValue * 100).toFixed(1)
-                
+                     
                 return value
               }
             }
