@@ -310,17 +310,7 @@
                   weight: 'bold'
               },
             },
-            tooltip: {
-              callbacks: {
-                label: function (context) {
-                  // Personalizar o texto do tooltip
-                  if(context.raw > 1){
-                    return `${context.label}: ${context.raw} livros`
-                  }else return `${context.label}: ${context.raw} livro`
-                   ;
-                },
-              },
-            },
+            tooltip: false,
             datalabels: {
               align: 'center',
               color: function(context){
@@ -380,9 +370,9 @@
       const match = backgroundColor.match(regex)
 
       if (match){
-        const r = parseInt(match[1]);
-        const g = parseInt(match[2]);
-        const b = parseInt(match[3]);
+        const r = match[1];
+        const g = match[2];
+        const b = match[3];
 
         const brightness = (r * 0.299 + g * 0.587 + b * 0.114)
          return brightness
@@ -451,7 +441,7 @@
     }
   }
 
-  function removerDaLista(nomeLivro){
+    function removerDaLista(nomeLivro){
     console.log('Nome do livro a ser removido: ', nomeLivro);
     
     const livro = nomeLivro
@@ -491,12 +481,15 @@
     return false;
 }
 
-  function verificarBotaoRemover(){
+    // função que adiciona os eventListeners
+    function verificarBotaoRemover(){
     const div_salvo = document.getElementById("div_salvo")
     div_salvo.addEventListener("click", function(event){
       console.log("Clique detectado dentro do container! Elemento clicado:", event.target);
+
        const botaoClicado = event.target.closest(".btn_remover");
        console.log("Resultado do closest('.btn_remover'):", botaoClicado)
+
       if (botaoClicado){
         const nomeLivroParaRemover = botaoClicado.getAttribute("data-nome-livro");
         console.log("Botão remover clicado para:", nomeLivroParaRemover)
@@ -504,21 +497,22 @@
         if (nomeLivroParaRemover){
           if(confirm(`Tem certeza que deseja remover "${nomeLivroParaRemover}"?`)){
             removerDaLista(nomeLivroParaRemover)
+            
           }
         }
       }
     })
   }
 
-  let quantidadeTempo = {
-    "ateDois": 0,
-    "tresaQuatro": 0,
-    "cincoaSeis": 0,
-    "seteaOito": 0,
-    "noveaDez": 0,
-    "onzeMais":0,
-  }
-  function obterTempoLeitura(){
+    let quantidadeTempo = {
+      "ateDois": 0,
+      "tresaQuatro": 0,
+      "cincoaSeis": 0,
+      "seteaOito": 0,
+      "noveaDez": 0,
+      "onzeMais":0,
+    }
+    function obterTempoLeitura(){
 
     const idUsuario = id;
 
@@ -535,15 +529,15 @@
           if (dados && dados.length > 0) {
             
             for (let index = 0; index < dados.length; index++) {
-              if (dados[index].tempo_de_leitura <= 2){
+              if (dados[index].tempoLeitura <= 2){
                 quantidadeTempo.ateDois ++
-              }else if (dados[index].tempo_de_leitura <= 4){
+              }else if (dados[index].tempoLeitura <= 4){
                 quantidadeTempo.tresaQuatro ++
-              }else if (dados[index].tempo_de_leitura <= 6){
+              }else if (dados[index].tempoLeitura <= 6){
                 quantidadeTempo.cincoaSeis ++
-              }else if (dados[index].tempo_de_leitura <= 8){
+              }else if (dados[index].tempoLeitura <= 8){
                 quantidadeTempo.seteaOito ++
-              }else if (dados[index].tempo_de_leitura <= 10){
+              }else if (dados[index].tempoLeitura <= 10){
                 quantidadeTempo.noveaDez ++
               }else {
                 quantidadeTempo.onzeMais ++
@@ -587,11 +581,11 @@
         // 1. Definir os rótulos (labels) na ordem correta das suas faixas
         const labelsHistograma = [
           '0-2 Horas',
-          '2-4 Horas',
-          '4-6 Horas',
-          '6-8 Horas',
-          '8-10 Horas',
-          '10+ Horas'
+          '3-4 Horas',
+          '5-6 Horas',
+          '7-8 Horas',
+          '9-10 Horas',
+          '11+ Horas'
         ];
 
         // 2. Extrair os dados (contagens) do objeto na mesma ordem dos labels

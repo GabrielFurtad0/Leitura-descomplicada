@@ -8,8 +8,4 @@ router.post("/enviar", function (req, res) {
     favoritosController.enviar(req, res);
 })
 
-router.post("/puxar", function (req, res) {
-    favoritosController.puxar(req, res);
-});
-
 module.exports = router;

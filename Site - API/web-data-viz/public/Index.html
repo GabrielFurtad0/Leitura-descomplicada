@@ -145,7 +145,7 @@
         </div>
       </div>
 
-      <div class="card-dicas">
+      <div class="card-dicas" id="div_dicas">
         <p class="Titulo">Comece a ler agora!</p>
 
         <div class="dica">
@@ -306,8 +306,8 @@
   <script>
 
     function scrollarCitacoes(){
-      const div_citacao = document.getElementById("div_citacao")
-      const posicao = div_citacao.offsetTop
+      const div_dicas = document.getElementById("div_dicas")
+      const posicao = div_dicas.offsetTop
       window.scrollTo({
         top: posicao,
         behavior: "smooth"

@@ -3,7 +3,7 @@ var database = require("../database/config")
 function contarLivrosPorUsuario(idUsuario) {
     console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function entrar(): ", idUsuario)
     var instrucaoSql = `
-        SELECT COUNT(*) as totalLivros FROM lista WHERE fkUsuario = ${idUsuario}
+        SELECT COUNT(*) as totalLivros FROM lista WHERE fkUsuario = ${idUsuario};
     `;
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
@@ -50,7 +50,7 @@ function removerLivroDaLista(idUsuario, nomeLivro){
     delete from lista
     where nome = "${nomeLivro}"
     and fkUsuario = "${idUsuario}"
-    `;
+    ;`;
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql)
 }
@@ -58,7 +58,9 @@ function removerLivroDaLista(idUsuario, nomeLivro){
 function obterTempoLeitura(idUsuario){
     console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function entrar(): ", idUsuario)
         var instrucaoSql = `
-            SELECT tempoLeitura as tempo_de_leitura FROM lista WHERE fkUsuario = ${idUsuario}
+            SELECT tempoLeitura 
+            FROM lista WHERE fkUsuario = ${idUsuario}
+            order by tempoLeitura desc;
         `;
         console.log("Executando a instrução SQL: \n" + instrucaoSql);
         return database.executar(instrucaoSql);

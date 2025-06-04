@@ -33,7 +33,7 @@ create table lista(
 nome varchar(100),
 img varchar(200),
 genero varchar(40),
-descricao varchar(300),
+descricao varchar(1000),
 fkUsuario int,
 constraint fk_usuario_lista foreign key (fkUsuario) references usuario(id),
 primary key (nome, fkusuario)
