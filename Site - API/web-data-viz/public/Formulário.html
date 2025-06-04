@@ -184,10 +184,10 @@ function enviarMensagem(){
 
     console.log('Dados que serão enviados para a API:', dadosParaApi);
   
-  // Modifique a URL se necessário para corresponder ao endpoint correto
+  
   const urlApi = `http://localhost:3333/formularios/enviar`;
   
-  // Exibir algum indicador de carregamento
+  
   divResposta.innerHTML = `<p style="color: blue;" class="erro">Processando Mensagem...</p>`;
   
   fetch(urlApi, {
@@ -214,7 +214,7 @@ function enviarMensagem(){
     console.log("Sucesso do cadastro:", data);
     divResposta.innerHTML = `<p style="color: green;"  class="erro">${data.mensagem || "Mensagem enviada com sucesso!"}</p>`;
     
-    // Limpar o formulário após o sucesso
+    // Limpa o formulário após o sucesso
     document.getElementById("slct_classeFormulario").value = "";
     document.getElementById("ipt_titulo").value = "";
     document.getElementById("txta_mensagem").value = "";

@@ -612,7 +612,6 @@
         buttonPerguntaProxima.style.display = 'grid'
       }
       
-    
   }
 
   function desmarcarOutros(checkboxSelecionado) {
@@ -649,7 +648,6 @@
         div_questionario.style.height = 'fit-content'
         div_fotos.style.display = 'grid'
         div_questionnaire.style.marginBottom = '10rem'
-        // Show back button
         document.querySelector('.div_btn-voltar').style.display = 'grid'
         
         //algoritmo pra identificar os generos favoritos do usuario
@@ -826,13 +824,13 @@ function encontrarTopGeneros(pontuacao) {
     // Tentar a conversão para JSON e ver se há erros
     const jsonString = JSON.stringify(dadosParaApi);
     
-    // Exibir os resultados
+    
     console.log("Objeto original:", dadosParaApi);
     console.log("JSON convertido:", jsonString);
 
     console.log('Dados que serão enviados para a API:', dadosParaApi);
   
-  // Modifique a URL se necessário para corresponder ao endpoint correto
+  
   const urlApi = `http://localhost:3333/questionarios/enviar`;
   
   // Exibir algum indicador de carregamento
@@ -990,19 +988,19 @@ function encontrarTopGeneros(pontuacao) {
         "idServer": id,
     };
 
-    // Tentar a conversão para JSON e ver se há erros
+    
     const jsonString = JSON.stringify(dadosParaApi);
     
-    // Exibir os resultados
+    
     console.log("Objeto original:", dadosParaApi);
     console.log("JSON convertido:", jsonString);
 
     console.log('Dados que serão enviados para a API:', dadosParaApi);
   
-  // Modifique a URL se necessário para corresponder ao endpoint correto
+  
   const urlApi = `http://localhost:3333/favoritos/enviar`;
   
-  // Exibir algum indicador de carregamento
+  
   divResposta.innerHTML = `<p style="color: blue;" class="erro">Processando Mensagem...</p>`;
   
   fetch(urlApi, {
@@ -1019,7 +1017,7 @@ function encontrarTopGeneros(pontuacao) {
         const mensagemErro = erroApi.mensagem || `Erro ao enviar: ${response.status}`;
         throw new Error(mensagemErro);
       }).catch(error => {
-        // Se não conseguir obter JSON, ainda mostra um erro genérico
+        // Se não conseguir obter JSON, ainda mostra não tratado
         throw new Error(`Erro ao enviar: ${response.status}`);
       });
     }

@@ -186,10 +186,10 @@
 
     console.log('Dados que serão enviados para a API:', dadosParaApi);
   
-  // Modifique a URL se necessário para corresponder ao endpoint correto
+  
   const urlApi = `http://localhost:3333/usuarios/cadastrar`;
   
-  // Exibir algum indicador de carregamento
+  
   divResposta.innerHTML = `<p style="color: blue;" class="erro">Processando cadastro...</p>`;
   
   fetch(urlApi, {
@@ -206,7 +206,7 @@
         const mensagemErro = erroApi.mensagem || `Erro ao cadastrar: ${response.status}`;
         throw new Error(mensagemErro);
       }).catch(error => {
-        // Se não conseguir obter JSON, ainda mostra um erro genérico
+        // Se não conseguir obter Json, ainda mostra um erro genérico, não tratado
         throw new Error(`Erro ao cadastrar: ${response.status}`);
       });
     }
